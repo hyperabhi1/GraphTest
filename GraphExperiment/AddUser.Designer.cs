@@ -36,8 +36,6 @@
             System.Windows.Forms.Label heightLabel;
             System.Windows.Forms.Label weightLabel;
             System.Windows.Forms.Label genderLabel;
-            System.Windows.Forms.Label userIdLabel1;
-            System.Windows.Forms.Label firstNameLabel1;
             this.userIdTextBox = new System.Windows.Forms.TextBox();
             this.userProfileBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.healthStatsDataSet = new GraphExperiment.HealthStatsDataSet();
@@ -52,8 +50,6 @@
             this.userMappingTableAdapter = new GraphExperiment.HealthStatsDataSetTableAdapters.UserMappingTableAdapter();
             this.tableAdapterManager = new GraphExperiment.HealthStatsDataSetTableAdapters.TableAdapterManager();
             this.userMappingBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.userIdTextBox1 = new System.Windows.Forms.TextBox();
-            this.firstNameTextBox1 = new System.Windows.Forms.TextBox();
             userIdLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
             lastNameLabel = new System.Windows.Forms.Label();
@@ -61,8 +57,6 @@
             heightLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             genderLabel = new System.Windows.Forms.Label();
-            userIdLabel1 = new System.Windows.Forms.Label();
-            firstNameLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.userProfileBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.healthStatsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageNumericUpDown)).BeginInit();
@@ -140,26 +134,6 @@
             genderLabel.Size = new System.Drawing.Size(72, 19);
             genderLabel.TabIndex = 13;
             genderLabel.Text = "Gender:";
-            // 
-            // userIdLabel1
-            // 
-            userIdLabel1.AutoSize = true;
-            userIdLabel1.Location = new System.Drawing.Point(12, 316);
-            userIdLabel1.Name = "userIdLabel1";
-            userIdLabel1.Size = new System.Drawing.Size(44, 13);
-            userIdLabel1.TabIndex = 15;
-            userIdLabel1.Text = "User Id:";
-            userIdLabel1.Visible = false;
-            // 
-            // firstNameLabel1
-            // 
-            firstNameLabel1.AutoSize = true;
-            firstNameLabel1.Location = new System.Drawing.Point(12, 342);
-            firstNameLabel1.Name = "firstNameLabel1";
-            firstNameLabel1.Size = new System.Drawing.Size(60, 13);
-            firstNameLabel1.TabIndex = 17;
-            firstNameLabel1.Text = "First Name:";
-            firstNameLabel1.Visible = false;
             // 
             // userIdTextBox
             // 
@@ -282,24 +256,6 @@
             this.userMappingBindingSource.DataMember = "UserMapping";
             this.userMappingBindingSource.DataSource = this.healthStatsDataSet;
             // 
-            // userIdTextBox1
-            // 
-            this.userIdTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userMappingBindingSource, "UserId", true));
-            this.userIdTextBox1.Location = new System.Drawing.Point(78, 313);
-            this.userIdTextBox1.Name = "userIdTextBox1";
-            this.userIdTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.userIdTextBox1.TabIndex = 16;
-            this.userIdTextBox1.Visible = false;
-            // 
-            // firstNameTextBox1
-            // 
-            this.firstNameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userMappingBindingSource, "FirstName", true));
-            this.firstNameTextBox1.Location = new System.Drawing.Point(78, 339);
-            this.firstNameTextBox1.Name = "firstNameTextBox1";
-            this.firstNameTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.firstNameTextBox1.TabIndex = 18;
-            this.firstNameTextBox1.Visible = false;
-            // 
             // AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,10 +263,6 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(294, 364);
             this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(userIdLabel1);
-            this.Controls.Add(this.userIdTextBox1);
-            this.Controls.Add(firstNameLabel1);
-            this.Controls.Add(this.firstNameTextBox1);
             this.Controls.Add(userIdLabel);
             this.Controls.Add(this.userIdTextBox);
             this.Controls.Add(firstNameLabel);
@@ -358,7 +310,5 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.BindingSource userMappingBindingSource;
         private HealthStatsDataSetTableAdapters.UserMappingTableAdapter userMappingTableAdapter;
-        private System.Windows.Forms.TextBox userIdTextBox1;
-        private System.Windows.Forms.TextBox firstNameTextBox1;
     }
 }
