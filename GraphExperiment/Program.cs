@@ -16,7 +16,7 @@ namespace GraphExperiment
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AddUser());
+            Application.Run(new Dashboard());
         }
     }
 }
