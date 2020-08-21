@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUser));
             System.Windows.Forms.Label userIdLabel;
             System.Windows.Forms.Label firstNameLabel;
             System.Windows.Forms.Label lastNameLabel;
@@ -37,23 +36,26 @@
             System.Windows.Forms.Label heightLabel;
             System.Windows.Forms.Label weightLabel;
             System.Windows.Forms.Label genderLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUser));
             this.healthStatsDataSet = new GraphExperiment.HealthStatsDataSet();
             this.userProfileBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userProfileTableAdapter = new GraphExperiment.HealthStatsDataSetTableAdapters.UserProfileTableAdapter();
             this.tableAdapterManager = new GraphExperiment.HealthStatsDataSetTableAdapters.TableAdapterManager();
             this.userProfileBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.userProfileBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.userIdTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
@@ -61,8 +63,7 @@
             this.heightNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.weightNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.genderComboBox = new System.Windows.Forms.ComboBox();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.button1 = new System.Windows.Forms.Button();
             userIdLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
             lastNameLabel = new System.Windows.Forms.Label();
@@ -78,6 +79,76 @@
             ((System.ComponentModel.ISupportInitialize)(this.heightNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).BeginInit();
             this.SuspendLayout();
+            // 
+            // userIdLabel
+            // 
+            userIdLabel.AutoSize = true;
+            userIdLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            userIdLabel.Location = new System.Drawing.Point(8, 50);
+            userIdLabel.Name = "userIdLabel";
+            userIdLabel.Size = new System.Drawing.Size(81, 19);
+            userIdLabel.TabIndex = 1;
+            userIdLabel.Text = "User Id:";
+            // 
+            // firstNameLabel
+            // 
+            firstNameLabel.AutoSize = true;
+            firstNameLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            firstNameLabel.Location = new System.Drawing.Point(8, 96);
+            firstNameLabel.Name = "firstNameLabel";
+            firstNameLabel.Size = new System.Drawing.Size(108, 19);
+            firstNameLabel.TabIndex = 3;
+            firstNameLabel.Text = "First Name:";
+            // 
+            // lastNameLabel
+            // 
+            lastNameLabel.AutoSize = true;
+            lastNameLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            lastNameLabel.Location = new System.Drawing.Point(8, 142);
+            lastNameLabel.Name = "lastNameLabel";
+            lastNameLabel.Size = new System.Drawing.Size(99, 19);
+            lastNameLabel.TabIndex = 5;
+            lastNameLabel.Text = "Last Name:";
+            // 
+            // ageLabel
+            // 
+            ageLabel.AutoSize = true;
+            ageLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            ageLabel.Location = new System.Drawing.Point(8, 188);
+            ageLabel.Name = "ageLabel";
+            ageLabel.Size = new System.Drawing.Size(45, 19);
+            ageLabel.TabIndex = 7;
+            ageLabel.Text = "Age:";
+            // 
+            // heightLabel
+            // 
+            heightLabel.AutoSize = true;
+            heightLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            heightLabel.Location = new System.Drawing.Point(8, 234);
+            heightLabel.Name = "heightLabel";
+            heightLabel.Size = new System.Drawing.Size(72, 19);
+            heightLabel.TabIndex = 9;
+            heightLabel.Text = "Height:";
+            // 
+            // weightLabel
+            // 
+            weightLabel.AutoSize = true;
+            weightLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            weightLabel.Location = new System.Drawing.Point(8, 280);
+            weightLabel.Name = "weightLabel";
+            weightLabel.Size = new System.Drawing.Size(72, 19);
+            weightLabel.TabIndex = 11;
+            weightLabel.Text = "Weight:";
+            // 
+            // genderLabel
+            // 
+            genderLabel.AutoSize = true;
+            genderLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            genderLabel.Location = new System.Drawing.Point(8, 326);
+            genderLabel.Name = "genderLabel";
+            genderLabel.Size = new System.Drawing.Size(72, 19);
+            genderLabel.TabIndex = 13;
+            genderLabel.Text = "Gender:";
             // 
             // healthStatsDataSet
             // 
@@ -131,6 +202,32 @@
             this.userProfileBindingNavigator.TabIndex = 0;
             this.userProfileBindingNavigator.Text = "bindingNavigator1";
             // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
             // bindingNavigatorMoveFirstItem
             // 
             this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -163,16 +260,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -195,27 +285,8 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // userProfileBindingNavigatorSaveItem
             // 
@@ -224,17 +295,17 @@
             this.userProfileBindingNavigatorSaveItem.Name = "userProfileBindingNavigatorSaveItem";
             this.userProfileBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.userProfileBindingNavigatorSaveItem.Text = "Save Data";
-            this.userProfileBindingNavigatorSaveItem.Click += new System.EventHandler(this.userProfileBindingNavigatorSaveItem_Click_3);
             // 
-            // userIdLabel
+            // toolStripLabel1
             // 
-            userIdLabel.AutoSize = true;
-            userIdLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            userIdLabel.Location = new System.Drawing.Point(8, 50);
-            userIdLabel.Name = "userIdLabel";
-            userIdLabel.Size = new System.Drawing.Size(81, 19);
-            userIdLabel.TabIndex = 1;
-            userIdLabel.Text = "User Id:";
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(86, 15);
+            this.toolStripLabel1.Text = "toolStripLabel1";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 15);
             // 
             // userIdTextBox
             // 
@@ -245,16 +316,6 @@
             this.userIdTextBox.Size = new System.Drawing.Size(121, 27);
             this.userIdTextBox.TabIndex = 2;
             // 
-            // firstNameLabel
-            // 
-            firstNameLabel.AutoSize = true;
-            firstNameLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            firstNameLabel.Location = new System.Drawing.Point(8, 96);
-            firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(108, 19);
-            firstNameLabel.TabIndex = 3;
-            firstNameLabel.Text = "First Name:";
-            // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userProfileBindingSource, "FirstName", true));
@@ -263,16 +324,6 @@
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(121, 27);
             this.firstNameTextBox.TabIndex = 4;
-            // 
-            // lastNameLabel
-            // 
-            lastNameLabel.AutoSize = true;
-            lastNameLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            lastNameLabel.Location = new System.Drawing.Point(8, 142);
-            lastNameLabel.Name = "lastNameLabel";
-            lastNameLabel.Size = new System.Drawing.Size(99, 19);
-            lastNameLabel.TabIndex = 5;
-            lastNameLabel.Text = "Last Name:";
             // 
             // lastNameTextBox
             // 
@@ -283,19 +334,10 @@
             this.lastNameTextBox.Size = new System.Drawing.Size(121, 27);
             this.lastNameTextBox.TabIndex = 6;
             // 
-            // ageLabel
-            // 
-            ageLabel.AutoSize = true;
-            ageLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            ageLabel.Location = new System.Drawing.Point(8, 188);
-            ageLabel.Name = "ageLabel";
-            ageLabel.Size = new System.Drawing.Size(45, 19);
-            ageLabel.TabIndex = 7;
-            ageLabel.Text = "Age:";
-            // 
             // ageNumericUpDown
             // 
             this.ageNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.userProfileBindingSource, "Age", true));
+            this.ageNumericUpDown.DecimalPlaces = 2;
             this.ageNumericUpDown.Font = new System.Drawing.Font("Consolas", 12.25F, System.Drawing.FontStyle.Bold);
             this.ageNumericUpDown.Increment = new decimal(new int[] {
             1,
@@ -307,19 +349,10 @@
             this.ageNumericUpDown.Size = new System.Drawing.Size(121, 27);
             this.ageNumericUpDown.TabIndex = 8;
             // 
-            // heightLabel
-            // 
-            heightLabel.AutoSize = true;
-            heightLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            heightLabel.Location = new System.Drawing.Point(8, 234);
-            heightLabel.Name = "heightLabel";
-            heightLabel.Size = new System.Drawing.Size(72, 19);
-            heightLabel.TabIndex = 9;
-            heightLabel.Text = "Height:";
-            // 
             // heightNumericUpDown
             // 
             this.heightNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.userProfileBindingSource, "Height", true));
+            this.heightNumericUpDown.DecimalPlaces = 2;
             this.heightNumericUpDown.Font = new System.Drawing.Font("Consolas", 12.25F, System.Drawing.FontStyle.Bold);
             this.heightNumericUpDown.Increment = new decimal(new int[] {
             1,
@@ -331,19 +364,10 @@
             this.heightNumericUpDown.Size = new System.Drawing.Size(121, 27);
             this.heightNumericUpDown.TabIndex = 10;
             // 
-            // weightLabel
-            // 
-            weightLabel.AutoSize = true;
-            weightLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            weightLabel.Location = new System.Drawing.Point(8, 280);
-            weightLabel.Name = "weightLabel";
-            weightLabel.Size = new System.Drawing.Size(72, 19);
-            weightLabel.TabIndex = 11;
-            weightLabel.Text = "Weight:";
-            // 
             // weightNumericUpDown
             // 
             this.weightNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.userProfileBindingSource, "Weight", true));
+            this.weightNumericUpDown.DecimalPlaces = 2;
             this.weightNumericUpDown.Font = new System.Drawing.Font("Consolas", 12.25F, System.Drawing.FontStyle.Bold);
             this.weightNumericUpDown.Increment = new decimal(new int[] {
             1,
@@ -354,16 +378,6 @@
             this.weightNumericUpDown.Name = "weightNumericUpDown";
             this.weightNumericUpDown.Size = new System.Drawing.Size(121, 27);
             this.weightNumericUpDown.TabIndex = 12;
-            // 
-            // genderLabel
-            // 
-            genderLabel.AutoSize = true;
-            genderLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            genderLabel.Location = new System.Drawing.Point(8, 326);
-            genderLabel.Name = "genderLabel";
-            genderLabel.Size = new System.Drawing.Size(72, 19);
-            genderLabel.TabIndex = 13;
-            genderLabel.Text = "Gender:";
             // 
             // genderComboBox
             // 
@@ -379,22 +393,22 @@
             this.genderComboBox.Size = new System.Drawing.Size(121, 27);
             this.genderComboBox.TabIndex = 14;
             // 
-            // toolStripLabel1
+            // button1
             // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(86, 15);
-            this.toolStripLabel1.Text = "toolStripLabel1";
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 15);
+            this.button1.Location = new System.Drawing.Point(76, 302);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(294, 364);
+            this.Controls.Add(this.button1);
             this.Controls.Add(userIdLabel);
             this.Controls.Add(this.userIdTextBox);
             this.Controls.Add(firstNameLabel);
@@ -454,5 +468,6 @@
         private System.Windows.Forms.NumericUpDown heightNumericUpDown;
         private System.Windows.Forms.NumericUpDown weightNumericUpDown;
         private System.Windows.Forms.ComboBox genderComboBox;
+        private System.Windows.Forms.Button button1;
     }
 }

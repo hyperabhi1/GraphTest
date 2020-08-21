@@ -9,7 +9,9 @@ namespace GraphExperiment
     class Constants
     {
         public static string Error = "Error";
+        public static string Information = "Information";
         public static string Male = "Male";
         public static string Female = "Female";
+        public static string UserAdded = "User Added";
     }
 }

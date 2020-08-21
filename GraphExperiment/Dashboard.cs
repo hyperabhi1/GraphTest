@@ -16,5 +16,14 @@ namespace GraphExperiment
         {
             InitializeComponent();
         }
+
+        private void buttonAddUser_Click(object sender, EventArgs e)
+        {
+
+            var addUserForm = new AddUser();
+            addUserForm.ShowDialog();
+            addUserForm.ShowIcon = true;
+            addUserForm.ShowInTaskbar = true;
+        }
     }
 }

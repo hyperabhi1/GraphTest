@@ -18,22 +18,6 @@ namespace GraphExperiment
             InitializeComponent();
         }
 
-        private void userProfileBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.userProfileBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.healthStatsDataSet);
-
-        }
-
-        private void userProfileBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.userProfileBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.healthStatsDataSet);
-
-        }
-
         private void AddUser_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'healthStatsDataSet.UserProfile' table. You can move, or remove it, as needed.
@@ -45,37 +29,37 @@ namespace GraphExperiment
             genderComboBox.SelectedItem = Male;
         }
 
-        private void userProfileBindingNavigatorSaveItem_Click_2(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.userProfileBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.healthStatsDataSet);
-
-        }
-
-        private void userProfileBindingNavigatorSaveItem_Click_3(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.userProfileBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.healthStatsDataSet);
-
-        }
-
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.tableAdapterManager.UserProfileTableAdapter.Insert(userIdTextBox.Text, firstNameTextBox.Text,
-                lastNameTextBox.Text, (int) ageNumericUpDown.Value, (double) heightNumericUpDown.Value,
-                (double) weightNumericUpDown.Value, genderComboBox.SelectedText[0].ToString());
             try
             {
+                this.Validate();
+                this.tableAdapterManager.UserProfileTableAdapter.Insert(userIdTextBox.Text, firstNameTextBox.Text,
+                    lastNameTextBox.Text, (int)ageNumericUpDown.Value, (double)heightNumericUpDown.Value,
+                    (double)weightNumericUpDown.Value, genderComboBox.SelectedItem.ToString());
                 this.userProfileBindingSource.EndEdit();
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message,Error,MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-            this.tableAdapterManager.UpdateAll(this.healthStatsDataSet);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Validate();
+                this.tableAdapterManager.UserProfileTableAdapter.Insert(userIdTextBox.Text, firstNameTextBox.Text,
+                    lastNameTextBox.Text, (int)ageNumericUpDown.Value, (double)heightNumericUpDown.Value,
+                    (double)weightNumericUpDown.Value, genderComboBox.SelectedItem.ToString()[0].ToString());
+                this.userProfileBindingSource.EndEdit();
+                MessageBox.Show(UserAdded, Information, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, Information, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
