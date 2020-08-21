@@ -25,5 +25,26 @@ namespace GraphExperiment
             addUserForm.ShowIcon = true;
             addUserForm.ShowInTaskbar = true;
         }
+
+        private void userMappingBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.userMappingBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.healthStatsDataSet);
+
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'healthStatsDataSet.UserMapping' table. You can move, or remove it, as needed.
+            this.userMappingTableAdapter.Fill(this.healthStatsDataSet.UserMapping);
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            userMappingListBox.DataSource = this.userMappingTableAdapter.GetData();
+            userMappingListBox.Refresh();
+        }
     }
 }
