@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static GraphExperiment.Constants;
 
 namespace GraphExperiment
 {
@@ -36,6 +37,8 @@ namespace GraphExperiment
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'healthStatsDataSet.DailyStatus' table. You can move, or remove it, as needed.
+            this.dailyStatusTableAdapter.Fill(this.healthStatsDataSet.DailyStatus);
             // TODO: This line of code loads data into the 'healthStatsDataSet.UserProfile' table. You can move, or remove it, as needed.
             this.userProfileTableAdapter.Fill(this.healthStatsDataSet.UserProfile);
             // TODO: This line of code loads data into the 'healthStatsDataSet.UserMapping' table. You can move, or remove it, as needed.
@@ -77,7 +80,40 @@ namespace GraphExperiment
 
             var userId = userMappingListBox.SelectedValue as string;
             if (!string.IsNullOrEmpty(userId))
+            {
                 buttonEdit.Visible = true;
+                buttonDelete.Visible = true;
+            }
+        }
+
+        private void buttonDeleteUser_Click(object sender, EventArgs e)
+        {
+            if ((MessageBox.Show(DeleteVerificationMessage, Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                 DialogResult.Yes) &&
+                (MessageBox.Show(Delete2VerificationMessage, Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                 DialogResult.Yes))
+            {
+                var userId = userMappingListBox.SelectedValue as string;
+                if (!string.IsNullOrEmpty(userId))
+                {
+                    var originalUserProfile = this.userProfileTableAdapter.GetData().FirstOrDefault(x => x.UserId == userId);
+                    if (originalUserProfile != null)
+                    {
+                        try
+                        {
+                            this.tableAdapterManager.UserProfileTableAdapter.Delete(originalUserProfile.UserId, originalUserProfile.FirstName
+                                , originalUserProfile.LastName, originalUserProfile.Age, originalUserProfile.Height, originalUserProfile.Weight, originalUserProfile.Gender);
+                            this.userProfileBindingSource.EndEdit();
+                            MessageBox.Show(UserDeleted, Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception exception)
+                        {
+                            MessageBox.Show(exception.Message, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+
+            }
         }
     }
 }

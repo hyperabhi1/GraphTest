@@ -20,6 +20,16 @@ namespace GraphExperiment
             InitializeComponent();
             _userId = userId;
             _originalUserProfile = this.userProfileTableAdapter.GetData().FirstOrDefault(x => x.UserId == _userId);
+            if (_originalUserProfile != null)
+            {
+                firstNameTextBox.Text = _originalUserProfile.FirstName as string;
+                lastNameTextBox.Text = _originalUserProfile.LastName;
+                genderComboBox.SelectedItem = _originalUserProfile.Gender;
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void userProfileBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -46,19 +56,19 @@ namespace GraphExperiment
             {
                 var firstName = firstNameTextBox.Text.ToUpper();
                 var lastName = lastNameTextBox.Text.ToUpper();
-                int age = (int)ageNumericUpDown.Value;
-                double height = (double)Math.Round(heightNumericUpDown.Value, 2, MidpointRounding.AwayFromZero);
-                double weight = (double)Math.Round(weightNumericUpDown.Value, 2, MidpointRounding.AwayFromZero);
+                int age = (int)_originalUserProfile.Age;
+                double height = (double)Math.Round(_originalUserProfile.Height, 2, MidpointRounding.AwayFromZero);
+                double weight = (double)Math.Round(_originalUserProfile.Weight, 2, MidpointRounding.AwayFromZero);
                 string gender = genderComboBox.Text[0].ToString();
 
                 try
                 {
                     this.tableAdapterManager.UserProfileTableAdapter.Update(firstName, lastName, age, height, weight, gender,
-                        _originalUserProfile.UserId, _originalUserProfile.FirstName, _originalUserProfile.LastName, 
+                        _originalUserProfile.UserId, _originalUserProfile.FirstName, _originalUserProfile.LastName,
                         _originalUserProfile.Age, _originalUserProfile.Height, _originalUserProfile.Weight, _originalUserProfile.Gender);
                     this.userProfileBindingSource.EndEdit();
 
-                    this.tableAdapterManager.UserMappingTableAdapter.Update(_userId,firstName,_originalUserProfile.UserId, _originalUserProfile.FirstName);
+                    this.tableAdapterManager.UserMappingTableAdapter.Update(_userId, firstName, _originalUserProfile.UserId, _originalUserProfile.FirstName);
                     this.userMappingBindingSource.EndEdit();
 
                     if (MessageBox.Show(UserUpdated, Information, MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
@@ -77,12 +87,9 @@ namespace GraphExperiment
         {
             if (!string.IsNullOrEmpty(firstNameTextBox.Text))
                 if (!string.IsNullOrEmpty(lastNameTextBox.Text))
-                    if ((int)ageNumericUpDown.Value != 0)
-                        if (Math.Abs((double)ageNumericUpDown.Value) > 0)
-                            if (Math.Abs((double)weightNumericUpDown.Value) > 0)
-                                if (!string.IsNullOrEmpty(genderComboBox.Text[0].ToString())
-                                   && genderComboBox.Text[0].ToString().Length == 1)
-                                    return true;
+                    if (!string.IsNullOrEmpty(genderComboBox.Text[0].ToString())
+                       && genderComboBox.Text[0].ToString().Length == 1)
+                        return true;
             return false;
         }
     }

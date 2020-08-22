@@ -21,6 +21,8 @@ namespace GraphExperiment
         public static string UserMapper = "User Mapper";
         public static string DailyStatus = "Daily Status";
         public static string ColonSeparator = ":";
+        public static string DeleteVerificationMessage = "Are you sure you want to [DELETE] this data?";
+        public static string Delete2VerificationMessage = "Are you double sure you want to [DELETE] this data?";
         //"Warning"
     }
 }
