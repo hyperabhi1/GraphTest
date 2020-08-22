@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -43,12 +44,21 @@ namespace GraphExperiment
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private async void pictureBoxRefresh_Click(object sender, EventArgs e)
         {
+            ClickEffect();
             userMappingListBox.DataSource = this.userMappingTableAdapter.GetData();
             userProfileDataGridView.DataSource = this.userProfileTableAdapter.GetData();
             userMappingListBox.Refresh();
             userProfileDataGridView.Refresh();
+            return;
+        }
+
+        private async void ClickEffect()
+        {
+            pictureBoxRefresh.BorderStyle = BorderStyle.FixedSingle;
+            Thread.Sleep(50);
+            pictureBoxRefresh.BorderStyle = BorderStyle.Fixed3D;
         }
     }
 }
