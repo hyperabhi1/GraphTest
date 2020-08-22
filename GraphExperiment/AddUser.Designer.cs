@@ -111,9 +111,9 @@
             heightLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
             heightLabel.Location = new System.Drawing.Point(8, 200);
             heightLabel.Name = "heightLabel";
-            heightLabel.Size = new System.Drawing.Size(72, 19);
+            heightLabel.Size = new System.Drawing.Size(108, 19);
             heightLabel.TabIndex = 9;
-            heightLabel.Text = "Height:";
+            heightLabel.Text = "Height (m):";
             // 
             // weightLabel
             // 
@@ -121,9 +121,9 @@
             weightLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
             weightLabel.Location = new System.Drawing.Point(8, 246);
             weightLabel.Name = "weightLabel";
-            weightLabel.Size = new System.Drawing.Size(72, 19);
+            weightLabel.Size = new System.Drawing.Size(117, 19);
             weightLabel.TabIndex = 11;
-            weightLabel.Text = "Weight:";
+            weightLabel.Text = "Weight (Kg):";
             // 
             // genderLabel
             // 
@@ -177,6 +177,11 @@
             this.ageNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.userProfileBindingSource, "Age", true));
             this.ageNumericUpDown.Font = new System.Drawing.Font("Consolas", 12.25F, System.Drawing.FontStyle.Bold);
             this.ageNumericUpDown.Location = new System.Drawing.Point(157, 152);
+            this.ageNumericUpDown.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
             this.ageNumericUpDown.Name = "ageNumericUpDown";
             this.ageNumericUpDown.Size = new System.Drawing.Size(121, 27);
             this.ageNumericUpDown.TabIndex = 8;
@@ -192,6 +197,11 @@
             0,
             131072});
             this.heightNumericUpDown.Location = new System.Drawing.Point(157, 198);
+            this.heightNumericUpDown.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             this.heightNumericUpDown.Name = "heightNumericUpDown";
             this.heightNumericUpDown.Size = new System.Drawing.Size(121, 27);
             this.heightNumericUpDown.TabIndex = 10;
@@ -207,6 +217,11 @@
             0,
             131072});
             this.weightNumericUpDown.Location = new System.Drawing.Point(157, 244);
+            this.weightNumericUpDown.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
             this.weightNumericUpDown.Name = "weightNumericUpDown";
             this.weightNumericUpDown.Size = new System.Drawing.Size(121, 27);
             this.weightNumericUpDown.TabIndex = 12;
@@ -218,8 +233,8 @@
             this.genderComboBox.Font = new System.Drawing.Font("Consolas", 12.25F, System.Drawing.FontStyle.Bold);
             this.genderComboBox.FormattingEnabled = true;
             this.genderComboBox.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
+            "M",
+            "F"});
             this.genderComboBox.Location = new System.Drawing.Point(157, 290);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(121, 27);

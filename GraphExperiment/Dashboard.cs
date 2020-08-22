@@ -36,6 +36,8 @@ namespace GraphExperiment
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'healthStatsDataSet.UserProfile' table. You can move, or remove it, as needed.
+            this.userProfileTableAdapter.Fill(this.healthStatsDataSet.UserProfile);
             // TODO: This line of code loads data into the 'healthStatsDataSet.UserMapping' table. You can move, or remove it, as needed.
             this.userMappingTableAdapter.Fill(this.healthStatsDataSet.UserMapping);
 
@@ -44,7 +46,9 @@ namespace GraphExperiment
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             userMappingListBox.DataSource = this.userMappingTableAdapter.GetData();
+            userProfileDataGridView.DataSource = this.userProfileTableAdapter.GetData();
             userMappingListBox.Refresh();
+            userProfileDataGridView.Refresh();
         }
     }
 }

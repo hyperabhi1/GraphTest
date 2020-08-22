@@ -24,45 +24,53 @@ namespace GraphExperiment
             this.userMappingTableAdapter.Fill(this.healthStatsDataSet.UserMapping);
             // TODO: This line of code loads data into the 'healthStatsDataSet.UserProfile' table. You can move, or remove it, as needed.
             this.userProfileTableAdapter.Fill(this.healthStatsDataSet.UserProfile);
-            
-            genderComboBox.SelectedItem = Male;
+
+            genderComboBox.SelectedItem = M;
             userIdTextBox.Text = firstNameTextBox.Text = lastNameTextBox.Text = string.Empty;
             ageNumericUpDown.Value = heightNumericUpDown.Value = weightNumericUpDown.Value = 0;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            try
+            if (this.IsValidData())
             {
-                if (this.IsValidData())
+                var userId = userIdTextBox.Text.ToUpper();
+                var firstName = firstNameTextBox.Text.ToUpper();
+                var lastName = lastNameTextBox.Text.ToUpper();
+                int age = (int)ageNumericUpDown.Value;
+                double height = (double)Math.Round(heightNumericUpDown.Value, 2, MidpointRounding.AwayFromZero);
+                double weight = (double)Math.Round(weightNumericUpDown.Value, 2, MidpointRounding.AwayFromZero);
+                string gender = genderComboBox.Text[0].ToString();
+
+                try
                 {
-                    this.tableAdapterManager.UserProfileTableAdapter.Insert(userIdTextBox.Text, firstNameTextBox.Text,
-                        lastNameTextBox.Text, (int) ageNumericUpDown.Value, (double) heightNumericUpDown.Value,
-                        (double) weightNumericUpDown.Value, genderComboBox.SelectedItem.ToString()[0].ToString());
+                    this.tableAdapterManager.UserProfileTableAdapter.Insert(userId, firstName, lastName, age, height, weight, gender);
                     this.userProfileBindingSource.EndEdit();
-                    this.tableAdapterManager.UserMappingTableAdapter.Insert(userIdTextBox.Text, firstNameTextBox.Text);
+                    this.tableAdapterManager.UserMappingTableAdapter.Insert(userId, firstName);
                     this.userMappingBindingSource.EndEdit();
-                    MessageBox.Show(UserAdded, Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    if (MessageBox.Show(UserAdded, Information, MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                        this.Close();
                 }
-                else
-                    MessageBox.Show(InvalidData, Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                catch (Exception exception)
+                {
+                    MessageBox.Show(  UserProfile + ColonSeparator + exception.Message, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            else
+                MessageBox.Show(InvalidData, Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private bool IsValidData()
         {
-            if(!string.IsNullOrEmpty(userIdTextBox.Text))
+            if (!string.IsNullOrEmpty(userIdTextBox.Text))
                 if (!string.IsNullOrEmpty(firstNameTextBox.Text))
                     if (!string.IsNullOrEmpty(lastNameTextBox.Text))
                         if ((int)ageNumericUpDown.Value != 0)
                             if (Math.Abs((double)ageNumericUpDown.Value) > 0)
-                                if (Math.Abs((double) weightNumericUpDown.Value) > 0)
-                                    return true;
+                                if (Math.Abs((double)weightNumericUpDown.Value) > 0)
+                                    if (!string.IsNullOrEmpty(genderComboBox.Text[0].ToString())
+                                       && genderComboBox.Text[0].ToString().Length == 1)
+                                        return true;
             return false;
         }
     }
