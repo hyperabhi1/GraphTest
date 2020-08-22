@@ -39,6 +39,7 @@
             this.userProfileBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userProfileTableAdapter = new GraphExperiment.HealthStatsDataSetTableAdapters.UserProfileTableAdapter();
             this.tableAdapterManager = new GraphExperiment.HealthStatsDataSetTableAdapters.TableAdapterManager();
+            this.userMappingTableAdapter = new GraphExperiment.HealthStatsDataSetTableAdapters.UserMappingTableAdapter();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
@@ -47,7 +48,6 @@
             this.weightNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.genderComboBox = new System.Windows.Forms.ComboBox();
             this.userMappingBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.userMappingTableAdapter = new GraphExperiment.HealthStatsDataSetTableAdapters.UserMappingTableAdapter();
             firstNameLabel = new System.Windows.Forms.Label();
             lastNameLabel = new System.Windows.Forms.Label();
             ageLabel = new System.Windows.Forms.Label();
@@ -61,6 +61,66 @@
             ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userMappingBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // firstNameLabel
+            // 
+            firstNameLabel.AutoSize = true;
+            firstNameLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            firstNameLabel.Location = new System.Drawing.Point(12, 23);
+            firstNameLabel.Name = "firstNameLabel";
+            firstNameLabel.Size = new System.Drawing.Size(108, 19);
+            firstNameLabel.TabIndex = 18;
+            firstNameLabel.Text = "First Name:";
+            // 
+            // lastNameLabel
+            // 
+            lastNameLabel.AutoSize = true;
+            lastNameLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            lastNameLabel.Location = new System.Drawing.Point(12, 69);
+            lastNameLabel.Name = "lastNameLabel";
+            lastNameLabel.Size = new System.Drawing.Size(99, 19);
+            lastNameLabel.TabIndex = 20;
+            lastNameLabel.Text = "Last Name:";
+            // 
+            // ageLabel
+            // 
+            ageLabel.AutoSize = true;
+            ageLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            ageLabel.Location = new System.Drawing.Point(12, 115);
+            ageLabel.Name = "ageLabel";
+            ageLabel.Size = new System.Drawing.Size(45, 19);
+            ageLabel.TabIndex = 22;
+            ageLabel.Text = "Age:";
+            // 
+            // heightLabel
+            // 
+            heightLabel.AutoSize = true;
+            heightLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            heightLabel.Location = new System.Drawing.Point(12, 161);
+            heightLabel.Name = "heightLabel";
+            heightLabel.Size = new System.Drawing.Size(108, 19);
+            heightLabel.TabIndex = 24;
+            heightLabel.Text = "Height (m):";
+            // 
+            // weightLabel
+            // 
+            weightLabel.AutoSize = true;
+            weightLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            weightLabel.Location = new System.Drawing.Point(12, 207);
+            weightLabel.Name = "weightLabel";
+            weightLabel.Size = new System.Drawing.Size(117, 19);
+            weightLabel.TabIndex = 26;
+            weightLabel.Text = "Weight (Kg):";
+            // 
+            // genderLabel
+            // 
+            genderLabel.AutoSize = true;
+            genderLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            genderLabel.Location = new System.Drawing.Point(12, 253);
+            genderLabel.Name = "genderLabel";
+            genderLabel.Size = new System.Drawing.Size(72, 19);
+            genderLabel.TabIndex = 28;
+            genderLabel.Text = "Gender:";
             // 
             // healthStatsDataSet
             // 
@@ -84,6 +144,10 @@
             this.tableAdapterManager.UserMappingTableAdapter = this.userMappingTableAdapter;
             this.tableAdapterManager.UserProfileTableAdapter = this.userProfileTableAdapter;
             // 
+            // userMappingTableAdapter
+            // 
+            this.userMappingTableAdapter.ClearBeforeFill = true;
+            // 
             // buttonEdit
             // 
             this.buttonEdit.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
@@ -91,57 +155,29 @@
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(75, 27);
             this.buttonEdit.TabIndex = 30;
-            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.Text = "Save";
             this.buttonEdit.UseVisualStyleBackColor = true;
-            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
-            // 
-            // firstNameLabel
-            // 
-            firstNameLabel.AutoSize = true;
-            firstNameLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            firstNameLabel.Location = new System.Drawing.Point(12, 23);
-            firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(108, 19);
-            firstNameLabel.TabIndex = 18;
-            firstNameLabel.Text = "First Name:";
+            this.buttonEdit.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userProfileBindingSource, "FirstName", true));
             this.firstNameTextBox.Font = new System.Drawing.Font("Consolas", 12.25F, System.Drawing.FontStyle.Bold);
             this.firstNameTextBox.Location = new System.Drawing.Point(161, 21);
+            this.firstNameTextBox.MaxLength = 10;
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(121, 27);
             this.firstNameTextBox.TabIndex = 19;
-            // 
-            // lastNameLabel
-            // 
-            lastNameLabel.AutoSize = true;
-            lastNameLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            lastNameLabel.Location = new System.Drawing.Point(12, 69);
-            lastNameLabel.Name = "lastNameLabel";
-            lastNameLabel.Size = new System.Drawing.Size(99, 19);
-            lastNameLabel.TabIndex = 20;
-            lastNameLabel.Text = "Last Name:";
             // 
             // lastNameTextBox
             // 
             this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userProfileBindingSource, "LastName", true));
             this.lastNameTextBox.Font = new System.Drawing.Font("Consolas", 12.25F, System.Drawing.FontStyle.Bold);
             this.lastNameTextBox.Location = new System.Drawing.Point(161, 67);
+            this.lastNameTextBox.MaxLength = 10;
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(121, 27);
             this.lastNameTextBox.TabIndex = 21;
-            // 
-            // ageLabel
-            // 
-            ageLabel.AutoSize = true;
-            ageLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            ageLabel.Location = new System.Drawing.Point(12, 115);
-            ageLabel.Name = "ageLabel";
-            ageLabel.Size = new System.Drawing.Size(45, 19);
-            ageLabel.TabIndex = 22;
-            ageLabel.Text = "Age:";
             // 
             // ageNumericUpDown
             // 
@@ -156,16 +192,6 @@
             this.ageNumericUpDown.Name = "ageNumericUpDown";
             this.ageNumericUpDown.Size = new System.Drawing.Size(121, 27);
             this.ageNumericUpDown.TabIndex = 23;
-            // 
-            // heightLabel
-            // 
-            heightLabel.AutoSize = true;
-            heightLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            heightLabel.Location = new System.Drawing.Point(12, 161);
-            heightLabel.Name = "heightLabel";
-            heightLabel.Size = new System.Drawing.Size(108, 19);
-            heightLabel.TabIndex = 24;
-            heightLabel.Text = "Height (m):";
             // 
             // heightNumericUpDown
             // 
@@ -187,16 +213,6 @@
             this.heightNumericUpDown.Size = new System.Drawing.Size(121, 27);
             this.heightNumericUpDown.TabIndex = 25;
             // 
-            // weightLabel
-            // 
-            weightLabel.AutoSize = true;
-            weightLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            weightLabel.Location = new System.Drawing.Point(12, 207);
-            weightLabel.Name = "weightLabel";
-            weightLabel.Size = new System.Drawing.Size(117, 19);
-            weightLabel.TabIndex = 26;
-            weightLabel.Text = "Weight (Kg):";
-            // 
             // weightNumericUpDown
             // 
             this.weightNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.userProfileBindingSource, "Weight", true));
@@ -217,16 +233,6 @@
             this.weightNumericUpDown.Size = new System.Drawing.Size(121, 27);
             this.weightNumericUpDown.TabIndex = 27;
             // 
-            // genderLabel
-            // 
-            genderLabel.AutoSize = true;
-            genderLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            genderLabel.Location = new System.Drawing.Point(12, 253);
-            genderLabel.Name = "genderLabel";
-            genderLabel.Size = new System.Drawing.Size(72, 19);
-            genderLabel.TabIndex = 28;
-            genderLabel.Text = "Gender:";
-            // 
             // genderComboBox
             // 
             this.genderComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userProfileBindingSource, "Gender", true));
@@ -245,10 +251,6 @@
             // 
             this.userMappingBindingSource.DataMember = "UserMapping";
             this.userMappingBindingSource.DataSource = this.healthStatsDataSet;
-            // 
-            // userMappingTableAdapter
-            // 
-            this.userMappingTableAdapter.ClearBeforeFill = true;
             // 
             // EditUser
             // 

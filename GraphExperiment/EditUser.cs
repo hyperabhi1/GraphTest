@@ -39,7 +39,7 @@ namespace GraphExperiment
 
         }
 
-        private void buttonEdit_Click(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, EventArgs e)
         {
 
             if (this.IsValidData())

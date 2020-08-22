@@ -140,6 +140,7 @@
             this.userIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userProfileBindingSource, "UserId", true));
             this.userIdTextBox.Font = new System.Drawing.Font("Consolas", 12.25F, System.Drawing.FontStyle.Bold);
             this.userIdTextBox.Location = new System.Drawing.Point(157, 14);
+            this.userIdTextBox.MaxLength = 10;
             this.userIdTextBox.Name = "userIdTextBox";
             this.userIdTextBox.Size = new System.Drawing.Size(121, 27);
             this.userIdTextBox.TabIndex = 2;
@@ -159,6 +160,7 @@
             this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userProfileBindingSource, "FirstName", true));
             this.firstNameTextBox.Font = new System.Drawing.Font("Consolas", 12.25F, System.Drawing.FontStyle.Bold);
             this.firstNameTextBox.Location = new System.Drawing.Point(157, 60);
+            this.firstNameTextBox.MaxLength = 10;
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(121, 27);
             this.firstNameTextBox.TabIndex = 4;
@@ -168,6 +170,7 @@
             this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userProfileBindingSource, "LastName", true));
             this.lastNameTextBox.Font = new System.Drawing.Font("Consolas", 12.25F, System.Drawing.FontStyle.Bold);
             this.lastNameTextBox.Location = new System.Drawing.Point(157, 106);
+            this.lastNameTextBox.MaxLength = 10;
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(121, 27);
             this.lastNameTextBox.TabIndex = 6;
