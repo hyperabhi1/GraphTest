@@ -46,6 +46,8 @@
             this.heightNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.weightNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.genderComboBox = new System.Windows.Forms.ComboBox();
+            this.userMappingBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.userMappingTableAdapter = new GraphExperiment.HealthStatsDataSetTableAdapters.UserMappingTableAdapter();
             firstNameLabel = new System.Windows.Forms.Label();
             lastNameLabel = new System.Windows.Forms.Label();
             ageLabel = new System.Windows.Forms.Label();
@@ -57,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ageNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userMappingBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // healthStatsDataSet
@@ -78,7 +81,7 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.DailyStatusTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = GraphExperiment.HealthStatsDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.UserMappingTableAdapter = null;
+            this.tableAdapterManager.UserMappingTableAdapter = this.userMappingTableAdapter;
             this.tableAdapterManager.UserProfileTableAdapter = this.userProfileTableAdapter;
             // 
             // buttonEdit
@@ -238,10 +241,20 @@
             this.genderComboBox.Size = new System.Drawing.Size(121, 27);
             this.genderComboBox.TabIndex = 29;
             // 
+            // userMappingBindingSource
+            // 
+            this.userMappingBindingSource.DataMember = "UserMapping";
+            this.userMappingBindingSource.DataSource = this.healthStatsDataSet;
+            // 
+            // userMappingTableAdapter
+            // 
+            this.userMappingTableAdapter.ClearBeforeFill = true;
+            // 
             // EditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(294, 343);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(firstNameLabel);
@@ -267,6 +280,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ageNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userMappingBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,5 +299,7 @@
         private System.Windows.Forms.NumericUpDown heightNumericUpDown;
         private System.Windows.Forms.NumericUpDown weightNumericUpDown;
         private System.Windows.Forms.ComboBox genderComboBox;
+        private HealthStatsDataSetTableAdapters.UserMappingTableAdapter userMappingTableAdapter;
+        private System.Windows.Forms.BindingSource userMappingBindingSource;
     }
 }

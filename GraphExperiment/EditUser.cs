@@ -7,17 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static GraphExperiment.Constants;
 
 namespace GraphExperiment
 {
     public partial class EditUser : Form
     {
         private readonly string _userId;
+        private readonly HealthStatsDataSet.UserProfileRow _originalUserProfile;
         public EditUser(string userId)
         {
             InitializeComponent();
             _userId = userId;
-            var userProfile = this.userProfileTableAdapter.GetData().FirstOrDefault(x => x.UserId == _userId);
+            _originalUserProfile = this.userProfileTableAdapter.GetData().FirstOrDefault(x => x.UserId == _userId);
         }
 
         private void userProfileBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -30,6 +32,8 @@ namespace GraphExperiment
 
         private void EditUser_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'healthStatsDataSet.UserMapping' table. You can move, or remove it, as needed.
+            this.userMappingTableAdapter.Fill(this.healthStatsDataSet.UserMapping);
             // TODO: This line of code loads data into the 'healthStatsDataSet.UserProfile' table. You can move, or remove it, as needed.
             this.userProfileTableAdapter.Fill(this.healthStatsDataSet.UserProfile);
 
@@ -49,11 +53,15 @@ namespace GraphExperiment
 
                 try
                 {
-                    this.tableAdapterManager.UserProfileTableAdapter.Insert(_userId, firstName, lastName, age, height, weight, gender);
+                    this.tableAdapterManager.UserProfileTableAdapter.Update(firstName, lastName, age, height, weight, gender,
+                        _originalUserProfile.UserId, _originalUserProfile.FirstName, _originalUserProfile.LastName, 
+                        _originalUserProfile.Age, _originalUserProfile.Height, _originalUserProfile.Weight, _originalUserProfile.Gender);
                     this.userProfileBindingSource.EndEdit();
-                    this.tableAdapterManager.UserMappingTableAdapter.Insert(_userId, firstName);
+
+                    this.tableAdapterManager.UserMappingTableAdapter.Update(_userId,firstName,_originalUserProfile.UserId, _originalUserProfile.FirstName);
                     this.userMappingBindingSource.EndEdit();
-                    if (MessageBox.Show(UserAdded, Information, MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+
+                    if (MessageBox.Show(UserUpdated, Information, MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                         this.Close();
                 }
                 catch (Exception exception)

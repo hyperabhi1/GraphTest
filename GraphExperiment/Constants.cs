@@ -14,6 +14,8 @@ namespace GraphExperiment
         public static string M = "M";
         public static string F = "F";
         public static string UserAdded = "User Added";
+        public static string UserUpdated = "User Updated";
+        public static string UserDeleted = "User Deleted";
         public static string InvalidData = "Invalid Data";
         public static string UserProfile = "User Profile";
         public static string UserMapper = "User Mapper";
