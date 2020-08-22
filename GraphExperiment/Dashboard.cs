@@ -20,7 +20,6 @@ namespace GraphExperiment
 
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
-
             var addUserForm = new AddUser();
             addUserForm.ShowDialog();
             addUserForm.ShowIcon = true;
@@ -59,6 +58,26 @@ namespace GraphExperiment
             pictureBoxRefresh.BorderStyle = BorderStyle.FixedSingle;
             Thread.Sleep(50);
             pictureBoxRefresh.BorderStyle = BorderStyle.Fixed3D;
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            var userId = userMappingListBox.SelectedValue as string;
+            if (!string.IsNullOrEmpty(userId))
+            {
+                var editUserForm = new EditUser(userId);
+                editUserForm.ShowDialog();
+                editUserForm.ShowIcon = true;
+                editUserForm.ShowInTaskbar = true;
+            }
+        }
+
+        private void userMappingListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var userId = userMappingListBox.SelectedValue as string;
+            if (!string.IsNullOrEmpty(userId))
+                buttonEdit.Visible = true;
         }
     }
 }
