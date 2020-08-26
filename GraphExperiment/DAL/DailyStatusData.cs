@@ -85,7 +85,7 @@ namespace GraphExperiment.DAL
             if (!string.IsNullOrEmpty(dailyStatus.UserId))
             {
                 sbColumn.Append($"USERID,");
-                sbValue.Append($"'{dailyStatus.UserId.ToUpper()}',");
+                sbValue.Append($"'{dailyStatus.UserId}',");
             }
             if (dailyStatus.Time != DateTime.MinValue)
             {

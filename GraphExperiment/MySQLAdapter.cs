@@ -12,7 +12,7 @@ namespace GraphExperiment
     class MySQLAdapter
     {
         private static readonly string ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
-        private static readonly SqlConnection SqlConnection = new SqlConnection(ConnectionString);
+        
         public static DataTable Get(string query)
         {
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, ConnectionString);
@@ -23,12 +23,12 @@ namespace GraphExperiment
         public static bool Insert(string sqlQuery)
         {
             bool returnVal = false;
-
-            SqlConnection.Open();
+            SqlConnection SqlConnection = new SqlConnection(ConnectionString);
             SqlCommand command = new SqlCommand(sqlQuery, SqlConnection);
 
             try
             {
+                SqlConnection.Open();
                 command.ExecuteScalar();
                 returnVal = true;
                 command.Dispose();
@@ -48,14 +48,14 @@ namespace GraphExperiment
         {
             bool returnVal = false;
 
-            SqlConnection.Open();
-
             SqlCommand command = null;
-
+            SqlConnection SqlConnection = new SqlConnection(ConnectionString);
             command = new SqlCommand(updateQuery, SqlConnection);
 
             try
             {
+
+                SqlConnection.Open();
                 var commandResult = command.ExecuteScalar();
                 returnVal = true;
                 command.Dispose();
@@ -74,13 +74,13 @@ namespace GraphExperiment
         public static bool Delete(string sqlQuery)
         {
             bool result = false;
-
-            SqlConnection.Open();
-
+            SqlConnection SqlConnection = new SqlConnection(ConnectionString);
             SqlCommand command = new SqlCommand(sqlQuery, SqlConnection);
 
             try
             {
+
+                SqlConnection.Open();
                 int rowsDeletedCount = command.ExecuteNonQuery();
                 if (rowsDeletedCount != 0)
                     result = true;

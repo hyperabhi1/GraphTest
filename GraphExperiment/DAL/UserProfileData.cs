@@ -26,7 +26,7 @@ namespace GraphExperiment.Data
                     Age = int.Parse(row["Age"].ToString()),
                     Height = double.Parse(row["Height"].ToString()),
                     Weight = double.Parse(row["Weight"].ToString()),
-                    Gender = row["Age"].ToString()
+                    Gender = row["Gender"].ToString()
                 });
             }
             return userProfiles;
@@ -56,11 +56,11 @@ namespace GraphExperiment.Data
             StringBuilder sb = new StringBuilder();
 
             if (!string.IsNullOrEmpty(userProfile.UserId))
-                sb.Append($"UserId = '{userProfile.UserId.ToUpper()}', ");
+                sb.Append($"UserId = '{userProfile.UserId}', ");
             if (!string.IsNullOrEmpty(userProfile.FirstName))
-                sb.Append($"FirstName = '{userProfile.FirstName.ToUpper()}', ");
+                sb.Append($"FirstName = '{userProfile.FirstName}', ");
             if (!string.IsNullOrEmpty(userProfile.LastName))
-                sb.Append($"LastName = '{userProfile.LastName.ToUpper()}', ");
+                sb.Append($"LastName = '{userProfile.LastName}', ");
             if (userProfile.Age != 0)
                 sb.Append($"Age = '{userProfile.Age}', ");
             if (Math.Abs(userProfile.Height) > 0)
@@ -68,7 +68,7 @@ namespace GraphExperiment.Data
             if (Math.Abs(userProfile.Weight) > 0)
                 sb.Append($"Weight = '{userProfile.Weight}', ");
             if (!string.IsNullOrEmpty(userProfile.Gender))
-                sb.Append($"Gender = '{userProfile.Gender[0].ToString().ToUpper()}', ");
+                sb.Append($"Gender = '{userProfile.Gender[0].ToString()}', ");
             if(!string.IsNullOrEmpty(sb.ToString()))
             {
                 string query = $"UPDATE {UserProfile} SET {sb.ToString().Substring(0, sb.ToString().Length - 2)} WHERE USERID = '{userProfile.UserId}';";
@@ -79,24 +79,24 @@ namespace GraphExperiment.Data
                 return false;
         }
         public static bool Insert(UserProfile userProfile)
-        {
+            {
             StringBuilder sbColumn = new StringBuilder();
             StringBuilder sbValue = new StringBuilder();
 
             if (!string.IsNullOrEmpty(userProfile.UserId))
             {
                 sbColumn.Append($"USERID,");
-                sbValue.Append($"'{userProfile.UserId.ToUpper()}',");
+                sbValue.Append($"'{userProfile.UserId}',");
             }
             if (!string.IsNullOrEmpty(userProfile.FirstName))
             {
                 sbColumn.Append($"FIRSTNAME,");
-                sbValue.Append($"'{userProfile.FirstName.ToUpper()}',");
+                sbValue.Append($"'{userProfile.FirstName}',");
             }
             if (!string.IsNullOrEmpty(userProfile.LastName))
             {
                 sbColumn.Append($"LASTNAME,");
-                sbValue.Append($"'{userProfile.LastName.ToUpper()}',");
+                sbValue.Append($"'{userProfile.LastName}',");
             }
             if (userProfile.Age != 0)
             {
@@ -116,10 +116,10 @@ namespace GraphExperiment.Data
             if (!string.IsNullOrEmpty(userProfile.Gender))
             {
                 sbColumn.Append($"GENDER,");
-                sbValue.Append($"'{userProfile.Gender[0].ToString().ToUpper()}',");
+                sbValue.Append($"'{userProfile.Gender[0].ToString()}',");
             }
 
-            if (string.IsNullOrEmpty(sbColumn.ToString()))
+            if (!string.IsNullOrEmpty(sbColumn.ToString()))
             {
                 string query = $"INSERT INTO {UserProfile} ({sbColumn.ToString().Substring(0, sbColumn.ToString().Length - 1)}) VALUES ({sbValue.ToString().Substring(0, sbValue.ToString().Length - 1)});";
                 MySQLAdapter.Insert(query);

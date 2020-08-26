@@ -34,33 +34,28 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonAddUser = new System.Windows.Forms.Button();
-            this.healthStatsDataSet = new GraphExperiment.HealthStatsDataSet();
-            this.userMappingBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.userMappingTableAdapter = new GraphExperiment.HealthStatsDataSetTableAdapters.UserMappingTableAdapter();
-            this.tableAdapterManager = new GraphExperiment.HealthStatsDataSetTableAdapters.TableAdapterManager();
-            this.userProfileTableAdapter = new GraphExperiment.HealthStatsDataSetTableAdapters.UserProfileTableAdapter();
             this.userMappingListBox = new System.Windows.Forms.ListBox();
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
-            this.userProfileBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userProfileDataGridView = new System.Windows.Forms.DataGridView();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.healthStatsDataSet = new GraphExperiment.HealthStatsDataSet();
+            this.latestProfileBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.latestProfileTableAdapter = new GraphExperiment.HealthStatsDataSetTableAdapters.LatestProfileTableAdapter();
+            this.tableAdapterManager = new GraphExperiment.HealthStatsDataSetTableAdapters.TableAdapterManager();
+            this.latestProfileDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonEdit = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
-            this.dailyStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dailyStatusTableAdapter = new GraphExperiment.HealthStatsDataSetTableAdapters.DailyStatusTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.healthStatsDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userMappingBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userProfileBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userProfileDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dailyStatusBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.healthStatsDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.latestProfileBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.latestProfileDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // chart1
@@ -89,37 +84,8 @@
             this.buttonAddUser.UseVisualStyleBackColor = true;
             this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
             // 
-            // healthStatsDataSet
-            // 
-            this.healthStatsDataSet.DataSetName = "HealthStatsDataSet";
-            this.healthStatsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // userMappingBindingSource
-            // 
-            this.userMappingBindingSource.DataMember = "UserMapping";
-            this.userMappingBindingSource.DataSource = this.healthStatsDataSet;
-            // 
-            // userMappingTableAdapter
-            // 
-            this.userMappingTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.DailyStatusTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = GraphExperiment.HealthStatsDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.UserMappingTableAdapter = this.userMappingTableAdapter;
-            this.tableAdapterManager.UserProfileTableAdapter = this.userProfileTableAdapter;
-            // 
-            // userProfileTableAdapter
-            // 
-            this.userProfileTableAdapter.ClearBeforeFill = true;
-            // 
             // userMappingListBox
             // 
-            this.userMappingListBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.healthStatsDataSet, "UserMapping.FirstName", true));
-            this.userMappingListBox.DataSource = this.userMappingBindingSource;
-            this.userMappingListBox.DisplayMember = "FirstName";
             this.userMappingListBox.Font = new System.Drawing.Font("Consolas", 15.25F, System.Drawing.FontStyle.Bold);
             this.userMappingListBox.FormattingEnabled = true;
             this.userMappingListBox.ItemHeight = 23;
@@ -142,83 +108,19 @@
             this.pictureBoxRefresh.TabStop = false;
             this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
             // 
-            // userProfileBindingSource
-            // 
-            this.userProfileBindingSource.DataMember = "UserProfile";
-            this.userProfileBindingSource.DataSource = this.healthStatsDataSet;
-            // 
             // userProfileDataGridView
             // 
             this.userProfileDataGridView.AllowUserToAddRows = false;
             this.userProfileDataGridView.AllowUserToDeleteRows = false;
             this.userProfileDataGridView.AllowUserToResizeColumns = false;
             this.userProfileDataGridView.AllowUserToResizeRows = false;
-            this.userProfileDataGridView.AutoGenerateColumns = false;
             this.userProfileDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.userProfileDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
-            this.userProfileDataGridView.DataSource = this.userProfileBindingSource;
-            this.userProfileDataGridView.Location = new System.Drawing.Point(545, 476);
+            this.userProfileDataGridView.Location = new System.Drawing.Point(169, 437);
             this.userProfileDataGridView.Name = "userProfileDataGridView";
             this.userProfileDataGridView.ReadOnly = true;
             this.userProfileDataGridView.RowHeadersVisible = false;
             this.userProfileDataGridView.Size = new System.Drawing.Size(703, 213);
             this.userProfileDataGridView.TabIndex = 4;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "UserId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "UserId";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "FirstName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "FirstName";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "LastName";
-            this.dataGridViewTextBoxColumn3.HeaderText = "LastName";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Age";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Age";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Height";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Height";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Weight";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Weight";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Gender";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Gender";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // buttonEdit
             // 
@@ -242,21 +144,89 @@
             this.buttonDelete.Visible = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDeleteUser_Click);
             // 
-            // dailyStatusBindingSource
+            // healthStatsDataSet
             // 
-            this.dailyStatusBindingSource.DataMember = "DailyStatus";
-            this.dailyStatusBindingSource.DataSource = this.healthStatsDataSet;
+            this.healthStatsDataSet.DataSetName = "HealthStatsDataSet";
+            this.healthStatsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // dailyStatusTableAdapter
+            // latestProfileBindingSource
             // 
-            this.dailyStatusTableAdapter.ClearBeforeFill = true;
+            this.latestProfileBindingSource.DataMember = "LatestProfile";
+            this.latestProfileBindingSource.DataSource = this.healthStatsDataSet;
+            // 
+            // latestProfileTableAdapter
+            // 
+            this.latestProfileTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.DailyStatusTableAdapter = null;
+            this.tableAdapterManager.LatestProfileTableAdapter = this.latestProfileTableAdapter;
+            this.tableAdapterManager.UpdateOrder = GraphExperiment.HealthStatsDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UserMappingTableAdapter = null;
+            this.tableAdapterManager.UserProfileTableAdapter = null;
+            // 
+            // latestProfileDataGridView
+            // 
+            this.latestProfileDataGridView.AutoGenerateColumns = false;
+            this.latestProfileDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.latestProfileDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.latestProfileDataGridView.DataSource = this.latestProfileBindingSource;
+            this.latestProfileDataGridView.Location = new System.Drawing.Point(878, 445);
+            this.latestProfileDataGridView.Name = "latestProfileDataGridView";
+            this.latestProfileDataGridView.Size = new System.Drawing.Size(300, 220);
+            this.latestProfileDataGridView.TabIndex = 8;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "UserId";
+            this.dataGridViewTextBoxColumn1.HeaderText = "UserId";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "FirstName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "FirstName";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "LastName";
+            this.dataGridViewTextBoxColumn3.HeaderText = "LastName";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Age";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Age";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Height";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Height";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Weight";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Weight";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1370, 691);
+            this.ClientSize = new System.Drawing.Size(1362, 691);
+            this.Controls.Add(this.latestProfileDataGridView);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.userProfileDataGridView);
@@ -265,17 +235,17 @@
             this.Controls.Add(this.buttonAddUser);
             this.Controls.Add(this.chart1);
             this.MaximumSize = new System.Drawing.Size(1386, 730);
-            this.MinimumSize = new System.Drawing.Size(1386, 730);
+            this.MinimumSize = new System.Drawing.Size(1364, 726);
             this.Name = "Dashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Dashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.healthStatsDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userMappingBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userProfileBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userProfileDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dailyStatusBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.healthStatsDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.latestProfileBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.latestProfileDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -284,25 +254,21 @@
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button buttonAddUser;
-        private HealthStatsDataSet healthStatsDataSet;
-        private System.Windows.Forms.BindingSource userMappingBindingSource;
-        private HealthStatsDataSetTableAdapters.UserMappingTableAdapter userMappingTableAdapter;
-        private HealthStatsDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.ListBox userMappingListBox;
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
-        private HealthStatsDataSetTableAdapters.UserProfileTableAdapter userProfileTableAdapter;
-        private System.Windows.Forms.BindingSource userProfileBindingSource;
         private System.Windows.Forms.DataGridView userProfileDataGridView;
+        private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Button buttonDelete;
+        private HealthStatsDataSet healthStatsDataSet;
+        private System.Windows.Forms.BindingSource latestProfileBindingSource;
+        private HealthStatsDataSetTableAdapters.LatestProfileTableAdapter latestProfileTableAdapter;
+        private HealthStatsDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.DataGridView latestProfileDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.Button buttonEdit;
-        private System.Windows.Forms.Button buttonDelete;
-        private System.Windows.Forms.BindingSource dailyStatusBindingSource;
-        private HealthStatsDataSetTableAdapters.DailyStatusTableAdapter dailyStatusTableAdapter;
     }
 }

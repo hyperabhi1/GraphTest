@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GraphExperiment.Data;
+using GraphExperiment.Models;
 using static GraphExperiment.Constants;
 
 namespace GraphExperiment
@@ -14,17 +16,19 @@ namespace GraphExperiment
     public partial class EditUser : Form
     {
         private readonly string _userId;
-        private readonly HealthStatsDataSet.UserProfileRow _originalUserProfile;
+        private readonly UserProfile _originalUserProfile;
         public EditUser(string userId)
         {
             InitializeComponent();
             _userId = userId;
-            _originalUserProfile = this.userProfileTableAdapter.GetData().FirstOrDefault(x => x.UserId == _userId);
+            _originalUserProfile = UserProfileData.Get().FirstOrDefault(x => x.UserId == _userId);
             if (_originalUserProfile != null)
             {
-                firstNameTextBox.Text = _originalUserProfile.FirstName as string;
+                firstNameTextBox.Text = _originalUserProfile.FirstName;
                 lastNameTextBox.Text = _originalUserProfile.LastName;
-                genderComboBox.SelectedItem = _originalUserProfile.Gender;
+                ageNumericUpDown.Value = _originalUserProfile.Age; 
+                heightNumericUpDown.Value = (decimal)_originalUserProfile.Height;
+                weightNumericUpDown.Value = (decimal)_originalUserProfile.Weight;
             }
             else
             {
@@ -32,51 +36,29 @@ namespace GraphExperiment
             }
         }
 
-        private void userProfileBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.userProfileBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.healthStatsDataSet);
-
-        }
-
-        private void EditUser_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'healthStatsDataSet.UserMapping' table. You can move, or remove it, as needed.
-            this.userMappingTableAdapter.Fill(this.healthStatsDataSet.UserMapping);
-            // TODO: This line of code loads data into the 'healthStatsDataSet.UserProfile' table. You can move, or remove it, as needed.
-            this.userProfileTableAdapter.Fill(this.healthStatsDataSet.UserProfile);
-
-        }
-
         private void buttonSave_Click(object sender, EventArgs e)
         {
 
             if (this.IsValidData())
             {
-                var firstName = firstNameTextBox.Text.ToUpper();
-                var lastName = lastNameTextBox.Text.ToUpper();
+                var firstName = char.ToUpper(firstNameTextBox.Text[0]) + firstNameTextBox.Text.Substring(1).ToLower();
+                var lastName = char.ToUpper(lastNameTextBox.Text[0]) + lastNameTextBox.Text.Substring(1).ToLower();
                 int age = (int)_originalUserProfile.Age;
-                double height = (double)Math.Round(_originalUserProfile.Height, 2, MidpointRounding.AwayFromZero);
-                double weight = (double)Math.Round(_originalUserProfile.Weight, 2, MidpointRounding.AwayFromZero);
-                string gender = genderComboBox.Text[0].ToString();
+                double height = (double)Math.Round(heightNumericUpDown.Value, 2, MidpointRounding.AwayFromZero);
+                double weight = (double)Math.Round(weightNumericUpDown.Value, 2, MidpointRounding.AwayFromZero);
 
                 try
                 {
-                    this.tableAdapterManager.UserProfileTableAdapter.Update(firstName, lastName, age, height, weight, gender,
-                        _originalUserProfile.UserId, _originalUserProfile.FirstName, _originalUserProfile.LastName,
-                        _originalUserProfile.Age, _originalUserProfile.Height, _originalUserProfile.Weight, _originalUserProfile.Gender);
-                    this.userProfileBindingSource.EndEdit();
-
-                    this.tableAdapterManager.UserMappingTableAdapter.Update(_userId, firstName, _originalUserProfile.UserId, _originalUserProfile.FirstName);
-                    this.userMappingBindingSource.EndEdit();
+                    UserProfileData.Update(new UserProfile() { Age = age, LastName = lastName, UserId = _originalUserProfile.UserId, FirstName = firstName, Height = height, Weight = weight });
+                    UserMappingData.Update(new UserMapping() { UserId = _originalUserProfile.UserId, FullName = $"{firstName} {lastName}" });
+                    LatestProfileData.Update(new LatestProfile() { UserId = _originalUserProfile.UserId, LastName = lastName, Age = age, FirstName = firstName, Height = height, Weight = weight });
 
                     if (MessageBox.Show(UserUpdated, Information, MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                         this.Close();
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(UserProfile + ColonSeparator + exception.Message, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Constants.UserProfile + ColonSeparator + exception.Message, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -87,9 +69,10 @@ namespace GraphExperiment
         {
             if (!string.IsNullOrEmpty(firstNameTextBox.Text))
                 if (!string.IsNullOrEmpty(lastNameTextBox.Text))
-                    if (!string.IsNullOrEmpty(genderComboBox.Text[0].ToString())
-                       && genderComboBox.Text[0].ToString().Length == 1)
-                        return true;
+                    if ((int)ageNumericUpDown.Value != 0)
+                        if (Math.Abs((double)ageNumericUpDown.Value) > 0)
+                            if (Math.Abs((double)weightNumericUpDown.Value) > 0)
+                                    return true;
             return false;
         }
     }

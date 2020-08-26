@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GraphExperiment.DAL
+namespace GraphExperiment.Data
 {
     class LatestProfileData
     {
@@ -23,7 +23,7 @@ namespace GraphExperiment.DAL
                     UserId = row["UserId"].ToString(),
                     FirstName = row["FirstName"].ToString(),
                     LastName = row["LastName"].ToString(),
-                    Age = int.Parse(row["Distance"].ToString()),
+                    Age = int.Parse(row["Age"].ToString()),
                     Height = double.Parse(row["Height"].ToString()),
                     Weight = double.Parse(row["Weight"].ToString())
                 });
@@ -54,11 +54,11 @@ namespace GraphExperiment.DAL
             StringBuilder sb = new StringBuilder();
 
             if (!string.IsNullOrEmpty(latestProfile.UserId))
-                sb.Append($"UserId = '{latestProfile.UserId.ToUpper()}', ");
+                sb.Append($"UserId = '{latestProfile.UserId}', ");
             if (!string.IsNullOrEmpty(latestProfile.FirstName))
-                sb.Append($"FirstName = '{latestProfile.FirstName.ToUpper()}', ");
+                sb.Append($"FirstName = '{latestProfile.FirstName}', ");
             if (!string.IsNullOrEmpty(latestProfile.LastName))
-                sb.Append($"LastName = '{latestProfile.LastName.ToUpper()}', ");
+                sb.Append($"LastName = '{latestProfile.LastName}', ");
             if (latestProfile.Age != 0)
                 sb.Append($"Age = '{latestProfile.Age}', ");
             if (Math.Abs(latestProfile.Height) > 0)
@@ -85,17 +85,17 @@ namespace GraphExperiment.DAL
             if (!string.IsNullOrEmpty(latestProfile.UserId))
             {
                 sbColumn.Append($"USERID,");
-                sbValue.Append($"'{latestProfile.UserId.ToUpper()}',");
+                sbValue.Append($"'{latestProfile.UserId}',");
             }
             if (!string.IsNullOrEmpty(latestProfile.FirstName))
             {
                 sbColumn.Append($"FIRSTNAME,");
-                sbValue.Append($"'{latestProfile.FirstName.ToUpper()}',");
+                sbValue.Append($"'{latestProfile.FirstName}',");
             }
             if (!string.IsNullOrEmpty(latestProfile.LastName))
             {
                 sbColumn.Append($"LASTNAME,");
-                sbValue.Append($"'{latestProfile.LastName.ToUpper()}',");
+                sbValue.Append($"'{latestProfile.LastName}',");
             }
             if (latestProfile.Age != 0)
             {

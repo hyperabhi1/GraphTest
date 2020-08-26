@@ -45,9 +45,9 @@ namespace GraphExperiment.Data
             StringBuilder sb = new StringBuilder();
 
             if (!string.IsNullOrEmpty(userMapping.UserId))
-                sb.Append($"UserId = '{userMapping.UserId.ToUpper()}', ");
+                sb.Append($"UserId = '{userMapping.UserId}', ");
             if (!string.IsNullOrEmpty(userMapping.FullName))
-                sb.Append($"FullName = '{userMapping.FullName.ToUpper()}', ");
+                sb.Append($"FullName = '{userMapping.FullName}', ");
             if (!string.IsNullOrEmpty(sb.ToString()))
             {
                 string query = $"UPDATE {UserMapping} SET {sb.ToString().Substring(0, sb.ToString().Length - 2)} WHERE USERID = '{userMapping.UserId}';";
@@ -67,12 +67,12 @@ namespace GraphExperiment.Data
             if (!string.IsNullOrEmpty(userMapping.UserId))
             {
                 sbColumn.Append($"USERID,");
-                sbValue.Append($"'{userMapping.UserId.ToUpper()}',");
+                sbValue.Append($"'{userMapping.UserId}',");
             }
             if (!string.IsNullOrEmpty(userMapping.FullName))
             {
                 sbColumn.Append($"FullName,");
-                sbValue.Append($"'{userMapping.FullName.ToUpper()}',");
+                sbValue.Append($"'{userMapping.FullName}',");
             }
 
             string query = $"INSERT INTO {UserMapping} ({sbColumn.ToString().Substring(0, sbColumn.ToString().Length - 1)}) VALUES ({sbValue.ToString().Substring(0, sbValue.ToString().Length - 1)});";

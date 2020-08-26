@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GraphExperiment.Data;
+using GraphExperiment.Models;
 using static GraphExperiment.Constants;
 
 namespace GraphExperiment
@@ -27,30 +29,18 @@ namespace GraphExperiment
             addUserForm.ShowInTaskbar = true;
         }
 
-        private void userMappingBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.userMappingBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.healthStatsDataSet);
-
-        }
-
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'healthStatsDataSet.DailyStatus' table. You can move, or remove it, as needed.
-            this.dailyStatusTableAdapter.Fill(this.healthStatsDataSet.DailyStatus);
-            // TODO: This line of code loads data into the 'healthStatsDataSet.UserProfile' table. You can move, or remove it, as needed.
-            this.userProfileTableAdapter.Fill(this.healthStatsDataSet.UserProfile);
-            // TODO: This line of code loads data into the 'healthStatsDataSet.UserMapping' table. You can move, or remove it, as needed.
-            this.userMappingTableAdapter.Fill(this.healthStatsDataSet.UserMapping);
-
+            // TODO: This line of code loads data into the 'healthStatsDataSet.LatestProfile' table. You can move, or remove it, as needed.
+            this.latestProfileTableAdapter.Fill(this.healthStatsDataSet.LatestProfile);
         }
 
         private async void pictureBoxRefresh_Click(object sender, EventArgs e)
         {
             ClickEffect();
-            userMappingListBox.DataSource = this.userMappingTableAdapter.GetData();
-            userProfileDataGridView.DataSource = this.userProfileTableAdapter.GetData();
+            userMappingListBox.DataSource = new BindingSource(new BindingList<UserMapping>(UserMappingData.Get()), null);
+            userProfileDataGridView.DataSource = new BindingSource(new BindingList<UserProfile>(UserProfileData.Get()), null);
+            latestProfileDataGridView.DataSource = new BindingSource(new BindingList<LatestProfile>(LatestProfileData.Get()), null);
             userMappingListBox.Refresh();
             userProfileDataGridView.Refresh();
             return;
@@ -96,23 +86,16 @@ namespace GraphExperiment
                 var userId = userMappingListBox.SelectedValue as string;
                 if (!string.IsNullOrEmpty(userId))
                 {
-                    var originalUserProfile = this.userProfileTableAdapter.GetData().FirstOrDefault(x => x.UserId == userId);
-                    if (originalUserProfile != null)
-                    {
-                        try
-                        {
-                            this.tableAdapterManager.UserProfileTableAdapter.Delete(originalUserProfile.UserId, originalUserProfile.FirstName
-                                , originalUserProfile.LastName, originalUserProfile.Age, originalUserProfile.Height, originalUserProfile.Weight, originalUserProfile.Gender);
-                            this.userProfileBindingSource.EndEdit();
-                            MessageBox.Show(UserDeleted, Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        catch (Exception exception)
-                        {
-                            MessageBox.Show(exception.Message, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
                 }
             }
+        }
+
+        private void latestProfileBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.latestProfileBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.healthStatsDataSet);
+
         }
     }
 }
