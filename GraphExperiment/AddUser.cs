@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GraphExperiment.Data;
 using static GraphExperiment.Constants;
 
 namespace GraphExperiment
@@ -44,16 +45,14 @@ namespace GraphExperiment
 
                 try
                 {
-                    this.tableAdapterManager.UserProfileTableAdapter.Insert(userId, firstName, lastName, age, height, weight, gender);
-                    this.userProfileBindingSource.EndEdit();
-                    this.tableAdapterManager.UserMappingTableAdapter.Insert(userId, firstName);
-                    this.userMappingBindingSource.EndEdit();
+                    UserProfileDAL.Insert(new UserProfile(){Age = age,LastName = lastName,UserId = userId, FirstName = firstName, Height = height, Weight = weight,Gender = gender});
+                    
                     if (MessageBox.Show(UserAdded, Information, MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                         this.Close();
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(  UserProfile + ColonSeparator + exception.Message, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(  Constants.UserProfile + ColonSeparator + exception.Message, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
