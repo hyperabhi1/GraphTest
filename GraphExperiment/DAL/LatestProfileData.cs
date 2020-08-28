@@ -124,5 +124,12 @@ namespace GraphExperiment.Data
                 return false;
             }
         }
+        public static bool Delete(string userId)
+        {
+            string query = $"DELETE FROM {LatestProfile} WHERE USERID = '{userId}';";
+            var response = MySQLAdapter.Delete(query);
+            return response;
+        }
+
     }
 }

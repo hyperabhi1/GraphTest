@@ -12,7 +12,8 @@ namespace GraphExperiment.Data
     {
         public static string UserMapping = "UserMapping";
         public static List<UserMapping> Get()
-        {List<UserMapping> userMappings = new List<UserMapping>();
+        {
+            List<UserMapping> userMappings = new List<UserMapping>();
             string query = $"SELECT * FROM {UserMapping};";
             var dataTable = MySQLAdapter.Get(query);
             foreach (DataRow row in dataTable.Rows)
@@ -86,6 +87,12 @@ namespace GraphExperiment.Data
             {
                 return false;
             }
+        }
+        public static bool Delete(string userId)
+        {
+            string query = $"DELETE FROM {UserMapping} WHERE USERID = '{userId}';";
+            var response = MySQLAdapter.Delete(query);
+            return response;
         }
     }
 }

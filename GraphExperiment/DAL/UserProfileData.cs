@@ -69,7 +69,7 @@ namespace GraphExperiment.Data
                 sb.Append($"Weight = '{userProfile.Weight}', ");
             if (!string.IsNullOrEmpty(userProfile.Gender))
                 sb.Append($"Gender = '{userProfile.Gender[0].ToString()}', ");
-            if(!string.IsNullOrEmpty(sb.ToString()))
+            if (!string.IsNullOrEmpty(sb.ToString()))
             {
                 string query = $"UPDATE {UserProfile} SET {sb.ToString().Substring(0, sb.ToString().Length - 2)} WHERE USERID = '{userProfile.UserId}';";
                 MySQLAdapter.Update(query);
@@ -79,7 +79,7 @@ namespace GraphExperiment.Data
                 return false;
         }
         public static bool Insert(UserProfile userProfile)
-            {
+        {
             StringBuilder sbColumn = new StringBuilder();
             StringBuilder sbValue = new StringBuilder();
 
@@ -130,5 +130,12 @@ namespace GraphExperiment.Data
                 return false;
             }
         }
+        public static bool Delete(string userId)
+        {
+            string query = $"DELETE FROM {UserProfile} WHERE USERID = '{userId}';";
+            var response = MySQLAdapter.Delete(query);
+            return response;
+        }
+
     }
 }

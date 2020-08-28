@@ -124,6 +124,13 @@ namespace GraphExperiment.DAL
                 return false;
             }
         }
+        public static bool Delete(string userId)
+        {
+            string query = $"DELETE FROM {DailyStatus} WHERE USERID = '{userId}';";
+            var response = MySQLAdapter.Delete(query);
+            return response;
+        }
+
     }
 
 

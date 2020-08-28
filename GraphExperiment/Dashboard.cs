@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GraphExperiment.DAL;
 using GraphExperiment.Data;
 using GraphExperiment.Models;
 using static GraphExperiment.Constants;
@@ -31,8 +32,6 @@ namespace GraphExperiment
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'healthStatsDataSet.LatestProfile' table. You can move, or remove it, as needed.
-            this.latestProfileTableAdapter.Fill(this.healthStatsDataSet.LatestProfile);
         }
 
         private async void pictureBoxRefresh_Click(object sender, EventArgs e)
@@ -67,9 +66,8 @@ namespace GraphExperiment
 
         private void userMappingListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            var userId = userMappingListBox.SelectedValue as string;
-            if (!string.IsNullOrEmpty(userId))
+            var userMapping = userMappingListBox.SelectedItems[0] as UserMapping;
+            if (userMapping != null && !string.IsNullOrEmpty(userMapping.UserId))
             {
                 buttonEdit.Visible = true;
                 buttonDelete.Visible = true;
@@ -78,24 +76,28 @@ namespace GraphExperiment
 
         private void buttonDeleteUser_Click(object sender, EventArgs e)
         {
-            if ((MessageBox.Show(DeleteVerificationMessage, Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+            if ((MessageBox.Show(DeleteVerificationMessage, Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) ==
                  DialogResult.Yes) &&
-                (MessageBox.Show(Delete2VerificationMessage, Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                (MessageBox.Show(Delete2VerificationMessage, Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) ==
                  DialogResult.Yes))
             {
-                var userId = userMappingListBox.SelectedValue as string;
-                if (!string.IsNullOrEmpty(userId))
+                var userMapping = userMappingListBox.SelectedItems[0] as UserMapping;
+                if (userMapping != null && !string.IsNullOrEmpty(userMapping.UserId))
                 {
+                    try
+                    {
+                        UserProfileData.Delete(userMapping.UserId);
+                        UserMappingData.Delete(userMapping.UserId);
+                        LatestProfileData.Delete(userMapping.UserId);
+                        DailyStatusData.Delete(userMapping.UserId);
+                        MessageBox.Show(UserDeleted, Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(Constants.UserProfile + ColonSeparator + exception.Message, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
-        }
-
-        private void latestProfileBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.latestProfileBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.healthStatsDataSet);
-
         }
     }
 }
