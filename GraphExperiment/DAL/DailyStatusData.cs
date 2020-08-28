@@ -25,7 +25,8 @@ namespace GraphExperiment.DAL
                     Distance = double.Parse(row["Distance"].ToString()),
                     Height = double.Parse(row["Height"].ToString()),
                     Weight = double.Parse(row["Weight"].ToString()),
-                    Calories = double.Parse(row["Calories"].ToString())
+                    Calories = double.Parse(row["Calories"].ToString()),
+                    Duration = int.Parse(row["Duration"].ToString())
                 });
             }
             return dailyStatuss;
@@ -44,7 +45,8 @@ namespace GraphExperiment.DAL
                     Distance = double.Parse(row["Distance"].ToString()),
                     Height = double.Parse(row["Height"].ToString()),
                     Weight = double.Parse(row["Weight"].ToString()),
-                    Calories = double.Parse(row["Calories"].ToString())
+                    Calories = double.Parse(row["Calories"].ToString()),
+                    Duration = int.Parse(row["Duration"].ToString())
                 });
             }
             return dailyStatuss;
@@ -65,6 +67,8 @@ namespace GraphExperiment.DAL
                 sb.Append($"Height = '{dailyStatus.Height}', ");
             if (Math.Abs(dailyStatus.Calories) > 0)
                 sb.Append($"Calories = '{dailyStatus.Calories}', ");
+            if (dailyStatus.Duration != 0)
+                sb.Append($"Duration = '{dailyStatus.Duration}', ");
 
             if (!string.IsNullOrEmpty(sb.ToString()))
             {
@@ -111,6 +115,11 @@ namespace GraphExperiment.DAL
             {
                 sbColumn.Append($"Calories,");
                 sbValue.Append($"{dailyStatus.Calories},");
+            }
+            if (dailyStatus.Duration != 0)
+            {
+                sbColumn.Append($"Duration,");
+                sbValue.Append($"{dailyStatus.Duration},");
             }
 
             if (!string.IsNullOrEmpty(sbValue.ToString()))

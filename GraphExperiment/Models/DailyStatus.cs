@@ -14,5 +14,6 @@ namespace GraphExperiment.Models
         public double Weight { get; set; }
         public double Height { get; set; }
         public double Calories { get; set; }
+        public int Duration { get; set; }
     }
 }

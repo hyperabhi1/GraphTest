@@ -413,11 +413,11 @@ namespace GraphExperiment {
             
             private global::System.Data.DataColumn columnWeight;
             
-            private global::System.Data.DataColumn columnBMI;
-            
             private global::System.Data.DataColumn columnCalories;
             
             private global::System.Data.DataColumn columnHeight;
+            
+            private global::System.Data.DataColumn columnDuration;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -486,14 +486,6 @@ namespace GraphExperiment {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn BMIColumn {
-                get {
-                    return this.columnBMI;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn CaloriesColumn {
                 get {
                     return this.columnCalories;
@@ -505,6 +497,14 @@ namespace GraphExperiment {
             public global::System.Data.DataColumn HeightColumn {
                 get {
                     return this.columnHeight;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DurationColumn {
+                get {
+                    return this.columnDuration;
                 }
             }
             
@@ -545,16 +545,16 @@ namespace GraphExperiment {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DailyStatusRow AddDailyStatusRow(UserProfileRow parentUserProfileRowByFK_DailyStatus_To_UserProfile_UserId, System.DateTime Time, decimal Distance, decimal Weight, decimal BMI, decimal Calories, decimal Height) {
+            public DailyStatusRow AddDailyStatusRow(UserProfileRow parentUserProfileRowByFK_DailyStatus_To_UserProfile_UserId, System.DateTime Time, decimal Distance, decimal Weight, decimal Calories, decimal Height, decimal Duration) {
                 DailyStatusRow rowDailyStatusRow = ((DailyStatusRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Time,
                         Distance,
                         Weight,
-                        BMI,
                         Calories,
-                        Height};
+                        Height,
+                        Duration};
                 if ((parentUserProfileRowByFK_DailyStatus_To_UserProfile_UserId != null)) {
                     columnValuesArray[0] = parentUserProfileRowByFK_DailyStatus_To_UserProfile_UserId[0];
                 }
@@ -591,9 +591,9 @@ namespace GraphExperiment {
                 this.columnTime = base.Columns["Time"];
                 this.columnDistance = base.Columns["Distance"];
                 this.columnWeight = base.Columns["Weight"];
-                this.columnBMI = base.Columns["BMI"];
                 this.columnCalories = base.Columns["Calories"];
                 this.columnHeight = base.Columns["Height"];
+                this.columnDuration = base.Columns["Duration"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -607,12 +607,12 @@ namespace GraphExperiment {
                 base.Columns.Add(this.columnDistance);
                 this.columnWeight = new global::System.Data.DataColumn("Weight", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnWeight);
-                this.columnBMI = new global::System.Data.DataColumn("BMI", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBMI);
                 this.columnCalories = new global::System.Data.DataColumn("Calories", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCalories);
                 this.columnHeight = new global::System.Data.DataColumn("Height", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHeight);
+                this.columnDuration = new global::System.Data.DataColumn("Duration", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDuration);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnTime}, true));
                 this.columnUserId.AllowDBNull = false;
@@ -1780,22 +1780,6 @@ namespace GraphExperiment {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal BMI {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDailyStatus.BMIColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'BMI\' in table \'DailyStatus\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDailyStatus.BMIColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public decimal Calories {
                 get {
                     try {
@@ -1828,6 +1812,22 @@ namespace GraphExperiment {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Duration {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDailyStatus.DurationColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Duration\' in table \'DailyStatus\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDailyStatus.DurationColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public UserProfileRow UserProfileRow {
                 get {
                     return ((UserProfileRow)(this.GetParentRow(this.Table.ParentRelations["FK_DailyStatus_To_UserProfile_UserId"])));
@@ -1847,18 +1847,6 @@ namespace GraphExperiment {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDistanceNull() {
                 this[this.tableDailyStatus.DistanceColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsBMINull() {
-                return this.IsNull(this.tableDailyStatus.BMIColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetBMINull() {
-                this[this.tableDailyStatus.BMIColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1883,6 +1871,18 @@ namespace GraphExperiment {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetHeightNull() {
                 this[this.tableDailyStatus.HeightColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDurationNull() {
+                return this.IsNull(this.tableDailyStatus.DurationColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDurationNull() {
+                this[this.tableDailyStatus.DurationColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2416,23 +2416,23 @@ namespace GraphExperiment.HealthStatsDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Time", "Time");
             tableMapping.ColumnMappings.Add("Distance", "Distance");
             tableMapping.ColumnMappings.Add("Weight", "Weight");
-            tableMapping.ColumnMappings.Add("BMI", "BMI");
             tableMapping.ColumnMappings.Add("Calories", "Calories");
             tableMapping.ColumnMappings.Add("Height", "Height");
+            tableMapping.ColumnMappings.Add("Duration", "Duration");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[DailyStatus] ([UserId], [Time], [Distance], [Weight], [BMI], [" +
-                "Calories], [Height]) VALUES (@UserId, @Time, @Distance, @Weight, @BMI, @Calories" +
-                ", @Height)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [DailyStatus] ([UserId], [Time], [Distance], [Weight], [Calories], [H" +
+                "eight], [Duration]) VALUES (@UserId, @Time, @Distance, @Weight, @Calories, @Heig" +
+                "ht, @Duration)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Time", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Time", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Distance", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 4, 2, "Distance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Weight", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 4, 2, "Weight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BMI", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 6, 3, "BMI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Calories", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 4, 2, "Calories", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Height", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 3, 2, "Height", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Duration", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 2, 0, "Duration", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2448,8 +2448,8 @@ namespace GraphExperiment.HealthStatsDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT UserId, Time, Distance, Weight, BMI, Calories, Height FROM dbo.DailyStatus" +
-                "";
+            this._commandCollection[0].CommandText = "SELECT UserId, Time, Distance, Weight, Calories, Height, Duration FROM DailyStatu" +
+                "s";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2510,7 +2510,7 @@ namespace GraphExperiment.HealthStatsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string UserId, System.DateTime Time, global::System.Nullable<decimal> Distance, decimal Weight, global::System.Nullable<decimal> BMI, global::System.Nullable<decimal> Calories, global::System.Nullable<decimal> Height) {
+        public virtual int Insert(string UserId, System.DateTime Time, global::System.Nullable<decimal> Distance, decimal Weight, global::System.Nullable<decimal> Calories, global::System.Nullable<decimal> Height, global::System.Nullable<decimal> Duration) {
             if ((UserId == null)) {
                 throw new global::System.ArgumentNullException("UserId");
             }
@@ -2525,20 +2525,20 @@ namespace GraphExperiment.HealthStatsDataSetTableAdapters {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(Weight));
-            if ((BMI.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(BMI.Value));
+            if ((Calories.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(Calories.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Calories.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(Calories.Value));
+            if ((Height.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(Height.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((Height.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(Height.Value));
+            if ((Duration.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(Duration.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;

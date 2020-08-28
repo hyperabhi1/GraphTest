@@ -42,7 +42,7 @@ namespace GraphExperiment.Data
                     UserId = row["UserId"].ToString(),
                     FirstName = row["FirstName"].ToString(),
                     LastName = row["LastName"].ToString(),
-                    Age = int.Parse(row["Distance"].ToString()),
+                    Age = int.Parse(row["Age"].ToString()),
                     Height = double.Parse(row["Height"].ToString()),
                     Weight = double.Parse(row["Weight"].ToString())
                 });
