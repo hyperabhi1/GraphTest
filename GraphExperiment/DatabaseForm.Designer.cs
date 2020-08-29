@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dailyStatusDataGridView = new System.Windows.Forms.DataGridView();
             this.dailyStatusLabel = new System.Windows.Forms.Label();
             this.userProfilesDataGridView = new System.Windows.Forms.DataGridView();
@@ -45,6 +45,11 @@
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.userMappingLabel = new System.Windows.Forms.Label();
             this.userMappingDataGridView = new System.Windows.Forms.DataGridView();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.userIdTextBox = new System.Windows.Forms.TextBox();
+            this.specifyTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.deleteRecordButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dailyStatusDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userProfilesDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.latestProfileDataGridView)).BeginInit();
@@ -62,25 +67,25 @@
             this.dailyStatusDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dailyStatusDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dailyStatusDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Consolas", 9.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dailyStatusDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 9.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dailyStatusDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dailyStatusDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Consolas", 9.25F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dailyStatusDataGridView.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dailyStatusDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.dailyStatusDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dailyStatusDataGridView.Location = new System.Drawing.Point(681, 22);
+            this.dailyStatusDataGridView.Location = new System.Drawing.Point(681, 37);
             this.dailyStatusDataGridView.Name = "dailyStatusDataGridView";
             this.dailyStatusDataGridView.ReadOnly = true;
             this.dailyStatusDataGridView.RowHeadersVisible = false;
@@ -92,7 +97,7 @@
             // 
             this.dailyStatusLabel.AutoSize = true;
             this.dailyStatusLabel.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold);
-            this.dailyStatusLabel.Location = new System.Drawing.Point(678, 1);
+            this.dailyStatusLabel.Location = new System.Drawing.Point(678, 9);
             this.dailyStatusLabel.Name = "dailyStatusLabel";
             this.dailyStatusLabel.Size = new System.Drawing.Size(104, 18);
             this.dailyStatusLabel.TabIndex = 30;
@@ -108,23 +113,23 @@
             this.userProfilesDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.userProfilesDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.userProfilesDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Consolas", 9.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.userProfilesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.userProfilesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.userProfilesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Consolas", 9.25F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.userProfilesDataGridView.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 9.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.userProfilesDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
             this.userProfilesDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.userProfilesDataGridView.Location = new System.Drawing.Point(4, 22);
             this.userProfilesDataGridView.Name = "userProfilesDataGridView";
@@ -164,23 +169,23 @@
             this.latestProfileDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.latestProfileDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.latestProfileDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Consolas", 9.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.latestProfileDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 9.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.latestProfileDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.latestProfileDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Consolas", 9.25F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.latestProfileDataGridView.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 9.25F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.latestProfileDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
             this.latestProfileDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.latestProfileDataGridView.Location = new System.Drawing.Point(195, 315);
             this.latestProfileDataGridView.Name = "latestProfileDataGridView";
@@ -222,23 +227,23 @@
             this.userMappingDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.userMappingDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.userMappingDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.userMappingDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.userMappingDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.userMappingDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Consolas", 9.25F);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.userMappingDataGridView.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Consolas", 9.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.userMappingDataGridView.DefaultCellStyle = dataGridViewCellStyle8;
             this.userMappingDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.userMappingDataGridView.Location = new System.Drawing.Point(4, 315);
             this.userMappingDataGridView.Name = "userMappingDataGridView";
@@ -248,11 +253,71 @@
             this.userMappingDataGridView.Size = new System.Drawing.Size(185, 270);
             this.userMappingDataGridView.TabIndex = 36;
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
+            this.deleteButton.Location = new System.Drawing.Point(1251, 6);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(70, 26);
+            this.deleteButton.TabIndex = 41;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Visible = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
+            this.cancelButton.Location = new System.Drawing.Point(1179, 6);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(70, 26);
+            this.cancelButton.TabIndex = 40;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Visible = false;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // userIdTextBox
+            // 
+            this.userIdTextBox.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
+            this.userIdTextBox.Location = new System.Drawing.Point(832, 7);
+            this.userIdTextBox.Name = "userIdTextBox";
+            this.userIdTextBox.Size = new System.Drawing.Size(113, 24);
+            this.userIdTextBox.TabIndex = 45;
+            this.userIdTextBox.Visible = false;
+            // 
+            // specifyTimeDateTimePicker
+            // 
+            this.specifyTimeDateTimePicker.CustomFormat = "yyyy-MMM-dd hh:mm:ss tt";
+            this.specifyTimeDateTimePicker.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
+            this.specifyTimeDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.specifyTimeDateTimePicker.Location = new System.Drawing.Point(950, 7);
+            this.specifyTimeDateTimePicker.Name = "specifyTimeDateTimePicker";
+            this.specifyTimeDateTimePicker.Size = new System.Drawing.Size(226, 24);
+            this.specifyTimeDateTimePicker.TabIndex = 46;
+            this.specifyTimeDateTimePicker.Visible = false;
+            // 
+            // deleteRecordButton
+            // 
+            this.deleteRecordButton.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
+            this.deleteRecordButton.Location = new System.Drawing.Point(1179, 6);
+            this.deleteRecordButton.Name = "deleteRecordButton";
+            this.deleteRecordButton.Size = new System.Drawing.Size(142, 26);
+            this.deleteRecordButton.TabIndex = 47;
+            this.deleteRecordButton.Text = "Delete Record";
+            this.deleteRecordButton.UseVisualStyleBackColor = true;
+            this.deleteRecordButton.Click += new System.EventHandler(this.deleteRecordButton_Click);
+            // 
             // DatabaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1324, 596);
+            this.Controls.Add(this.deleteRecordButton);
+            this.Controls.Add(this.specifyTimeDateTimePicker);
+            this.Controls.Add(this.userIdTextBox);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.userMappingLabel);
             this.Controls.Add(this.userMappingDataGridView);
             this.Controls.Add(this.pictureBoxRefresh);
@@ -289,5 +354,10 @@
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.Label userMappingLabel;
         private System.Windows.Forms.DataGridView userMappingDataGridView;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.TextBox userIdTextBox;
+        private System.Windows.Forms.DateTimePicker specifyTimeDateTimePicker;
+        private System.Windows.Forms.Button deleteRecordButton;
     }
 }

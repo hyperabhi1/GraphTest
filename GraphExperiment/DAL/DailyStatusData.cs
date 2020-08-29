@@ -139,6 +139,12 @@ namespace GraphExperiment.DAL
             var response = MySQLAdapter.Delete(query);
             return response;
         }
+        public static bool Delete(string userId, DateTime time)
+        {
+            string query = $"DELETE FROM {DailyStatus} WHERE USERID = '{userId}' AND TIME BETWEEN '{time.ToString("yyyy-MM-dd HH:mm:00")}' AND '{time.ToString("yyyy-MM-dd HH:mm:59")}';";
+            var response = MySQLAdapter.Delete(query);
+            return response;
+        }
 
     }
 

@@ -45,5 +45,45 @@ namespace GraphExperiment
             latestProfileDataGridView.Refresh();
             dailyStatusDataGridView.Refresh();
         }
+
+        private void deleteRecordButton_Click(object sender, EventArgs e)
+        {
+            UnHideDeleteControls();
+            deleteRecordButton.Visible = false;
+        }
+
+        private void HideDeleteControls()
+        {
+            userIdTextBox.Visible = false;
+            specifyTimeDateTimePicker.Visible = false;
+            cancelButton.Visible = false;
+            deleteButton.Visible = false;
+        }
+        private void UnHideDeleteControls()
+        {
+            userIdTextBox.Visible = true;
+            specifyTimeDateTimePicker.Visible = true;
+            cancelButton.Visible = true;
+            deleteButton.Visible = true;
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            HideDeleteControls();
+            deleteRecordButton.Visible = true;
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DailyStatusData.Delete(userIdTextBox.Text, specifyTimeDateTimePicker.Value);
+                MessageBox.Show(Constants.RecordDeleted,  Constants.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(Constants.DailyStatus + Constants.ColonSeparator + exception.Message, Constants.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

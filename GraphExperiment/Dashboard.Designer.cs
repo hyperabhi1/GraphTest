@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonAddUser = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -66,7 +66,7 @@
             // buttonAddUser
             // 
             this.buttonAddUser.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.buttonAddUser.Location = new System.Drawing.Point(12, 654);
+            this.buttonAddUser.Location = new System.Drawing.Point(12, 674);
             this.buttonAddUser.Name = "buttonAddUser";
             this.buttonAddUser.Size = new System.Drawing.Size(95, 25);
             this.buttonAddUser.TabIndex = 1;
@@ -77,7 +77,7 @@
             // buttonEdit
             // 
             this.buttonEdit.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.buttonEdit.Location = new System.Drawing.Point(112, 654);
+            this.buttonEdit.Location = new System.Drawing.Point(112, 674);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(95, 25);
             this.buttonEdit.TabIndex = 5;
@@ -89,7 +89,7 @@
             // buttonDelete
             // 
             this.buttonDelete.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.buttonDelete.Location = new System.Drawing.Point(209, 654);
+            this.buttonDelete.Location = new System.Drawing.Point(209, 674);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(105, 25);
             this.buttonDelete.TabIndex = 6;
@@ -101,7 +101,7 @@
             // distanceNumericUpDown
             // 
             this.distanceNumericUpDown.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.distanceNumericUpDown.Location = new System.Drawing.Point(402, 655);
+            this.distanceNumericUpDown.Location = new System.Drawing.Point(402, 675);
             this.distanceNumericUpDown.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -130,7 +130,7 @@
             0,
             0,
             131072});
-            this.heightNumericUpDown.Location = new System.Drawing.Point(535, 655);
+            this.heightNumericUpDown.Location = new System.Drawing.Point(535, 675);
             this.heightNumericUpDown.Maximum = new decimal(new int[] {
             3,
             0,
@@ -149,7 +149,7 @@
             0,
             0,
             131072});
-            this.weightNumericUpDown.Location = new System.Drawing.Point(676, 655);
+            this.weightNumericUpDown.Location = new System.Drawing.Point(676, 675);
             this.weightNumericUpDown.Maximum = new decimal(new int[] {
             199,
             0,
@@ -162,7 +162,7 @@
             // durationNumericUpDown
             // 
             this.durationNumericUpDown.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.durationNumericUpDown.Location = new System.Drawing.Point(826, 655);
+            this.durationNumericUpDown.Location = new System.Drawing.Point(826, 675);
             this.durationNumericUpDown.Maximum = new decimal(new int[] {
             99,
             0,
@@ -181,7 +181,7 @@
             0,
             0,
             131072});
-            this.caloriesNumericUpDown.Location = new System.Drawing.Point(954, 655);
+            this.caloriesNumericUpDown.Location = new System.Drawing.Point(954, 675);
             this.caloriesNumericUpDown.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -194,7 +194,7 @@
             // dailyStatusUpdateButton
             // 
             this.dailyStatusUpdateButton.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.dailyStatusUpdateButton.Location = new System.Drawing.Point(330, 654);
+            this.dailyStatusUpdateButton.Location = new System.Drawing.Point(330, 674);
             this.dailyStatusUpdateButton.Name = "dailyStatusUpdateButton";
             this.dailyStatusUpdateButton.Size = new System.Drawing.Size(377, 25);
             this.dailyStatusUpdateButton.TabIndex = 19;
@@ -206,7 +206,7 @@
             // cancelButton
             // 
             this.cancelButton.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.cancelButton.Location = new System.Drawing.Point(1215, 654);
+            this.cancelButton.Location = new System.Drawing.Point(1215, 674);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(70, 25);
             this.cancelButton.TabIndex = 20;
@@ -217,7 +217,7 @@
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.saveButton.Location = new System.Drawing.Point(1288, 654);
+            this.saveButton.Location = new System.Drawing.Point(1288, 674);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(70, 25);
             this.saveButton.TabIndex = 21;
@@ -229,7 +229,7 @@
             // 
             this.distanceLabel.AutoSize = true;
             this.distanceLabel.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.distanceLabel.Location = new System.Drawing.Point(311, 657);
+            this.distanceLabel.Location = new System.Drawing.Point(311, 677);
             this.distanceLabel.Name = "distanceLabel";
             this.distanceLabel.Size = new System.Drawing.Size(96, 17);
             this.distanceLabel.TabIndex = 22;
@@ -239,7 +239,7 @@
             // 
             this.heightLabel.AutoSize = true;
             this.heightLabel.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.heightLabel.Location = new System.Drawing.Point(460, 657);
+            this.heightLabel.Location = new System.Drawing.Point(460, 677);
             this.heightLabel.Name = "heightLabel";
             this.heightLabel.Size = new System.Drawing.Size(80, 17);
             this.heightLabel.TabIndex = 23;
@@ -249,7 +249,7 @@
             // 
             this.weightLabel.AutoSize = true;
             this.weightLabel.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.weightLabel.Location = new System.Drawing.Point(593, 657);
+            this.weightLabel.Location = new System.Drawing.Point(593, 677);
             this.weightLabel.Name = "weightLabel";
             this.weightLabel.Size = new System.Drawing.Size(88, 17);
             this.weightLabel.TabIndex = 24;
@@ -259,7 +259,7 @@
             // 
             this.durationLabel.AutoSize = true;
             this.durationLabel.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.durationLabel.Location = new System.Drawing.Point(735, 657);
+            this.durationLabel.Location = new System.Drawing.Point(735, 677);
             this.durationLabel.Name = "durationLabel";
             this.durationLabel.Size = new System.Drawing.Size(96, 17);
             this.durationLabel.TabIndex = 25;
@@ -269,7 +269,7 @@
             // 
             this.caloriesLabel.AutoSize = true;
             this.caloriesLabel.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.caloriesLabel.Location = new System.Drawing.Point(885, 658);
+            this.caloriesLabel.Location = new System.Drawing.Point(885, 678);
             this.caloriesLabel.Name = "caloriesLabel";
             this.caloriesLabel.Size = new System.Drawing.Size(72, 17);
             this.caloriesLabel.TabIndex = 26;
@@ -279,9 +279,9 @@
             // 
             this.databasePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.databasePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("databasePictureBox.Image")));
-            this.databasePictureBox.Location = new System.Drawing.Point(57, 614);
+            this.databasePictureBox.Location = new System.Drawing.Point(43, 642);
             this.databasePictureBox.Name = "databasePictureBox";
-            this.databasePictureBox.Size = new System.Drawing.Size(38, 35);
+            this.databasePictureBox.Size = new System.Drawing.Size(25, 25);
             this.databasePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.databasePictureBox.TabIndex = 29;
             this.databasePictureBox.TabStop = false;
@@ -291,9 +291,9 @@
             // 
             this.pictureBoxRefresh.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxRefresh.Image = global::GraphExperiment.Properties.Resources.Refresh;
-            this.pictureBoxRefresh.Location = new System.Drawing.Point(12, 614);
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(12, 642);
             this.pictureBoxRefresh.Name = "pictureBoxRefresh";
-            this.pictureBoxRefresh.Size = new System.Drawing.Size(38, 35);
+            this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 25);
             this.pictureBoxRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxRefresh.TabIndex = 4;
             this.pictureBoxRefresh.TabStop = false;
@@ -304,7 +304,7 @@
             this.specifyTimeDateTimePicker.CustomFormat = "yyyy-MMM-dd HH:mm:ss";
             this.specifyTimeDateTimePicker.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
             this.specifyTimeDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.specifyTimeDateTimePicker.Location = new System.Drawing.Point(1028, 655);
+            this.specifyTimeDateTimePicker.Location = new System.Drawing.Point(1028, 675);
             this.specifyTimeDateTimePicker.Name = "specifyTimeDateTimePicker";
             this.specifyTimeDateTimePicker.Size = new System.Drawing.Size(181, 24);
             this.specifyTimeDateTimePicker.TabIndex = 30;
@@ -312,7 +312,7 @@
             // setTimeButton
             // 
             this.setTimeButton.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.setTimeButton.Location = new System.Drawing.Point(1028, 654);
+            this.setTimeButton.Location = new System.Drawing.Point(1028, 674);
             this.setTimeButton.Name = "setTimeButton";
             this.setTimeButton.Size = new System.Drawing.Size(181, 25);
             this.setTimeButton.TabIndex = 31;
@@ -331,30 +331,30 @@
             this.userProfilesDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.userProfilesDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.userProfilesDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 9.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.userProfilesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.userProfilesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.userProfilesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.userProfilesDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 9.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.userProfilesDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
             this.userProfilesDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.userProfilesDataGridView.Location = new System.Drawing.Point(101, 622);
+            this.userProfilesDataGridView.Location = new System.Drawing.Point(74, 642);
             this.userProfilesDataGridView.Name = "userProfilesDataGridView";
             this.userProfilesDataGridView.ReadOnly = true;
             this.userProfilesDataGridView.RowHeadersVisible = false;
             this.userProfilesDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.userProfilesDataGridView.Size = new System.Drawing.Size(1257, 27);
+            this.userProfilesDataGridView.Size = new System.Drawing.Size(1284, 25);
             this.userProfilesDataGridView.TabIndex = 32;
             this.userProfilesDataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.userProfilesDataGridView_ColumnHeaderMouseClick);
             // 
@@ -362,7 +362,7 @@
             // 
             this.weightCartesianChart.Location = new System.Drawing.Point(12, 12);
             this.weightCartesianChart.Name = "weightCartesianChart";
-            this.weightCartesianChart.Size = new System.Drawing.Size(1338, 596);
+            this.weightCartesianChart.Size = new System.Drawing.Size(1338, 624);
             this.weightCartesianChart.TabIndex = 33;
             this.weightCartesianChart.Text = "Weight Chart";
             // 
@@ -371,7 +371,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1362, 691);
+            this.ClientSize = new System.Drawing.Size(1362, 701);
             this.Controls.Add(this.weightCartesianChart);
             this.Controls.Add(this.userProfilesDataGridView);
             this.Controls.Add(this.setTimeButton);
@@ -394,11 +394,12 @@
             this.Controls.Add(this.weightLabel);
             this.Controls.Add(this.durationLabel);
             this.Controls.Add(this.caloriesLabel);
-            this.MaximumSize = new System.Drawing.Size(1386, 730);
+            this.MaximumSize = new System.Drawing.Size(1386, 740);
             this.MinimumSize = new System.Drawing.Size(1364, 726);
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Dashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.distanceNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNumericUpDown)).EndInit();

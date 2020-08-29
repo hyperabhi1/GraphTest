@@ -17,6 +17,7 @@ namespace GraphExperiment
         public static string StatusUpdated = "Status Updated";
         public static string UserUpdated = "User Updated";
         public static string UserDeleted = "User Deleted";
+        public static string RecordDeleted = "Record Deleted";
         public static string InvalidData = "Invalid Data";
         public static string UserProfile = "User Profile";
         public static string UserMapper = "User Mapper";
