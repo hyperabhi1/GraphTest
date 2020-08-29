@@ -138,7 +138,7 @@
             // 
             this.firstNameTextBox.Font = new System.Drawing.Font("Consolas", 12.25F, System.Drawing.FontStyle.Bold);
             this.firstNameTextBox.Location = new System.Drawing.Point(157, 60);
-            this.firstNameTextBox.MaxLength = 10;
+            this.firstNameTextBox.MaxLength = 15;
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(121, 27);
             this.firstNameTextBox.TabIndex = 4;

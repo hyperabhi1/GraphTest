@@ -33,8 +33,8 @@ namespace GraphExperiment
             if (this.IsValidData())
             {
                 var userId = userIdTextBox.Text.Replace(" ","").Trim().ToLower();
-                var firstName = char.ToUpper(firstNameTextBox.Text[0]) + firstNameTextBox.Text.Substring(1).ToLower();
-                var lastName = char.ToUpper(lastNameTextBox.Text[0]) + lastNameTextBox.Text.Substring(1).ToLower();
+                var firstName = char.ToUpper(firstNameTextBox.Text[0]) + firstNameTextBox.Text.Substring(1);
+                var lastName = char.ToUpper(lastNameTextBox.Text[0]) + lastNameTextBox.Text.Substring(1);
                 int age = (int)ageNumericUpDown.Value;
                 double height = (double)Math.Round(heightNumericUpDown.Value, 2, MidpointRounding.AwayFromZero);
                 double weight = (double)Math.Round(weightNumericUpDown.Value, 2, MidpointRounding.AwayFromZero);

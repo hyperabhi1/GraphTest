@@ -49,7 +49,6 @@
             this.weightLabel = new System.Windows.Forms.Label();
             this.durationLabel = new System.Windows.Forms.Label();
             this.caloriesLabel = new System.Windows.Forms.Label();
-            this.userMappingListBox = new System.Windows.Forms.ListBox();
             this.databasePictureBox = new System.Windows.Forms.PictureBox();
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.specifyTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -70,9 +69,9 @@
             // 
             chartArea1.Name = "ChartArea1";
             this.weightChart.ChartAreas.Add(chartArea1);
-            this.weightChart.Location = new System.Drawing.Point(12, 35);
+            this.weightChart.Location = new System.Drawing.Point(12, 12);
             this.weightChart.Name = "weightChart";
-            this.weightChart.Size = new System.Drawing.Size(1346, 352);
+            this.weightChart.Size = new System.Drawing.Size(1346, 596);
             this.weightChart.TabIndex = 0;
             this.weightChart.Text = "Weight Chart";
             // 
@@ -288,22 +287,13 @@
             this.caloriesLabel.TabIndex = 26;
             this.caloriesLabel.Text = "Calories";
             // 
-            // userMappingListBox
-            // 
-            this.userMappingListBox.FormattingEnabled = true;
-            this.userMappingListBox.Location = new System.Drawing.Point(12, 399);
-            this.userMappingListBox.Name = "userMappingListBox";
-            this.userMappingListBox.Size = new System.Drawing.Size(195, 212);
-            this.userMappingListBox.TabIndex = 27;
-            this.userMappingListBox.SelectedIndexChanged += new System.EventHandler(this.userMappingListBox_SelectedIndexChanged);
-            // 
             // databasePictureBox
             // 
             this.databasePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.databasePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("databasePictureBox.Image")));
-            this.databasePictureBox.Location = new System.Drawing.Point(213, 438);
+            this.databasePictureBox.Location = new System.Drawing.Point(57, 614);
             this.databasePictureBox.Name = "databasePictureBox";
-            this.databasePictureBox.Size = new System.Drawing.Size(38, 31);
+            this.databasePictureBox.Size = new System.Drawing.Size(38, 35);
             this.databasePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.databasePictureBox.TabIndex = 29;
             this.databasePictureBox.TabStop = false;
@@ -313,9 +303,9 @@
             // 
             this.pictureBoxRefresh.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxRefresh.Image = global::GraphExperiment.Properties.Resources.Refresh;
-            this.pictureBoxRefresh.Location = new System.Drawing.Point(213, 399);
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(12, 614);
             this.pictureBoxRefresh.Name = "pictureBoxRefresh";
-            this.pictureBoxRefresh.Size = new System.Drawing.Size(38, 33);
+            this.pictureBoxRefresh.Size = new System.Drawing.Size(38, 35);
             this.pictureBoxRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxRefresh.TabIndex = 4;
             this.pictureBoxRefresh.TabStop = false;
@@ -371,14 +361,14 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.userProfilesDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.userProfilesDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.userProfilesDataGridView.Location = new System.Drawing.Point(12, 614);
+            this.userProfilesDataGridView.Location = new System.Drawing.Point(101, 614);
             this.userProfilesDataGridView.Name = "userProfilesDataGridView";
             this.userProfilesDataGridView.ReadOnly = true;
             this.userProfilesDataGridView.RowHeadersVisible = false;
             this.userProfilesDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.userProfilesDataGridView.Size = new System.Drawing.Size(1346, 34);
+            this.userProfilesDataGridView.Size = new System.Drawing.Size(1257, 35);
             this.userProfilesDataGridView.TabIndex = 32;
-            this.userProfilesDataGridView.SelectionChanged += new System.EventHandler(this.userProfilesDataGridView_SelectionChanged);
+            this.userProfilesDataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.userProfilesDataGridView_ColumnHeaderMouseClick);
             // 
             // Dashboard
             // 
@@ -390,7 +380,6 @@
             this.Controls.Add(this.setTimeButton);
             this.Controls.Add(this.specifyTimeDateTimePicker);
             this.Controls.Add(this.databasePictureBox);
-            this.Controls.Add(this.userMappingListBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.dailyStatusUpdateButton);
@@ -449,7 +438,6 @@
         private System.Windows.Forms.Label weightLabel;
         private System.Windows.Forms.Label durationLabel;
         private System.Windows.Forms.Label caloriesLabel;
-        private System.Windows.Forms.ListBox userMappingListBox;
         private System.Windows.Forms.PictureBox databasePictureBox;
         private System.Windows.Forms.DateTimePicker specifyTimeDateTimePicker;
         private System.Windows.Forms.Button setTimeButton;

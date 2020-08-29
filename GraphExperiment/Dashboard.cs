@@ -40,14 +40,12 @@ namespace GraphExperiment
         private async void pictureBoxRefresh_Click(object sender, EventArgs e)
         {
             ClickEffect();
-            userMappingListBox.DataSource = new BindingSource(new BindingList<string>(UserMappingData.Get().Select(x => x.UserId).ToList()), null);
-            userMappingListBox.Refresh();
             DataTable dt = new DataTable();
             UserProfileData.Get().Select(x => x.UserId).ToList().ForEach(x=> dt.Columns.Add(x));
             userProfilesDataGridView.DataSource = dt;
             userProfilesDataGridView.Refresh();
             HideDailyStatusControls();
-
+            dailyStatusUpdateButton.Text = HiWannaUpdateTodayStatus;
             RefreshChart();
             return;
         }
@@ -77,43 +75,6 @@ namespace GraphExperiment
             }
         }
 
-        private void userMappingListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var userId = userMappingListBox.SelectedItem as string;
-            if (!string.IsNullOrEmpty(userId))
-            {
-                buttonEdit.Visible = true;
-                buttonDelete.Visible = true;
-                dailyStatusUpdateButton.Visible = true;
-                dailyStatusUpdateButton.Text = HiWannaUpdateTodayStatus.Replace("_", userId);
-                SelectedUserId = userId;
-
-                var latestProfile = LatestProfileData.GetById(SelectedUserId).FirstOrDefault();
-                heightNumericUpDown.Value = (decimal)latestProfile.Height;
-                weightNumericUpDown.Value = (decimal)latestProfile.Weight;
-
-                distanceNumericUpDown.Value = 1;
-                durationNumericUpDown.Value = 0;
-                caloriesNumericUpDown.Value = 0;
-            }
-            else
-            {
-                buttonEdit.Visible = false;
-                buttonDelete.Visible = false;
-                dailyStatusUpdateButton.Visible = false;
-                SelectedUserId = String.Empty;
-                dailyStatusUpdateButton.Text = "??????????????????????????????????";
-
-
-                heightNumericUpDown.Value = 0;
-                weightNumericUpDown.Value = 0;
-                distanceNumericUpDown.Value = 1;
-                durationNumericUpDown.Value = 0;
-                caloriesNumericUpDown.Value = 0;
-            }
-            HideDailyStatusControls();
-        }
-
         private void buttonDeleteUser_Click(object sender, EventArgs e)
         {
             if ((MessageBox.Show(DeleteVerificationMessage, Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) ==
@@ -130,6 +91,9 @@ namespace GraphExperiment
                         LatestProfileData.Delete(SelectedUserId);
                         DailyStatusData.Delete(SelectedUserId);
                         MessageBox.Show(UserDeleted, Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SelectedUserId = string.Empty;
+                        pictureBoxRefresh_Click(null,null);
+                        SelectedIndexChangeEvent(SelectedUserId);
                     }
                     catch (Exception exception)
                     {
@@ -245,10 +209,52 @@ namespace GraphExperiment
             specifyTimeDateTimePicker.Visible = true;
             setTimeButton.Visible = false;
         }
-
-        private void userProfilesDataGridView_SelectionChanged(object sender, EventArgs e)
+        private void userProfilesDataGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            var x = sender;
+            SelectedIndexChangeEvent(userProfilesDataGridView.Columns[userProfilesDataGridView.SortedColumn.Index].HeaderText);
+        }
+
+        private void SelectedIndexChangeEvent(string userId)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(userId))
+                {
+                    buttonEdit.Visible = true;
+                    buttonDelete.Visible = true;
+                    dailyStatusUpdateButton.Visible = true;
+                    dailyStatusUpdateButton.Text = HiWannaUpdateTodayStatus.Replace("_", userId);
+                    SelectedUserId = userId;
+
+                    var latestProfile = LatestProfileData.GetById(SelectedUserId).FirstOrDefault();
+                    heightNumericUpDown.Value = (decimal)latestProfile.Height;
+                    weightNumericUpDown.Value = (decimal)latestProfile.Weight;
+
+                    distanceNumericUpDown.Value = 1;
+                    durationNumericUpDown.Value = 0;
+                    caloriesNumericUpDown.Value = 0;
+                }
+                else
+                {
+                    buttonEdit.Visible = false;
+                    buttonDelete.Visible = false;
+                    dailyStatusUpdateButton.Visible = false;
+                    SelectedUserId = String.Empty;
+                    dailyStatusUpdateButton.Text = "";
+
+
+                    heightNumericUpDown.Value = 0;
+                    weightNumericUpDown.Value = 0;
+                    distanceNumericUpDown.Value = 1;
+                    durationNumericUpDown.Value = 0;
+                    caloriesNumericUpDown.Value = 0;
+                }
+                HideDailyStatusControls();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(Constants.UserProfile + ColonSeparator + e.Message, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
