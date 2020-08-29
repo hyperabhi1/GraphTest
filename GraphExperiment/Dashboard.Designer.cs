@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.weightChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonAddUser = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -54,7 +52,7 @@
             this.specifyTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.setTimeButton = new System.Windows.Forms.Button();
             this.userProfilesDataGridView = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.weightChart)).BeginInit();
+            this.weightCartesianChart = new LiveCharts.WinForms.CartesianChart();
             ((System.ComponentModel.ISupportInitialize)(this.distanceNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).BeginInit();
@@ -64,16 +62,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userProfilesDataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // weightChart
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.weightChart.ChartAreas.Add(chartArea1);
-            this.weightChart.Location = new System.Drawing.Point(12, 12);
-            this.weightChart.Name = "weightChart";
-            this.weightChart.Size = new System.Drawing.Size(1346, 596);
-            this.weightChart.TabIndex = 0;
-            this.weightChart.Text = "Weight Chart";
             // 
             // buttonAddUser
             // 
@@ -361,14 +349,22 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.userProfilesDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.userProfilesDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.userProfilesDataGridView.Location = new System.Drawing.Point(101, 614);
+            this.userProfilesDataGridView.Location = new System.Drawing.Point(101, 622);
             this.userProfilesDataGridView.Name = "userProfilesDataGridView";
             this.userProfilesDataGridView.ReadOnly = true;
             this.userProfilesDataGridView.RowHeadersVisible = false;
             this.userProfilesDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.userProfilesDataGridView.Size = new System.Drawing.Size(1257, 35);
+            this.userProfilesDataGridView.Size = new System.Drawing.Size(1257, 27);
             this.userProfilesDataGridView.TabIndex = 32;
             this.userProfilesDataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.userProfilesDataGridView_ColumnHeaderMouseClick);
+            // 
+            // weightCartesianChart
+            // 
+            this.weightCartesianChart.Location = new System.Drawing.Point(12, 12);
+            this.weightCartesianChart.Name = "weightCartesianChart";
+            this.weightCartesianChart.Size = new System.Drawing.Size(1338, 596);
+            this.weightCartesianChart.TabIndex = 33;
+            this.weightCartesianChart.Text = "Weight Chart";
             // 
             // Dashboard
             // 
@@ -376,6 +372,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1362, 691);
+            this.Controls.Add(this.weightCartesianChart);
             this.Controls.Add(this.userProfilesDataGridView);
             this.Controls.Add(this.setTimeButton);
             this.Controls.Add(this.specifyTimeDateTimePicker);
@@ -392,7 +389,6 @@
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.pictureBoxRefresh);
             this.Controls.Add(this.buttonAddUser);
-            this.Controls.Add(this.weightChart);
             this.Controls.Add(this.distanceLabel);
             this.Controls.Add(this.heightLabel);
             this.Controls.Add(this.weightLabel);
@@ -404,7 +400,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Dashboard_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.weightChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.distanceNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).EndInit();
@@ -419,8 +414,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataVisualization.Charting.Chart weightChart;
         private System.Windows.Forms.Button buttonAddUser;
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.Button buttonEdit;
@@ -442,5 +435,6 @@
         private System.Windows.Forms.DateTimePicker specifyTimeDateTimePicker;
         private System.Windows.Forms.Button setTimeButton;
         private System.Windows.Forms.DataGridView userProfilesDataGridView;
+        private LiveCharts.WinForms.CartesianChart weightCartesianChart;
     }
 }

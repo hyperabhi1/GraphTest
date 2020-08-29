@@ -12,7 +12,12 @@ using System.Windows.Forms.DataVisualization.Charting;
 using GraphExperiment.DAL;
 using GraphExperiment.Data;
 using GraphExperiment.Models;
+using LiveCharts;
+using LiveCharts.Configurations;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
 using static GraphExperiment.Constants;
+using SeriesCollection = LiveCharts.SeriesCollection;
 
 namespace GraphExperiment
 {
@@ -41,7 +46,7 @@ namespace GraphExperiment
         {
             ClickEffect();
             DataTable dt = new DataTable();
-            UserProfileData.Get().Select(x => x.UserId).ToList().ForEach(x=> dt.Columns.Add(x));
+            UserProfileData.Get().Select(x => x.UserId).ToList().ForEach(x => dt.Columns.Add(x));
             userProfilesDataGridView.DataSource = dt;
             userProfilesDataGridView.Refresh();
             HideDailyStatusControls();
@@ -92,7 +97,7 @@ namespace GraphExperiment
                         DailyStatusData.Delete(SelectedUserId);
                         MessageBox.Show(UserDeleted, Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         SelectedUserId = string.Empty;
-                        pictureBoxRefresh_Click(null,null);
+                        pictureBoxRefresh_Click(null, null);
                         SelectedIndexChangeEvent(SelectedUserId);
                     }
                     catch (Exception exception)
@@ -179,21 +184,46 @@ namespace GraphExperiment
 
         private void RefreshChart()
         {
-            weightChart.Series.Clear();
-            weightChart.Legends.Clear();
-            foreach (var userId in UserMappingData.Get().Select(x => x.UserId))
+            var userMappingCollection = UserMappingData.Get();
+            if (userMappingCollection.Any())
             {
-                var dailyStatusData = DailyStatusData.GetById(userId);
-                var series = new Series(userId);
-                var legend = new Legend(userId);
-                legend.Docking = Docking.Bottom;
-                dailyStatusData.ForEach(x => series.Points.AddXY(x.Time, x.Weight));
-                series.ChartType = SeriesChartType.Spline;
-                weightChart.Series.Add(series);
-                weightChart.Legends.Add(legend);
-                weightChart.Palette = ChartColorPalette.BrightPastel;
+                var dayConfig = Mappers.Xy<DateModel>()
+                    .X(dateModel => dateModel.Time.Ticks / TimeSpan.FromSeconds(1).Ticks)
+                    .Y(dateModel => dateModel.Value);
+                var seriesCollection = new LiveCharts.SeriesCollection(dayConfig);
+                foreach (var userMapping in userMappingCollection)
+                {
+                    var dailyStatusData = DailyStatusData.GetById(userMapping.UserId);
+                    if (dailyStatusData.Any())
+                    {
+                        var chartValues = new ChartValues<DateModel>();
+                        dailyStatusData.ForEach(x => chartValues.Add(new DateModel()
+                        {
+                            Time = x.Time,
+                            Value = x.Weight
+                        }));
+                        LineSeries ls = new LineSeries()
+                        {
+                            Title = userMapping.FullName,
+                            PointGeometrySize = 15,
+                            Values = chartValues
+                        };
+                        seriesCollection.Add(ls);
+
+                    }
+                }
+                if (seriesCollection.Any())
+                {
+                    weightCartesianChart.Series.Clear();
+                    weightCartesianChart.Series = seriesCollection;
+                    weightCartesianChart.AxisX.Clear();
+                    weightCartesianChart.AxisX.Add(new LiveCharts.Wpf.Axis
+                    {
+                        LabelsRotation = 91,
+                        LabelFormatter = value => new DateTime((long)(value * TimeSpan.FromSeconds(1).Ticks)).ToString("yyyy-MMM-dd hh:mm:ss")
+                    });
+                }
             }
-            //weightChart.
         }
 
         private void databasePictureBox_Click(object sender, EventArgs e)
