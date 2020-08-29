@@ -39,14 +39,14 @@ namespace GraphExperiment
         private async void pictureBoxRefresh_Click(object sender, EventArgs e)
         {
             ClickEffect();
-            userMappingListBox.DataSource = new BindingSource(new BindingList<string>(UserMappingData.Get().Select(x=>x.FullName).ToList()), null);
-            userProfileDataGridView.DataSource = new BindingSource(new BindingList<UserProfile>(UserProfileData.Get()), null);
-            latestProfileDataGridView.DataSource = new BindingSource(new BindingList<LatestProfile>(LatestProfileData.Get()), null);
-            dailyStatusUpdateDataGridView.DataSource = new BindingSource(new BindingList<DailyStatus>(DailyStatusData.Get()), null);
+            userMappingListBox.DataSource = new BindingSource(new BindingList<string>(UserMappingData.Get().Select(x=>x.UserId).ToList()), null);
+            //userProfileDataGridView.DataSource = new BindingSource(new BindingList<UserProfile>(UserProfileData.Get()), null);
+            //latestProfileDataGridView.DataSource = new BindingSource(new BindingList<LatestProfile>(LatestProfileData.Get()), null);
+            //dailyStatusUpdateDataGridView.DataSource = new BindingSource(new BindingList<DailyStatus>(DailyStatusData.Get()), null);
             userMappingListBox.Refresh();
-            userProfileDataGridView.Refresh();
-            latestProfileDataGridView.Refresh();
-            dailyStatusUpdateDataGridView.Refresh();
+            //userProfileDataGridView.Refresh();
+            //latestProfileDataGridView.Refresh();
+            //dailyStatusUpdateDataGridView.Refresh();
             HideDailyStatusControls();
             return;
         }
@@ -71,10 +71,9 @@ namespace GraphExperiment
 
         private void userMappingListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var id = userMappingListBox.SelectedItems[0] as string;
-            if (!string.IsNullOrEmpty(id))
+            var userId = userMappingListBox.SelectedItem as string;
+            if (!string.IsNullOrEmpty(userId))
             {
-                var userId = UserMappingData.GetById(id).Select(x => x.UserId).FirstOrDefault();
                 buttonEdit.Visible = true;
                 buttonDelete.Visible = true;
                 dailyStatusUpdateButton.Visible = true;

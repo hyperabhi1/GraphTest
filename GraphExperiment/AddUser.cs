@@ -32,7 +32,7 @@ namespace GraphExperiment
         {
             if (this.IsValidData())
             {
-                var userId = userIdTextBox.Text.ToLower();
+                var userId = userIdTextBox.Text.Replace(" ","").Trim().ToLower();
                 var firstName = char.ToUpper(firstNameTextBox.Text[0]) + firstNameTextBox.Text.Substring(1).ToLower();
                 var lastName = char.ToUpper(lastNameTextBox.Text[0]) + lastNameTextBox.Text.Substring(1).ToLower();
                 int age = (int)ageNumericUpDown.Value;
