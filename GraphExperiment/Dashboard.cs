@@ -40,8 +40,12 @@ namespace GraphExperiment
         private async void pictureBoxRefresh_Click(object sender, EventArgs e)
         {
             ClickEffect();
-            userMappingListBox.DataSource = new BindingSource(new BindingList<string>(UserMappingData.Get().Select(x=>x.UserId).ToList()), null);
+            userMappingListBox.DataSource = new BindingSource(new BindingList<string>(UserMappingData.Get().Select(x => x.UserId).ToList()), null);
             userMappingListBox.Refresh();
+            DataTable dt = new DataTable();
+            UserProfileData.Get().Select(x => x.UserId).ToList().ForEach(x=> dt.Columns.Add(x));
+            userProfilesDataGridView.DataSource = dt;
+            userProfilesDataGridView.Refresh();
             HideDailyStatusControls();
 
             RefreshChart();
@@ -88,7 +92,7 @@ namespace GraphExperiment
                 heightNumericUpDown.Value = (decimal)latestProfile.Height;
                 weightNumericUpDown.Value = (decimal)latestProfile.Weight;
 
-                distanceNumericUpDown.Value = 0;
+                distanceNumericUpDown.Value = 1;
                 durationNumericUpDown.Value = 0;
                 caloriesNumericUpDown.Value = 0;
             }
@@ -103,7 +107,7 @@ namespace GraphExperiment
 
                 heightNumericUpDown.Value = 0;
                 weightNumericUpDown.Value = 0;
-                distanceNumericUpDown.Value = 0;
+                distanceNumericUpDown.Value = 1;
                 durationNumericUpDown.Value = 0;
                 caloriesNumericUpDown.Value = 0;
             }
@@ -154,6 +158,8 @@ namespace GraphExperiment
             caloriesNumericUpDown.Visible = false;
             cancelButton.Visible = false;
             saveButton.Visible = false;
+            setTimeButton.Visible = false;
+            specifyTimeDateTimePicker.Visible = false;
         }
         private void UnHideDailyStatusControls()
         {
@@ -169,6 +175,8 @@ namespace GraphExperiment
             caloriesNumericUpDown.Visible = true;
             cancelButton.Visible = true;
             saveButton.Visible = true;
+            setTimeButton.Visible = true;
+            specifyTimeDateTimePicker.Visible = false;
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -180,13 +188,14 @@ namespace GraphExperiment
                 double weight = (double)Math.Round(weightNumericUpDown.Value, 2, MidpointRounding.AwayFromZero);
                 int duration = (int)Math.Round(durationNumericUpDown.Value, 2, MidpointRounding.AwayFromZero);
                 double calories = (double)Math.Round(caloriesNumericUpDown.Value, 2, MidpointRounding.AwayFromZero);
+                DateTime time = specifyTimeDateTimePicker.Visible ? specifyTimeDateTimePicker.Value : DateTime.Now;
                 if (!(Math.Abs((double)distance) > 0))
                 {
                     MessageBox.Show(InvalidDistance, Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                DailyStatusData.Insert(new DailyStatus() { UserId = SelectedUserId, Height = height, Weight = weight, Time = time, Distance = distance, Duration = duration, Calories = calories });
                 LatestProfileData.Update(new LatestProfile() { UserId = SelectedUserId, Height = height, Age = 0, Weight = weight });
-                DailyStatusData.Insert(new DailyStatus() { UserId = SelectedUserId, Height = height, Weight = weight, Time = DateTime.Now, Distance = distance, Duration = duration, Calories = calories });
                 MessageBox.Show(StatusUpdated, Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception exception)
@@ -208,13 +217,13 @@ namespace GraphExperiment
         {
             weightChart.Series.Clear();
             weightChart.Legends.Clear();
-            foreach (var userId in UserMappingData.Get().Select(x=>x.UserId))
+            foreach (var userId in UserMappingData.Get().Select(x => x.UserId))
             {
                 var dailyStatusData = DailyStatusData.GetById(userId);
                 var series = new Series(userId);
                 var legend = new Legend(userId);
                 legend.Docking = Docking.Bottom;
-                dailyStatusData.ForEach(x=>series.Points.AddXY(x.Time,x.Weight));
+                dailyStatusData.ForEach(x => series.Points.AddXY(x.Time, x.Weight));
                 series.ChartType = SeriesChartType.Spline;
                 weightChart.Series.Add(series);
                 weightChart.Legends.Add(legend);
@@ -229,6 +238,17 @@ namespace GraphExperiment
             DatabaseForm dbForm = new DatabaseForm();
             dbForm.ShowIcon = true;
             dbForm.Show();
+        }
+
+        private void setTimeButton_Click(object sender, EventArgs e)
+        {
+            specifyTimeDateTimePicker.Visible = true;
+            setTimeButton.Visible = false;
+        }
+
+        private void userProfilesDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            var x = sender;
         }
     }
 }

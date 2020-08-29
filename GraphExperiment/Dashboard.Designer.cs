@@ -30,6 +30,8 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.weightChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonAddUser = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
@@ -50,6 +52,9 @@
             this.userMappingListBox = new System.Windows.Forms.ListBox();
             this.databasePictureBox = new System.Windows.Forms.PictureBox();
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
+            this.specifyTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.setTimeButton = new System.Windows.Forms.Button();
+            this.userProfilesDataGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.weightChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.distanceNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNumericUpDown)).BeginInit();
@@ -58,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.caloriesNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databasePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userProfilesDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // weightChart
@@ -96,7 +102,7 @@
             // buttonDelete
             // 
             this.buttonDelete.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.buttonDelete.Location = new System.Drawing.Point(216, 654);
+            this.buttonDelete.Location = new System.Drawing.Point(209, 654);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(105, 25);
             this.buttonDelete.TabIndex = 6;
@@ -108,15 +114,25 @@
             // distanceNumericUpDown
             // 
             this.distanceNumericUpDown.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.distanceNumericUpDown.Location = new System.Drawing.Point(426, 654);
+            this.distanceNumericUpDown.Location = new System.Drawing.Point(402, 655);
             this.distanceNumericUpDown.Maximum = new decimal(new int[] {
             99999,
             0,
             0,
             0});
+            this.distanceNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.distanceNumericUpDown.Name = "distanceNumericUpDown";
-            this.distanceNumericUpDown.Size = new System.Drawing.Size(70, 24);
+            this.distanceNumericUpDown.Size = new System.Drawing.Size(60, 24);
             this.distanceNumericUpDown.TabIndex = 14;
+            this.distanceNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // heightNumericUpDown
             // 
@@ -127,14 +143,14 @@
             0,
             0,
             131072});
-            this.heightNumericUpDown.Location = new System.Drawing.Point(589, 654);
+            this.heightNumericUpDown.Location = new System.Drawing.Point(535, 655);
             this.heightNumericUpDown.Maximum = new decimal(new int[] {
             3,
             0,
             0,
             0});
             this.heightNumericUpDown.Name = "heightNumericUpDown";
-            this.heightNumericUpDown.Size = new System.Drawing.Size(70, 24);
+            this.heightNumericUpDown.Size = new System.Drawing.Size(60, 24);
             this.heightNumericUpDown.TabIndex = 16;
             // 
             // weightNumericUpDown
@@ -146,27 +162,27 @@
             0,
             0,
             131072});
-            this.weightNumericUpDown.Location = new System.Drawing.Point(773, 654);
+            this.weightNumericUpDown.Location = new System.Drawing.Point(676, 655);
             this.weightNumericUpDown.Maximum = new decimal(new int[] {
             199,
             0,
             0,
             0});
             this.weightNumericUpDown.Name = "weightNumericUpDown";
-            this.weightNumericUpDown.Size = new System.Drawing.Size(70, 24);
+            this.weightNumericUpDown.Size = new System.Drawing.Size(60, 24);
             this.weightNumericUpDown.TabIndex = 18;
             // 
             // durationNumericUpDown
             // 
             this.durationNumericUpDown.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.durationNumericUpDown.Location = new System.Drawing.Point(962, 654);
+            this.durationNumericUpDown.Location = new System.Drawing.Point(826, 655);
             this.durationNumericUpDown.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.durationNumericUpDown.Name = "durationNumericUpDown";
-            this.durationNumericUpDown.Size = new System.Drawing.Size(70, 24);
+            this.durationNumericUpDown.Size = new System.Drawing.Size(60, 24);
             this.durationNumericUpDown.TabIndex = 18;
             // 
             // caloriesNumericUpDown
@@ -178,14 +194,14 @@
             0,
             0,
             131072});
-            this.caloriesNumericUpDown.Location = new System.Drawing.Point(1116, 654);
+            this.caloriesNumericUpDown.Location = new System.Drawing.Point(954, 655);
             this.caloriesNumericUpDown.Maximum = new decimal(new int[] {
-            3,
+            99999,
             0,
             0,
             0});
             this.caloriesNumericUpDown.Name = "caloriesNumericUpDown";
-            this.caloriesNumericUpDown.Size = new System.Drawing.Size(70, 24);
+            this.caloriesNumericUpDown.Size = new System.Drawing.Size(60, 24);
             this.caloriesNumericUpDown.TabIndex = 16;
             // 
             // dailyStatusUpdateButton
@@ -203,7 +219,7 @@
             // cancelButton
             // 
             this.cancelButton.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.cancelButton.Location = new System.Drawing.Point(1204, 654);
+            this.cancelButton.Location = new System.Drawing.Point(1215, 654);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(70, 25);
             this.cancelButton.TabIndex = 20;
@@ -226,7 +242,7 @@
             // 
             this.distanceLabel.AutoSize = true;
             this.distanceLabel.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.distanceLabel.Location = new System.Drawing.Point(327, 658);
+            this.distanceLabel.Location = new System.Drawing.Point(311, 657);
             this.distanceLabel.Name = "distanceLabel";
             this.distanceLabel.Size = new System.Drawing.Size(96, 17);
             this.distanceLabel.TabIndex = 22;
@@ -236,7 +252,7 @@
             // 
             this.heightLabel.AutoSize = true;
             this.heightLabel.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.heightLabel.Location = new System.Drawing.Point(503, 658);
+            this.heightLabel.Location = new System.Drawing.Point(460, 657);
             this.heightLabel.Name = "heightLabel";
             this.heightLabel.Size = new System.Drawing.Size(80, 17);
             this.heightLabel.TabIndex = 23;
@@ -246,7 +262,7 @@
             // 
             this.weightLabel.AutoSize = true;
             this.weightLabel.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.weightLabel.Location = new System.Drawing.Point(675, 658);
+            this.weightLabel.Location = new System.Drawing.Point(593, 657);
             this.weightLabel.Name = "weightLabel";
             this.weightLabel.Size = new System.Drawing.Size(88, 17);
             this.weightLabel.TabIndex = 24;
@@ -256,7 +272,7 @@
             // 
             this.durationLabel.AutoSize = true;
             this.durationLabel.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.durationLabel.Location = new System.Drawing.Point(860, 658);
+            this.durationLabel.Location = new System.Drawing.Point(735, 657);
             this.durationLabel.Name = "durationLabel";
             this.durationLabel.Size = new System.Drawing.Size(96, 17);
             this.durationLabel.TabIndex = 25;
@@ -266,7 +282,7 @@
             // 
             this.caloriesLabel.AutoSize = true;
             this.caloriesLabel.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.caloriesLabel.Location = new System.Drawing.Point(1038, 658);
+            this.caloriesLabel.Location = new System.Drawing.Point(885, 658);
             this.caloriesLabel.Name = "caloriesLabel";
             this.caloriesLabel.Size = new System.Drawing.Size(72, 17);
             this.caloriesLabel.TabIndex = 26;
@@ -277,7 +293,7 @@
             this.userMappingListBox.FormattingEnabled = true;
             this.userMappingListBox.Location = new System.Drawing.Point(12, 399);
             this.userMappingListBox.Name = "userMappingListBox";
-            this.userMappingListBox.Size = new System.Drawing.Size(195, 251);
+            this.userMappingListBox.Size = new System.Drawing.Size(195, 212);
             this.userMappingListBox.TabIndex = 27;
             this.userMappingListBox.SelectedIndexChanged += new System.EventHandler(this.userMappingListBox_SelectedIndexChanged);
             // 
@@ -305,18 +321,76 @@
             this.pictureBoxRefresh.TabStop = false;
             this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
             // 
+            // specifyTimeDateTimePicker
+            // 
+            this.specifyTimeDateTimePicker.CustomFormat = "yyyy-MMM-dd HH:mm:ss";
+            this.specifyTimeDateTimePicker.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
+            this.specifyTimeDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.specifyTimeDateTimePicker.Location = new System.Drawing.Point(1028, 655);
+            this.specifyTimeDateTimePicker.Name = "specifyTimeDateTimePicker";
+            this.specifyTimeDateTimePicker.Size = new System.Drawing.Size(181, 24);
+            this.specifyTimeDateTimePicker.TabIndex = 30;
+            // 
+            // setTimeButton
+            // 
+            this.setTimeButton.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
+            this.setTimeButton.Location = new System.Drawing.Point(1028, 654);
+            this.setTimeButton.Name = "setTimeButton";
+            this.setTimeButton.Size = new System.Drawing.Size(181, 25);
+            this.setTimeButton.TabIndex = 31;
+            this.setTimeButton.Text = "Specify Time";
+            this.setTimeButton.UseVisualStyleBackColor = true;
+            this.setTimeButton.Click += new System.EventHandler(this.setTimeButton_Click);
+            // 
+            // userProfilesDataGridView
+            // 
+            this.userProfilesDataGridView.AllowUserToAddRows = false;
+            this.userProfilesDataGridView.AllowUserToDeleteRows = false;
+            this.userProfilesDataGridView.AllowUserToOrderColumns = true;
+            this.userProfilesDataGridView.AllowUserToResizeColumns = false;
+            this.userProfilesDataGridView.AllowUserToResizeRows = false;
+            this.userProfilesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.userProfilesDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.userProfilesDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.userProfilesDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 9.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.userProfilesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.userProfilesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.userProfilesDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.userProfilesDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.userProfilesDataGridView.Location = new System.Drawing.Point(12, 614);
+            this.userProfilesDataGridView.Name = "userProfilesDataGridView";
+            this.userProfilesDataGridView.ReadOnly = true;
+            this.userProfilesDataGridView.RowHeadersVisible = false;
+            this.userProfilesDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.userProfilesDataGridView.Size = new System.Drawing.Size(1346, 34);
+            this.userProfilesDataGridView.TabIndex = 32;
+            this.userProfilesDataGridView.SelectionChanged += new System.EventHandler(this.userProfilesDataGridView_SelectionChanged);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1362, 691);
+            this.Controls.Add(this.userProfilesDataGridView);
+            this.Controls.Add(this.setTimeButton);
+            this.Controls.Add(this.specifyTimeDateTimePicker);
             this.Controls.Add(this.databasePictureBox);
             this.Controls.Add(this.userMappingListBox);
-            this.Controls.Add(this.caloriesLabel);
-            this.Controls.Add(this.durationLabel);
-            this.Controls.Add(this.weightLabel);
-            this.Controls.Add(this.heightLabel);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.dailyStatusUpdateButton);
@@ -331,6 +405,10 @@
             this.Controls.Add(this.buttonAddUser);
             this.Controls.Add(this.weightChart);
             this.Controls.Add(this.distanceLabel);
+            this.Controls.Add(this.heightLabel);
+            this.Controls.Add(this.weightLabel);
+            this.Controls.Add(this.durationLabel);
+            this.Controls.Add(this.caloriesLabel);
             this.MaximumSize = new System.Drawing.Size(1386, 730);
             this.MinimumSize = new System.Drawing.Size(1364, 726);
             this.Name = "Dashboard";
@@ -345,6 +423,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.caloriesNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databasePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userProfilesDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,5 +451,8 @@
         private System.Windows.Forms.Label caloriesLabel;
         private System.Windows.Forms.ListBox userMappingListBox;
         private System.Windows.Forms.PictureBox databasePictureBox;
+        private System.Windows.Forms.DateTimePicker specifyTimeDateTimePicker;
+        private System.Windows.Forms.Button setTimeButton;
+        private System.Windows.Forms.DataGridView userProfilesDataGridView;
     }
 }

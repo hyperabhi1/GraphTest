@@ -14,7 +14,7 @@ namespace GraphExperiment.DAL
         public static List<DailyStatus> Get()
         {
             List<DailyStatus> dailyStatuss = new List<DailyStatus>();
-            string query = $"SELECT * FROM {DailyStatus};";
+            string query = $"SELECT [UserId] ,[Time] ,[Distance] ,[Weight] ,[Calories] ,[Height] ,[Duration] FROM [dbo].[{DailyStatus}] ORDER BY [UserId], [Time] DESC;";
             var dataTable = MySQLAdapter.Get(query);
             foreach (DataRow row in dataTable.Rows)
             {
