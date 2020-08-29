@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using GraphExperiment.DAL;
 using GraphExperiment.Data;
 using GraphExperiment.Models;
@@ -17,7 +18,7 @@ namespace GraphExperiment
 {
     public partial class Dashboard : Form
     {
-        private static string UserId = String.Empty;
+        private static string SelectedUserId = String.Empty;
         public Dashboard()
         {
             InitializeComponent();
@@ -48,6 +49,8 @@ namespace GraphExperiment
             //latestProfileDataGridView.Refresh();
             //dailyStatusUpdateDataGridView.Refresh();
             HideDailyStatusControls();
+
+            RefreshChart();
             return;
         }
 
@@ -60,9 +63,9 @@ namespace GraphExperiment
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(UserId))
+            if (!string.IsNullOrEmpty(SelectedUserId))
             {
-                var editUserForm = new EditUser(UserId);
+                var editUserForm = new EditUser(SelectedUserId);
                 editUserForm.ShowDialog();
                 editUserForm.ShowIcon = true;
                 editUserForm.ShowInTaskbar = true;
@@ -78,9 +81,9 @@ namespace GraphExperiment
                 buttonDelete.Visible = true;
                 dailyStatusUpdateButton.Visible = true;
                 dailyStatusUpdateButton.Text = HiWannaUpdateTodayStatus.Replace("_", userId);
-                UserId = userId;
+                SelectedUserId = userId;
 
-                var latestProfile = LatestProfileData.GetById(UserId).FirstOrDefault();
+                var latestProfile = LatestProfileData.GetById(SelectedUserId).FirstOrDefault();
                 heightNumericUpDown.Value = (decimal)latestProfile.Height;
                 weightNumericUpDown.Value = (decimal)latestProfile.Weight;
 
@@ -93,7 +96,7 @@ namespace GraphExperiment
                 buttonEdit.Visible = false;
                 buttonDelete.Visible = false;
                 dailyStatusUpdateButton.Visible = false;
-                UserId = String.Empty;
+                SelectedUserId = String.Empty;
                 dailyStatusUpdateButton.Text = "??????????????????????????????????";
 
 
@@ -113,14 +116,14 @@ namespace GraphExperiment
                 (MessageBox.Show(Delete2VerificationMessage, Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) ==
                  DialogResult.Yes))
             {
-                if (!string.IsNullOrEmpty(UserId))
+                if (!string.IsNullOrEmpty(SelectedUserId))
                 {
                     try
                     {
-                        UserProfileData.Delete(UserId);
-                        UserMappingData.Delete(UserId);
-                        LatestProfileData.Delete(UserId);
-                        DailyStatusData.Delete(UserId);
+                        UserProfileData.Delete(SelectedUserId);
+                        UserMappingData.Delete(SelectedUserId);
+                        LatestProfileData.Delete(SelectedUserId);
+                        DailyStatusData.Delete(SelectedUserId);
                         MessageBox.Show(UserDeleted, Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception exception)
@@ -181,8 +184,8 @@ namespace GraphExperiment
                     MessageBox.Show(InvalidDistance, Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                LatestProfileData.Update(new LatestProfile() { UserId = UserId, Height = height, Age = 0, Weight = weight });
-                DailyStatusData.Insert(new DailyStatus() { UserId = UserId, Height = height, Weight = weight, Time = DateTime.Now, Distance = distance, Duration = duration, Calories = calories });
+                LatestProfileData.Update(new LatestProfile() { UserId = SelectedUserId, Height = height, Age = 0, Weight = weight });
+                DailyStatusData.Insert(new DailyStatus() { UserId = SelectedUserId, Height = height, Weight = weight, Time = DateTime.Now, Distance = distance, Duration = duration, Calories = calories });
                 MessageBox.Show(StatusUpdated, Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception exception)
@@ -198,6 +201,17 @@ namespace GraphExperiment
             saveButton.Visible = false;
             HideDailyStatusControls();
             dailyStatusUpdateButton.Visible = true;
+        }
+
+        private void RefreshChart()
+        {
+            foreach (var userId in UserMappingData.Get().Select(x=>x.UserId))
+            {
+                var dailyStatusData = DailyStatusData.GetById(userId);
+                var series = new Series(userId);
+                dailyStatusData.ForEach(x=>series.Points.AddXY(x.Time,x.Weight));
+                chart1.Series.Add(series);
+            }
         }
     }
 }
