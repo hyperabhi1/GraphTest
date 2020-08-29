@@ -41,13 +41,7 @@ namespace GraphExperiment
         {
             ClickEffect();
             userMappingListBox.DataSource = new BindingSource(new BindingList<string>(UserMappingData.Get().Select(x=>x.UserId).ToList()), null);
-            //userProfileDataGridView.DataSource = new BindingSource(new BindingList<UserProfile>(UserProfileData.Get()), null);
-            //latestProfileDataGridView.DataSource = new BindingSource(new BindingList<LatestProfile>(LatestProfileData.Get()), null);
-            //dailyStatusUpdateDataGridView.DataSource = new BindingSource(new BindingList<DailyStatus>(DailyStatusData.Get()), null);
             userMappingListBox.Refresh();
-            //userProfileDataGridView.Refresh();
-            //latestProfileDataGridView.Refresh();
-            //dailyStatusUpdateDataGridView.Refresh();
             HideDailyStatusControls();
 
             RefreshChart();
@@ -59,6 +53,13 @@ namespace GraphExperiment
             pictureBoxRefresh.BorderStyle = BorderStyle.FixedSingle;
             Thread.Sleep(50);
             pictureBoxRefresh.BorderStyle = BorderStyle.Fixed3D;
+        }
+
+        private async void DBClickEffect()
+        {
+            databasePictureBox.BorderStyle = BorderStyle.FixedSingle;
+            Thread.Sleep(50);
+            databasePictureBox.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -205,13 +206,29 @@ namespace GraphExperiment
 
         private void RefreshChart()
         {
+            weightChart.Series.Clear();
+            weightChart.Legends.Clear();
             foreach (var userId in UserMappingData.Get().Select(x=>x.UserId))
             {
                 var dailyStatusData = DailyStatusData.GetById(userId);
                 var series = new Series(userId);
+                var legend = new Legend(userId);
+                legend.Docking = Docking.Bottom;
                 dailyStatusData.ForEach(x=>series.Points.AddXY(x.Time,x.Weight));
-                chart1.Series.Add(series);
+                series.ChartType = SeriesChartType.Spline;
+                weightChart.Series.Add(series);
+                weightChart.Legends.Add(legend);
+                weightChart.Palette = ChartColorPalette.BrightPastel;
             }
+            //weightChart.
+        }
+
+        private void databasePictureBox_Click(object sender, EventArgs e)
+        {
+            DBClickEffect();
+            DatabaseForm dbForm = new DatabaseForm();
+            dbForm.ShowIcon = true;
+            dbForm.Show();
         }
     }
 }

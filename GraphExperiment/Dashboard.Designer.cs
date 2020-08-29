@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
+            this.weightChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonAddUser = new System.Windows.Forms.Button();
-            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.distanceNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -50,30 +48,27 @@
             this.durationLabel = new System.Windows.Forms.Label();
             this.caloriesLabel = new System.Windows.Forms.Label();
             this.userMappingListBox = new System.Windows.Forms.ListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
+            this.databasePictureBox = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.weightChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.distanceNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.durationNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.caloriesNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databasePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             this.SuspendLayout();
             // 
-            // chart1
+            // weightChart
             // 
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(12, 35);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1346, 352);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
+            this.weightChart.ChartAreas.Add(chartArea1);
+            this.weightChart.Location = new System.Drawing.Point(12, 35);
+            this.weightChart.Name = "weightChart";
+            this.weightChart.Size = new System.Drawing.Size(1346, 352);
+            this.weightChart.TabIndex = 0;
+            this.weightChart.Text = "Weight Chart";
             // 
             // buttonAddUser
             // 
@@ -85,18 +80,6 @@
             this.buttonAddUser.Text = "Add User";
             this.buttonAddUser.UseVisualStyleBackColor = true;
             this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
-            // 
-            // pictureBoxRefresh
-            // 
-            this.pictureBoxRefresh.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxRefresh.Image = global::GraphExperiment.Properties.Resources.Refresh;
-            this.pictureBoxRefresh.Location = new System.Drawing.Point(213, 399);
-            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
-            this.pictureBoxRefresh.Size = new System.Drawing.Size(22, 22);
-            this.pictureBoxRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxRefresh.TabIndex = 4;
-            this.pictureBoxRefresh.TabStop = false;
-            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
             // 
             // buttonEdit
             // 
@@ -231,7 +214,7 @@
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.saveButton.Location = new System.Drawing.Point(1280, 654);
+            this.saveButton.Location = new System.Drawing.Point(1288, 654);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(70, 25);
             this.saveButton.TabIndex = 21;
@@ -298,12 +281,37 @@
             this.userMappingListBox.TabIndex = 27;
             this.userMappingListBox.SelectedIndexChanged += new System.EventHandler(this.userMappingListBox_SelectedIndexChanged);
             // 
+            // databasePictureBox
+            // 
+            this.databasePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.databasePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("databasePictureBox.Image")));
+            this.databasePictureBox.Location = new System.Drawing.Point(213, 438);
+            this.databasePictureBox.Name = "databasePictureBox";
+            this.databasePictureBox.Size = new System.Drawing.Size(38, 31);
+            this.databasePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.databasePictureBox.TabIndex = 29;
+            this.databasePictureBox.TabStop = false;
+            this.databasePictureBox.Click += new System.EventHandler(this.databasePictureBox_Click);
+            // 
+            // pictureBoxRefresh
+            // 
+            this.pictureBoxRefresh.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBoxRefresh.Image = global::GraphExperiment.Properties.Resources.Refresh;
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(213, 399);
+            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
+            this.pictureBoxRefresh.Size = new System.Drawing.Size(38, 33);
+            this.pictureBoxRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxRefresh.TabIndex = 4;
+            this.pictureBoxRefresh.TabStop = false;
+            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1362, 691);
+            this.Controls.Add(this.databasePictureBox);
             this.Controls.Add(this.userMappingListBox);
             this.Controls.Add(this.caloriesLabel);
             this.Controls.Add(this.durationLabel);
@@ -321,7 +329,7 @@
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.pictureBoxRefresh);
             this.Controls.Add(this.buttonAddUser);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.weightChart);
             this.Controls.Add(this.distanceLabel);
             this.MaximumSize = new System.Drawing.Size(1386, 730);
             this.MinimumSize = new System.Drawing.Size(1364, 726);
@@ -329,13 +337,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Dashboard_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weightChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.distanceNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.durationNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.caloriesNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databasePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,7 +352,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart weightChart;
         private System.Windows.Forms.Button buttonAddUser;
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.Button buttonEdit;
@@ -362,5 +371,6 @@
         private System.Windows.Forms.Label durationLabel;
         private System.Windows.Forms.Label caloriesLabel;
         private System.Windows.Forms.ListBox userMappingListBox;
+        private System.Windows.Forms.PictureBox databasePictureBox;
     }
 }

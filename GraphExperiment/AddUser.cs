@@ -51,6 +51,9 @@ namespace GraphExperiment
                 }
                 catch (Exception exception)
                 {
+                    UserProfileData.Delete(userId);
+                    UserMappingData.Delete(userId);
+                    LatestProfileData.Delete(userId);
                     MessageBox.Show(Constants.UserProfile + ColonSeparator + exception.Message, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
