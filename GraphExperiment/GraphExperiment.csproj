@@ -100,8 +100,8 @@
     <Compile Include="AddUser.Designer.cs">
       <DependentUpon>AddUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="DAL.cs" />
     <Compile Include="DAL\DailyStatusData.cs" />
     <Compile Include="DAL\LatestProfileData.cs" />
     <Compile Include="DAL\UserMappingData.cs" />
@@ -134,6 +134,7 @@
     <Compile Include="Models\LatestProfile.cs" />
     <Compile Include="Models\UserMapping.cs" />
     <Compile Include="Models\UserProfile.cs" />
+    <Compile Include="Models\UserStats.cs" />
     <Compile Include="MySQLAdapter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

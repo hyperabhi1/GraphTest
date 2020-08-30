@@ -155,9 +155,19 @@
             0,
             0,
             0});
+            this.weightNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.weightNumericUpDown.Name = "weightNumericUpDown";
             this.weightNumericUpDown.Size = new System.Drawing.Size(60, 24);
             this.weightNumericUpDown.TabIndex = 18;
+            this.weightNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // durationNumericUpDown
             // 
@@ -168,9 +178,19 @@
             0,
             0,
             0});
+            this.durationNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.durationNumericUpDown.Name = "durationNumericUpDown";
             this.durationNumericUpDown.Size = new System.Drawing.Size(60, 24);
             this.durationNumericUpDown.TabIndex = 18;
+            this.durationNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // caloriesNumericUpDown
             // 
