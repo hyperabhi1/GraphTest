@@ -223,7 +223,6 @@ namespace GraphExperiment
                     weightCartesianChart.AxisX.Clear();
                     weightCartesianChart.AxisX.Add(new LiveCharts.Wpf.Axis
                     {
-                        LabelsRotation = 91,
                         LabelFormatter = value => new DateTime((long)(value * TimeSpan.FromSeconds(1).Ticks)).ToString("yyyy-MMM-dd")
                     });
                 }

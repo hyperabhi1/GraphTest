@@ -62,38 +62,39 @@ namespace GraphExperiment
 
             return userStatsPair;
         }
-
-        public static SeriesCollection GetSeriesCollection(string userFullName, List<KeyValuePair<DateTime, double>> list)
+        //lineseries->(fullName,(chartValues->(List<KeyValuePair<DateTime, double>>)))
+        public static ChartValues<DateModel> GetChartValues(List<KeyValuePair<DateTime, double>> list)
         {
+            var chartValues = new ChartValues<DateModel>();
             if (list != null && list.Any())
             {
-                var dayConfig = Mappers.Xy<DateModel>()
-                    .X(dateModel => dateModel.Time.Ticks / TimeSpan.FromSeconds(1).Ticks)
-                    .Y(dateModel => dateModel.Value);
-                var seriesCollection = new LiveCharts.SeriesCollection(dayConfig);
-
                 foreach (var valuePair in list)
                 {
-                    var chartValues = new ChartValues<DateModel>();
                     list.ForEach(x => chartValues.Add(new DateModel()
                     {
                         Time = x.Key,
                         Value = x.Value
                     }));
-                    LineSeries ls = new LineSeries()
-                    {
-                        Title = userFullName,
-                        PointGeometrySize = 10,
-                        Values = chartValues
-                    };
-                    seriesCollection.Add(ls);
                 }
-                return seriesCollection;
             }
-            else
+            return chartValues;
+        }
+
+        public static LineSeries GetLineSeries(string fullName, ChartValues<DateModel> chartValues)
+        {
+            return new LineSeries()
             {
-                return null;
-            }
+                Title = fullName,
+                PointGeometrySize = 10,
+                Values = chartValues
+            };
+        }
+        public static SeriesCollection GetSeriesCollection()
+        {
+            var dayConfig = Mappers.Xy<DateModel>()
+                .X(dateModel => dateModel.Time.Ticks / TimeSpan.FromSeconds(1).Ticks)
+                .Y(dateModel => dateModel.Value);
+            return new LiveCharts.SeriesCollection(dayConfig);
         }
 
         public static Axis GetDateTimeAxis()

@@ -36,97 +36,61 @@ namespace GraphExperiment
                 var userMappingCollection = UserMappingData.GetById(_userId);
                 if (userMappingCollection.Any())
                 {
+                    var durationSeriesCollection = Common.GetSeriesCollection();
+                    var distanceSeriesCollection = Common.GetSeriesCollection();
+                    var caloriesSeriesCollection = Common.GetSeriesCollection();
+                    var bmiSeriesCollection = Common.GetSeriesCollection();
+                    var effortSeriesCollection = Common.GetSeriesCollection();
+
                     foreach (var userMapping in userMappingCollection)
                     {
                         var userStatsPair = Common.ConvertToUserStatsPair(DailyStatusData.GetById(userMapping.UserId));
+
                         if (userStatsPair != null)
                         {
-                            #region DurationGraph
-                            var durationSeriesCollection =
-                                Common.GetSeriesCollection(userMapping.FullName, userStatsPair.DurationCollection);
-
-                            if (durationSeriesCollection != null && durationSeriesCollection.Any())
-                            {
-                                durationCartesianChart.Series.Clear();
-                                durationCartesianChart.Series = durationSeriesCollection;
-                                durationCartesianChart.AxisX.Clear();
-                                durationCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
-                            }
-                            else
-                            {
-                                durationCartesianChart.Series.Clear();
-                            }
-                            #endregion
-
-                            #region DistanceGraph
-                            var distanceSeriesCollection =
-                                Common.GetSeriesCollection(userMapping.FullName, userStatsPair.DistanceCollection);
-
-                            if (distanceSeriesCollection != null && distanceSeriesCollection.Any())
-                            {
-                                distanceCartesianChart.Series.Clear();
-                                distanceCartesianChart.Series = distanceSeriesCollection;
-                                distanceCartesianChart.AxisX.Clear();
-                                distanceCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
-                            }
-                            else
-                            {
-                                distanceCartesianChart.Series.Clear();
-                            }
-                            #endregion
-
-                            #region CaloriesGraph
-                            var caloriesSeriesCollection =
-                                Common.GetSeriesCollection(userMapping.FullName, userStatsPair.CaloriesCollection);
-
-                            if (caloriesSeriesCollection != null && caloriesSeriesCollection.Any())
-                            {
-                                caloriesCartesianChart.Series.Clear();
-                                caloriesCartesianChart.Series = caloriesSeriesCollection;
-                                caloriesCartesianChart.AxisX.Clear();
-                                caloriesCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
-                            }
-                            else
-                            {
-                                caloriesCartesianChart.Series.Clear();
-                            }
-                            #endregion
-
-                            #region BMIGraph
-                            var bmiSeriesCollection =
-                                Common.GetSeriesCollection(userMapping.FullName, userStatsPair.BmiCollection);
-
-                            if (bmiSeriesCollection != null && bmiSeriesCollection.Any())
-                            {
-                                bmiCartesianChart.Series.Clear();
-                                bmiCartesianChart.Series = bmiSeriesCollection;
-                                bmiCartesianChart.AxisX.Clear();
-                                bmiCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
-                            }
-                            else
-                            {
-                                bmiCartesianChart.Series.Clear();
-                            }
-                            #endregion
-
-                            #region EffortGraph
-                            var effortSeriesCollection =
-                                Common.GetSeriesCollection(userMapping.FullName, userStatsPair.EffortCollection);
-
-                            if (effortSeriesCollection != null && effortSeriesCollection.Any())
-                            {
-                                effortCartesianChart.Series.Clear();
-                                effortCartesianChart.Series = effortSeriesCollection;
-                                effortCartesianChart.AxisX.Clear();
-                                effortCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
-                            }
-                            else
-                            {
-                                effortCartesianChart.Series.Clear();
-                            }
-                            #endregion
-
+                            durationSeriesCollection.Add(Common.GetLineSeries(userMapping.FullName, Common.GetChartValues(userStatsPair.DurationCollection)));
+                            distanceSeriesCollection.Add(Common.GetLineSeries(userMapping.FullName, Common.GetChartValues(userStatsPair.DistanceCollection)));
+                            caloriesSeriesCollection.Add(Common.GetLineSeries(userMapping.FullName, Common.GetChartValues(userStatsPair.CaloriesCollection)));
+                            bmiSeriesCollection.Add(Common.GetLineSeries(userMapping.FullName, Common.GetChartValues(userStatsPair.BmiCollection)));
+                            effortSeriesCollection.Add(Common.GetLineSeries(userMapping.FullName, Common.GetChartValues(userStatsPair.EffortCollection)));
                         }
+                    }
+                    if(durationSeriesCollection.Count > 0)
+                    {
+                        durationCartesianChart.Series.Clear();
+                        durationCartesianChart.Series = durationSeriesCollection;
+                        durationCartesianChart.AxisX.Clear();
+                        durationCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
+                    }
+
+                    if (distanceSeriesCollection.Count > 0)
+                    {
+                        distanceCartesianChart.Series.Clear();
+                        distanceCartesianChart.Series = distanceSeriesCollection;
+                        distanceCartesianChart.AxisX.Clear();
+                        distanceCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
+                    }
+                    if(caloriesSeriesCollection.Count > 0)
+                    {
+                        caloriesCartesianChart.Series.Clear();
+                        caloriesCartesianChart.Series = caloriesSeriesCollection;
+                        caloriesCartesianChart.AxisX.Clear();
+                        caloriesCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
+                    }
+                    if(bmiSeriesCollection.Count > 0)
+                    {
+                        bmiCartesianChart.Series.Clear();
+                        bmiCartesianChart.Series = bmiSeriesCollection;
+                        bmiCartesianChart.AxisX.Clear();
+                        bmiCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
+                    }
+
+                    if (effortSeriesCollection.Count > 0)
+                    {
+                        effortCartesianChart.Series.Clear();
+                        effortCartesianChart.Series = effortSeriesCollection;
+                        effortCartesianChart.AxisX.Clear();
+                        effortCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
                     }
                 }
             }
@@ -135,97 +99,69 @@ namespace GraphExperiment
                 var userMappingCollection = UserMappingData.Get();
                 if (userMappingCollection.Any())
                 {
+                    var durationSeriesCollection = Common.GetSeriesCollection();
+                    var distanceSeriesCollection = Common.GetSeriesCollection();
+                    var caloriesSeriesCollection = Common.GetSeriesCollection();
+                    var bmiSeriesCollection = Common.GetSeriesCollection();
+                    var effortSeriesCollection = Common.GetSeriesCollection();
+
                     foreach (var userMapping in userMappingCollection)
                     {
                         var userStatsPair = Common.ConvertToUserStatsPair(DailyStatusData.GetById(userMapping.UserId));
+
                         if (userStatsPair != null)
                         {
-                            #region DurationGraph
-                            var durationSeriesCollection =
-                                Common.GetSeriesCollection(userMapping.FullName, userStatsPair.DurationCollection);
-
-                            if (durationSeriesCollection != null && durationSeriesCollection.Any())
-                            {
-                                durationCartesianChart.Series.Clear();
-                                durationCartesianChart.Series = durationSeriesCollection;
-                                durationCartesianChart.AxisX.Clear();
-                                durationCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
-                            }
-                            else
-                            {
-                                durationCartesianChart.Series.Clear();
-                            }
-                            #endregion
-
-                            #region DistanceGraph
-                            var distanceSeriesCollection =
-                                Common.GetSeriesCollection(userMapping.FullName, userStatsPair.DistanceCollection);
-
-                            if (distanceSeriesCollection != null && distanceSeriesCollection.Any())
-                            {
-                                distanceCartesianChart.Series.Clear();
-                                distanceCartesianChart.Series = distanceSeriesCollection;
-                                distanceCartesianChart.AxisX.Clear();
-                                distanceCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
-                            }
-                            else
-                            {
-                                distanceCartesianChart.Series.Clear();
-                            }
-                            #endregion
-
-                            #region CaloriesGraph
-                            var caloriesSeriesCollection =
-                                Common.GetSeriesCollection(userMapping.FullName, userStatsPair.CaloriesCollection);
-
-                            if (caloriesSeriesCollection != null && caloriesSeriesCollection.Any())
-                            {
-                                caloriesCartesianChart.Series.Clear();
-                                caloriesCartesianChart.Series = caloriesSeriesCollection;
-                                caloriesCartesianChart.AxisX.Clear();
-                                caloriesCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
-                            }
-                            else
-                            {
-                                caloriesCartesianChart.Series.Clear();
-                            }
-                            #endregion
-
-                            #region BMIGraph
-                            var bmiSeriesCollection =
-                                Common.GetSeriesCollection(userMapping.FullName, userStatsPair.BmiCollection);
-
-                            if (bmiSeriesCollection != null && bmiSeriesCollection.Any())
-                            {
-                                bmiCartesianChart.Series.Clear();
-                                bmiCartesianChart.Series = bmiSeriesCollection;
-                                bmiCartesianChart.AxisX.Clear();
-                                bmiCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
-                            }
-                            else
-                            {
-                                bmiCartesianChart.Series.Clear();
-                            }
-                            #endregion
-
-                            #region EffortGraph
-                            var effortSeriesCollection =
-                                Common.GetSeriesCollection(userMapping.FullName, userStatsPair.EffortCollection);
-
-                            if (effortSeriesCollection != null && effortSeriesCollection.Any())
-                            {
-                                effortCartesianChart.Series.Clear();
-                                effortCartesianChart.Series = effortSeriesCollection;
-                                effortCartesianChart.AxisX.Clear();
-                                effortCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
-                            }
-                            else
-                            {
-                                effortCartesianChart.Series.Clear();
-                            }
-                            #endregion
-
+                            durationSeriesCollection.Add(Common.GetLineSeries(userMapping.FullName,
+                                Common.GetChartValues(userStatsPair.DurationCollection)));
+                            distanceSeriesCollection.Add(Common.GetLineSeries(userMapping.FullName,
+                                Common.GetChartValues(userStatsPair.DistanceCollection)));
+                            caloriesSeriesCollection.Add(Common.GetLineSeries(userMapping.FullName,
+                                Common.GetChartValues(userStatsPair.CaloriesCollection)));
+                            bmiSeriesCollection.Add(Common.GetLineSeries(userMapping.FullName,
+                                Common.GetChartValues(userStatsPair.BmiCollection)));
+                            effortSeriesCollection.Add(Common.GetLineSeries(userMapping.FullName,
+                                Common.GetChartValues(userStatsPair.EffortCollection)));
                         }
+                    }
+
+                    if (durationSeriesCollection.Count > 0)
+                    {
+                        durationCartesianChart.Series.Clear();
+                        durationCartesianChart.Series = durationSeriesCollection;
+                        durationCartesianChart.AxisX.Clear();
+                        durationCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
+                    }
+
+                    if (distanceSeriesCollection.Count > 0)
+                    {
+                        distanceCartesianChart.Series.Clear();
+                        distanceCartesianChart.Series = distanceSeriesCollection;
+                        distanceCartesianChart.AxisX.Clear();
+                        distanceCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
+                    }
+
+                    if (caloriesSeriesCollection.Count > 0)
+                    {
+                        caloriesCartesianChart.Series.Clear();
+                        caloriesCartesianChart.Series = caloriesSeriesCollection;
+                        caloriesCartesianChart.AxisX.Clear();
+                        caloriesCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
+                    }
+
+                    if (bmiSeriesCollection.Count > 0)
+                    {
+                        bmiCartesianChart.Series.Clear();
+                        bmiCartesianChart.Series = bmiSeriesCollection;
+                        bmiCartesianChart.AxisX.Clear();
+                        bmiCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
+                    }
+
+                    if (effortSeriesCollection.Count > 0)
+                    {
+                        effortCartesianChart.Series.Clear();
+                        effortCartesianChart.Series = effortSeriesCollection;
+                        effortCartesianChart.AxisX.Clear();
+                        effortCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
                     }
                 }
             }
