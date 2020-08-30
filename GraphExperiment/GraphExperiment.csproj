@@ -118,6 +118,12 @@
     <Compile Include="DatabaseForm.Designer.cs">
       <DependentUpon>DatabaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetailedChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailedChartForm.Designer.cs">
+      <DependentUpon>DetailedChartForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseForm.resx">
       <DependentUpon>DatabaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailedChartForm.resx">
+      <DependentUpon>DetailedChartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditUser.resx">
       <DependentUpon>EditUser.cs</DependentUpon>

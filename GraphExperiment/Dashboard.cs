@@ -112,6 +112,8 @@ namespace GraphExperiment
         {
             UnHideDailyStatusControls();
             dailyStatusUpdateButton.Visible = false;
+            detailGraphButton.Visible = false;
+            cululativeDetailGraphButton.Visible = false;
         }
         private void HideDailyStatusControls()
         {
@@ -180,6 +182,8 @@ namespace GraphExperiment
             saveButton.Visible = false;
             HideDailyStatusControls();
             dailyStatusUpdateButton.Visible = true;
+            detailGraphButton.Visible = true;
+            cululativeDetailGraphButton.Visible = true;
         }
 
         private void RefreshChart()
@@ -220,7 +224,7 @@ namespace GraphExperiment
                     weightCartesianChart.AxisX.Add(new LiveCharts.Wpf.Axis
                     {
                         LabelsRotation = 91,
-                        LabelFormatter = value => new DateTime((long)(value * TimeSpan.FromSeconds(1).Ticks)).ToString("yyyy-MMM-dd hh:mm:ss")
+                        LabelFormatter = value => new DateTime((long)(value * TimeSpan.FromSeconds(1).Ticks)).ToString("yyyy-MMM-dd")
                     });
                 }
             }
@@ -230,7 +234,6 @@ namespace GraphExperiment
         {
             DBClickEffect();
             DatabaseForm dbForm = new DatabaseForm();
-            dbForm.ShowIcon = true;
             dbForm.Show();
         }
 
@@ -253,6 +256,8 @@ namespace GraphExperiment
                     buttonEdit.Visible = true;
                     buttonDelete.Visible = true;
                     dailyStatusUpdateButton.Visible = true;
+                    detailGraphButton.Visible = true;
+                    cululativeDetailGraphButton.Visible = true;
                     dailyStatusUpdateButton.Text = HiWannaUpdateTodayStatus.Replace("_", userId);
                     SelectedUserId = userId;
 
@@ -261,7 +266,7 @@ namespace GraphExperiment
                     weightNumericUpDown.Value = (decimal)latestProfile.Weight;
 
                     distanceNumericUpDown.Value = 1;
-                    durationNumericUpDown.Value = 0;
+                    durationNumericUpDown.Value = 1;
                     caloriesNumericUpDown.Value = 0;
                 }
                 else
@@ -269,14 +274,16 @@ namespace GraphExperiment
                     buttonEdit.Visible = false;
                     buttonDelete.Visible = false;
                     dailyStatusUpdateButton.Visible = false;
+                    detailGraphButton.Visible = false;
+                    cululativeDetailGraphButton.Visible = false;
                     SelectedUserId = String.Empty;
                     dailyStatusUpdateButton.Text = "";
 
 
                     heightNumericUpDown.Value = 0;
-                    weightNumericUpDown.Value = 0;
+                    weightNumericUpDown.Value = 1;
                     distanceNumericUpDown.Value = 1;
-                    durationNumericUpDown.Value = 0;
+                    durationNumericUpDown.Value = 1;
                     caloriesNumericUpDown.Value = 0;
                 }
                 HideDailyStatusControls();
@@ -285,6 +292,21 @@ namespace GraphExperiment
             {
                 MessageBox.Show(Constants.UserProfile + ColonSeparator + e.Message, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void detailedGraphButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(SelectedUserId))
+            {
+                DetailedChartForm detailedChart = new DetailedChartForm(SelectedUserId);
+                detailedChart.Show();
+            }
+        }
+
+        private void cululativeDetailGraphButton_Click(object sender, EventArgs e)
+        {
+            DetailedChartForm detailedChart = new DetailedChartForm();
+            detailedChart.Show();
         }
     }
 }
