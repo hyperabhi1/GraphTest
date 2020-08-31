@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Windows.Media;
 using GraphExperiment.DAL;
 using GraphExperiment.Data;
 using GraphExperiment.Models;
@@ -223,8 +224,9 @@ namespace GraphExperiment
                         LineSeries ls = new LineSeries()
                         {
                             Title = userMapping.FullName,
-                            PointGeometrySize = 10,
-                            Values = chartValues
+                            PointGeometrySize = 5,
+                            Values = chartValues,
+                            Fill = new LinearGradientBrush()
                         };
                         seriesCollection.Add(ls);
 
@@ -234,6 +236,7 @@ namespace GraphExperiment
                 {
                     weightCartesianChart.Series.Clear();
                     weightCartesianChart.Series = seriesCollection;
+                    weightCartesianChart.LegendLocation = LegendLocation.Right;
                     weightCartesianChart.AxisX.Clear();
                     weightCartesianChart.AxisX.Add(new LiveCharts.Wpf.Axis
                     {
