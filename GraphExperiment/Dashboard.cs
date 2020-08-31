@@ -234,7 +234,6 @@ namespace GraphExperiment
                 {
                     weightCartesianChart.Series.Clear();
                     weightCartesianChart.Series = seriesCollection;
-                    weightCartesianChart.AxisY.Add( new LiveCharts.Wpf.Axis { MinValue = 0 });
                     weightCartesianChart.AxisX.Clear();
                     weightCartesianChart.AxisX.Add(new LiveCharts.Wpf.Axis
                     {
