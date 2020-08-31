@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.buttonAddUser = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
@@ -52,10 +52,11 @@
             this.userProfilesDataGridView = new System.Windows.Forms.DataGridView();
             this.weightCartesianChart = new LiveCharts.WinForms.CartesianChart();
             this.detailGraphButton = new System.Windows.Forms.Button();
-            this.databasePictureBox = new System.Windows.Forms.PictureBox();
-            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.weightlbl = new System.Windows.Forms.Label();
             this.cululativeDetailGraphButton = new System.Windows.Forms.Button();
+            this.compareGraphButton = new System.Windows.Forms.Button();
+            this.databasePictureBox = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.distanceNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).BeginInit();
@@ -92,7 +93,7 @@
             // buttonDelete
             // 
             this.buttonDelete.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.buttonDelete.Location = new System.Drawing.Point(206, 671);
+            this.buttonDelete.Location = new System.Drawing.Point(209, 671);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(105, 25);
             this.buttonDelete.TabIndex = 6;
@@ -237,7 +238,7 @@
             // dailyStatusUpdateButton
             // 
             this.dailyStatusUpdateButton.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.dailyStatusUpdateButton.Location = new System.Drawing.Point(327, 671);
+            this.dailyStatusUpdateButton.Location = new System.Drawing.Point(320, 670);
             this.dailyStatusUpdateButton.Name = "dailyStatusUpdateButton";
             this.dailyStatusUpdateButton.Size = new System.Drawing.Size(377, 25);
             this.dailyStatusUpdateButton.TabIndex = 19;
@@ -349,23 +350,23 @@
             this.userProfilesDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.userProfilesDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.userProfilesDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 9.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Yellow;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.userProfilesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 9.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Yellow;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.userProfilesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.userProfilesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 9.25F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.userProfilesDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.userProfilesDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.userProfilesDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.userProfilesDataGridView.Location = new System.Drawing.Point(71, 639);
             this.userProfilesDataGridView.Name = "userProfilesDataGridView";
@@ -397,30 +398,6 @@
             this.detailGraphButton.Visible = false;
             this.detailGraphButton.Click += new System.EventHandler(this.detailedGraphButton_Click);
             // 
-            // databasePictureBox
-            // 
-            this.databasePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.databasePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("databasePictureBox.Image")));
-            this.databasePictureBox.Location = new System.Drawing.Point(40, 639);
-            this.databasePictureBox.Name = "databasePictureBox";
-            this.databasePictureBox.Size = new System.Drawing.Size(25, 25);
-            this.databasePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.databasePictureBox.TabIndex = 29;
-            this.databasePictureBox.TabStop = false;
-            this.databasePictureBox.Click += new System.EventHandler(this.databasePictureBox_Click);
-            // 
-            // pictureBoxRefresh
-            // 
-            this.pictureBoxRefresh.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxRefresh.Image = global::GraphExperiment.Properties.Resources.Refresh;
-            this.pictureBoxRefresh.Location = new System.Drawing.Point(9, 639);
-            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
-            this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 25);
-            this.pictureBoxRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxRefresh.TabIndex = 4;
-            this.pictureBoxRefresh.TabStop = false;
-            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
-            // 
             // weightlbl
             // 
             this.weightlbl.AutoSize = true;
@@ -445,12 +422,49 @@
             this.cululativeDetailGraphButton.Visible = false;
             this.cululativeDetailGraphButton.Click += new System.EventHandler(this.cululativeDetailGraphButton_Click);
             // 
+            // compareGraphButton
+            // 
+            this.compareGraphButton.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
+            this.compareGraphButton.Location = new System.Drawing.Point(849, 671);
+            this.compareGraphButton.Name = "compareGraphButton";
+            this.compareGraphButton.Size = new System.Drawing.Size(128, 25);
+            this.compareGraphButton.TabIndex = 37;
+            this.compareGraphButton.Text = "Compare Graph";
+            this.compareGraphButton.UseVisualStyleBackColor = true;
+            this.compareGraphButton.Visible = false;
+            this.compareGraphButton.Click += new System.EventHandler(this.compareGraphButton_Click);
+            // 
+            // databasePictureBox
+            // 
+            this.databasePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.databasePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("databasePictureBox.Image")));
+            this.databasePictureBox.Location = new System.Drawing.Point(40, 639);
+            this.databasePictureBox.Name = "databasePictureBox";
+            this.databasePictureBox.Size = new System.Drawing.Size(25, 25);
+            this.databasePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.databasePictureBox.TabIndex = 29;
+            this.databasePictureBox.TabStop = false;
+            this.databasePictureBox.Click += new System.EventHandler(this.databasePictureBox_Click);
+            // 
+            // pictureBoxRefresh
+            // 
+            this.pictureBoxRefresh.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBoxRefresh.Image = global::GraphExperiment.Properties.Resources.Refresh;
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(9, 639);
+            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
+            this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxRefresh.TabIndex = 4;
+            this.pictureBoxRefresh.TabStop = false;
+            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1362, 701);
+            this.Controls.Add(this.compareGraphButton);
             this.Controls.Add(this.cululativeDetailGraphButton);
             this.Controls.Add(this.weightlbl);
             this.Controls.Add(this.detailGraphButton);
@@ -522,5 +536,6 @@
         private System.Windows.Forms.Button detailGraphButton;
         private System.Windows.Forms.Label weightlbl;
         private System.Windows.Forms.Button cululativeDetailGraphButton;
+        private System.Windows.Forms.Button compareGraphButton;
     }
 }

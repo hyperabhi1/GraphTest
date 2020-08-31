@@ -8,6 +8,7 @@ namespace GraphExperiment
 {
     static class Program
     {
+        public static Dashboard Dashboard;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +17,8 @@ namespace GraphExperiment
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashboard());
+            Dashboard = new Dashboard();
+            Application.Run(Dashboard);
         }
     }
 }

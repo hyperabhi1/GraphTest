@@ -24,6 +24,7 @@ namespace GraphExperiment
     public partial class Dashboard : Form
     {
         private static string SelectedUserId = String.Empty;
+        private static List<string> SelectedUsers = null;
         public Dashboard()
         {
             InitializeComponent();
@@ -114,6 +115,7 @@ namespace GraphExperiment
             dailyStatusUpdateButton.Visible = false;
             detailGraphButton.Visible = false;
             cululativeDetailGraphButton.Visible = false;
+            compareGraphButton.Visible = false;
         }
         private void HideDailyStatusControls()
         {
@@ -184,11 +186,13 @@ namespace GraphExperiment
             dailyStatusUpdateButton.Visible = true;
             detailGraphButton.Visible = true;
             cululativeDetailGraphButton.Visible = true;
+            compareGraphButton.Visible = true;
         }
 
-        private void RefreshChart()
+        public void RefreshChart(List<string> userIds = null)
         {
-            var userMappingCollection = UserMappingData.Get();
+            SelectedUsers = userIds;
+            var userMappingCollection = UserMappingData.Get(userIds);
             if (userMappingCollection.Any())
             {
                 var dayConfig = Mappers.Xy<DateModel>()
@@ -257,6 +261,7 @@ namespace GraphExperiment
                     dailyStatusUpdateButton.Visible = true;
                     detailGraphButton.Visible = true;
                     cululativeDetailGraphButton.Visible = true;
+                    compareGraphButton.Visible = true;
                     dailyStatusUpdateButton.Text = HiWannaUpdateTodayStatus.Replace("_", userId);
                     SelectedUserId = userId;
 
@@ -275,6 +280,7 @@ namespace GraphExperiment
                     dailyStatusUpdateButton.Visible = false;
                     detailGraphButton.Visible = false;
                     cululativeDetailGraphButton.Visible = false;
+                    compareGraphButton.Visible = false;
                     SelectedUserId = String.Empty;
                     dailyStatusUpdateButton.Text = "";
 
@@ -304,8 +310,19 @@ namespace GraphExperiment
 
         private void cululativeDetailGraphButton_Click(object sender, EventArgs e)
         {
-            DetailedChartForm detailedChart = new DetailedChartForm();
+            DetailedChartForm detailedChart = new DetailedChartForm(SelectedUsers);
             detailedChart.Show();
+        }
+
+        private void compareGraphButton_Click(object sender, EventArgs e)
+        {
+            List<KeyValuePair<string,string>> userMappings = new List<KeyValuePair<string, string>>();
+            UserMappingData.Get().ForEach(x=>userMappings.Add(new KeyValuePair<string, string>(x.UserId,x.FullName)));
+            if (userMappings.Count > 0)
+            {
+                CompareGraphForm userCheckListBox = new CompareGraphForm(userMappings);
+                userCheckListBox.Show();
+            }
         }
     }
 }

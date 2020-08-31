@@ -130,6 +130,12 @@
     <Compile Include="EditUser.Designer.cs">
       <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="CompareGraphForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompareGraphForm.Designer.cs">
+      <DependentUpon>CompareGraphForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HealthStatsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -146,6 +152,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddUser.resx">
       <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompareGraphForm.resx">
+      <DependentUpon>CompareGraphForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>

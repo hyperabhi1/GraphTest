@@ -18,7 +18,7 @@ namespace GraphExperiment
 {
     public partial class DetailedChartForm : Form
     {
-        private string _userId = String.Empty;
+        private List<string> _users = new List<string>();
         public DetailedChartForm()
         {
             InitializeComponent();
@@ -26,14 +26,19 @@ namespace GraphExperiment
         public DetailedChartForm(string userId)
         {
             InitializeComponent();
-            _userId = userId;
+            _users.Add(userId);
+        }
+        public DetailedChartForm(List<string> users)
+        {
+            InitializeComponent();
+            _users = users;
         }
 
         private void DetailedChartForm_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(_userId))
+            if (_users.Count > 0)
             {
-                var userMappingCollection = UserMappingData.GetById(_userId);
+                var userMappingCollection = UserMappingData.Get(_users);
                 if (userMappingCollection.Any())
                 {
                     var durationSeriesCollection = Common.GetSeriesCollection();

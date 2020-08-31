@@ -11,10 +11,11 @@ namespace GraphExperiment.Data
     class UserMappingData
     {
         public static string UserMapping = "UserMapping";
-        public static List<UserMapping> Get()
+        public static List<UserMapping> Get(List<string> userIds = null)
         {
             List<UserMapping> userMappings = new List<UserMapping>();
-            string query = $"SELECT * FROM {UserMapping} ORDER BY [UserId];";
+            var userquery = userIds != null && userIds.Count > 0 ? $"WHERE UserId IN({string.Join(",", userIds.Select(x=>$"'{x}'"))})": string.Empty;
+            string query = $"SELECT * FROM {UserMapping} {userquery} ORDER BY [UserId];";
             var dataTable = MySQLAdapter.Get(query);
             foreach (DataRow row in dataTable.Rows)
             {
