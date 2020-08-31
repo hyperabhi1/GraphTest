@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GraphExperiment.DAL;
 using GraphExperiment.Data;
 using GraphExperiment.Models;
 using static GraphExperiment.Constants;
@@ -52,7 +53,7 @@ namespace GraphExperiment
                     UserProfileData.Update(new UserProfile() { Age = age, LastName = lastName, UserId = _originalUserProfile.UserId, FirstName = firstName, Height = height, Weight = weight });
                     UserMappingData.Update(new UserMapping() { UserId = _originalUserProfile.UserId, FullName = $"{firstName} {lastName}" });
                     LatestProfileData.Update(new LatestProfile() { UserId = _originalUserProfile.UserId, LastName = lastName, Age = age, FirstName = firstName, Height = height, Weight = weight });
-
+                    DailyStatusData.Update(new DailyStatus(){UserId = _originalUserProfile.UserId , Height = height});
                     if (MessageBox.Show(UserUpdated, Information, MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                         this.Close();
                 }

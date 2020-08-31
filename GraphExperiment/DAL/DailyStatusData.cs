@@ -56,7 +56,7 @@ namespace GraphExperiment.DAL
             StringBuilder sb = new StringBuilder();
 
             if (!string.IsNullOrEmpty(dailyStatus.UserId))
-                sb.Append($"Age = '{dailyStatus.UserId}', ");
+                sb.Append($"UserId = '{dailyStatus.UserId}', ");
             if (dailyStatus.Time != DateTime.MinValue)
                 sb.Append($"Time = '{dailyStatus.Time}', ");
             if (Math.Abs(dailyStatus.Distance) > 0)
