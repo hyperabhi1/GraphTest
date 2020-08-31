@@ -209,7 +209,7 @@ namespace GraphExperiment
                         LineSeries ls = new LineSeries()
                         {
                             Title = userMapping.FullName,
-                            PointGeometrySize = 15,
+                            PointGeometrySize = 10,
                             Values = chartValues
                         };
                         seriesCollection.Add(ls);

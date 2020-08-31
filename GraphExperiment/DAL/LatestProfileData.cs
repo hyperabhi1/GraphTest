@@ -14,7 +14,7 @@ namespace GraphExperiment.Data
         public static List<LatestProfile> Get()
         {
             List<LatestProfile> latestProfiles = new List<LatestProfile>();
-            string query = $"SELECT * FROM {LatestProfile};";
+            string query = $"SELECT * FROM {LatestProfile} ORDER BY [UserId];";
             var dataTable = MySQLAdapter.Get(query);
             foreach (DataRow row in dataTable.Rows)
             {

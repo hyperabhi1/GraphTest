@@ -62,20 +62,16 @@ namespace GraphExperiment
 
             return userStatsPair;
         }
-        //lineseries->(fullName,(chartValues->(List<KeyValuePair<DateTime, double>>)))
         public static ChartValues<DateModel> GetChartValues(List<KeyValuePair<DateTime, double>> list)
         {
             var chartValues = new ChartValues<DateModel>();
             if (list != null && list.Any())
             {
-                foreach (var valuePair in list)
+                list.ForEach(x => chartValues.Add(new DateModel()
                 {
-                    list.ForEach(x => chartValues.Add(new DateModel()
-                    {
-                        Time = x.Key,
-                        Value = x.Value
-                    }));
-                }
+                    Time = x.Key,
+                    Value = x.Value
+                }));
             }
             return chartValues;
         }
@@ -85,7 +81,7 @@ namespace GraphExperiment
             return new LineSeries()
             {
                 Title = fullName,
-                PointGeometrySize = 10,
+                PointGeometrySize = 5,
                 Values = chartValues
             };
         }

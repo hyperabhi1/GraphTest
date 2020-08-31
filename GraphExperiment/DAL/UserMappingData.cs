@@ -14,7 +14,7 @@ namespace GraphExperiment.Data
         public static List<UserMapping> Get()
         {
             List<UserMapping> userMappings = new List<UserMapping>();
-            string query = $"SELECT * FROM {UserMapping};";
+            string query = $"SELECT * FROM {UserMapping} ORDER BY [UserId];";
             var dataTable = MySQLAdapter.Get(query);
             foreach (DataRow row in dataTable.Rows)
             {
