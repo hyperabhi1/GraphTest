@@ -49,7 +49,8 @@
             this.ClientSize = new System.Drawing.Size(290, 50);
             this.Controls.Add(this.okButton);
             this.Name = "CompareGraphForm";
-            this.Text = "Select Users for Comparison";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Users";
             this.Load += new System.EventHandler(this.CompareGraphForm_Load);
             this.ResumeLayout(false);
 

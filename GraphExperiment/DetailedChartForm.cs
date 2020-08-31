@@ -62,7 +62,6 @@ namespace GraphExperiment
                     }
                     if(durationSeriesCollection.Count > 0)
                     {
-                        durationCartesianChart.Zoom = ZoomingOptions.Xy;
                         durationCartesianChart.Series.Clear();
                         durationCartesianChart.Series = durationSeriesCollection;
                         durationCartesianChart.AxisY.Add(new LiveCharts.Wpf.Axis { MinValue = 0 });
@@ -72,7 +71,6 @@ namespace GraphExperiment
 
                     if (distanceSeriesCollection.Count > 0)
                     {
-                        distanceCartesianChart.Zoom = ZoomingOptions.Xy;
                         distanceCartesianChart.Series.Clear();
                         distanceCartesianChart.Series = distanceSeriesCollection;
                         distanceCartesianChart.AxisY.Add(new LiveCharts.Wpf.Axis { MinValue = 0 });
@@ -81,7 +79,6 @@ namespace GraphExperiment
                     }
                     if(caloriesSeriesCollection.Count > 0)
                     {
-                        caloriesCartesianChart.Zoom = ZoomingOptions.Xy;
                         caloriesCartesianChart.Series.Clear();
                         caloriesCartesianChart.Series = caloriesSeriesCollection;
                         caloriesCartesianChart.AxisY.Add(new LiveCharts.Wpf.Axis { MinValue = 0 });
@@ -90,7 +87,6 @@ namespace GraphExperiment
                     }
                     if(bmiSeriesCollection.Count > 0)
                     {
-                        bmiCartesianChart.Zoom = ZoomingOptions.Xy;
                         bmiCartesianChart.Series.Clear();
                         bmiCartesianChart.Series = bmiSeriesCollection;
                         bmiCartesianChart.AxisY.Add(new LiveCharts.Wpf.Axis { MinValue = 0 });
@@ -100,7 +96,6 @@ namespace GraphExperiment
 
                     if (effortSeriesCollection.Count > 0)
                     {
-                        effortCartesianChart.Zoom = ZoomingOptions.Xy;
                         effortCartesianChart.Series.Clear();
                         effortCartesianChart.Series = effortSeriesCollection;
                         effortCartesianChart.AxisY.Add(new LiveCharts.Wpf.Axis { MinValue = 0 });

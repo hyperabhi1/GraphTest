@@ -234,7 +234,6 @@ namespace GraphExperiment
                 {
                     weightCartesianChart.Series.Clear();
                     weightCartesianChart.Series = seriesCollection;
-                    weightCartesianChart.Zoom = ZoomingOptions.Xy;
                     weightCartesianChart.AxisY.Add( new LiveCharts.Wpf.Axis { MinValue = 0 });
                     weightCartesianChart.AxisX.Clear();
                     weightCartesianChart.AxisX.Add(new LiveCharts.Wpf.Axis
@@ -274,7 +273,7 @@ namespace GraphExperiment
                     detailGraphButton.Visible = true;
                     cumulativeDetailGraphButton.Visible = true;
                     compareGraphButton.Visible = true;
-                    dailyStatusUpdateButton.Text = HiWannaUpdateTodayStatus.Replace("_", userId);
+                    dailyStatusUpdateButton.Text = HiWannaUpdateTodayStatus.Replace("_", userId.ToUpper());
                     SelectedUserId = userId;
 
                     var latestProfile = LatestProfileData.GetById(SelectedUserId).FirstOrDefault();
@@ -329,7 +328,7 @@ namespace GraphExperiment
         private void compareGraphButton_Click(object sender, EventArgs e)
         {
             List<KeyValuePair<string,string>> userMappings = new List<KeyValuePair<string, string>>();
-            UserMappingData.Get().ForEach(x=>userMappings.Add(new KeyValuePair<string, string>(x.UserId,x.FullName)));
+            UserMappingData.Get(SelectedUsers).ForEach(x=>userMappings.Add(new KeyValuePair<string, string>(x.UserId,x.FullName)));
             if (userMappings.Count > 0)
             {
                 CompareGraphForm userCheckListBox = new CompareGraphForm(userMappings);
