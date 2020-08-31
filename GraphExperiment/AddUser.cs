@@ -25,7 +25,9 @@ namespace GraphExperiment
         {
             genderComboBox.SelectedItem = M;
             userIdTextBox.Text = firstNameTextBox.Text = lastNameTextBox.Text = string.Empty;
-            ageNumericUpDown.Value = heightNumericUpDown.Value = weightNumericUpDown.Value = 0;
+            ageNumericUpDown.Value = 0;
+            heightNumericUpDown.Value = (decimal)0.01;
+            weightNumericUpDown.Value = 1;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
