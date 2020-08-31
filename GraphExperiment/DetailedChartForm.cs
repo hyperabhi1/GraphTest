@@ -62,38 +62,48 @@ namespace GraphExperiment
                     }
                     if(durationSeriesCollection.Count > 0)
                     {
+                        durationCartesianChart.Zoom = ZoomingOptions.Xy;
                         durationCartesianChart.Series.Clear();
                         durationCartesianChart.Series = durationSeriesCollection;
+                        durationCartesianChart.AxisY.Add(new LiveCharts.Wpf.Axis { MinValue = 0 });
                         durationCartesianChart.AxisX.Clear();
                         durationCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
                     }
 
                     if (distanceSeriesCollection.Count > 0)
                     {
+                        distanceCartesianChart.Zoom = ZoomingOptions.Xy;
                         distanceCartesianChart.Series.Clear();
                         distanceCartesianChart.Series = distanceSeriesCollection;
+                        distanceCartesianChart.AxisY.Add(new LiveCharts.Wpf.Axis { MinValue = 0 });
                         distanceCartesianChart.AxisX.Clear();
                         distanceCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
                     }
                     if(caloriesSeriesCollection.Count > 0)
                     {
+                        caloriesCartesianChart.Zoom = ZoomingOptions.Xy;
                         caloriesCartesianChart.Series.Clear();
                         caloriesCartesianChart.Series = caloriesSeriesCollection;
+                        caloriesCartesianChart.AxisY.Add(new LiveCharts.Wpf.Axis { MinValue = 0 });
                         caloriesCartesianChart.AxisX.Clear();
                         caloriesCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
                     }
                     if(bmiSeriesCollection.Count > 0)
                     {
+                        bmiCartesianChart.Zoom = ZoomingOptions.Xy;
                         bmiCartesianChart.Series.Clear();
                         bmiCartesianChart.Series = bmiSeriesCollection;
+                        bmiCartesianChart.AxisY.Add(new LiveCharts.Wpf.Axis { MinValue = 0 });
                         bmiCartesianChart.AxisX.Clear();
                         bmiCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
                     }
 
                     if (effortSeriesCollection.Count > 0)
                     {
+                        effortCartesianChart.Zoom = ZoomingOptions.Xy;
                         effortCartesianChart.Series.Clear();
                         effortCartesianChart.Series = effortSeriesCollection;
+                        effortCartesianChart.AxisY.Add(new LiveCharts.Wpf.Axis { MinValue = 0 });
                         effortCartesianChart.AxisX.Clear();
                         effortCartesianChart.AxisX.Add(Common.GetDateTimeAxis());
                     }

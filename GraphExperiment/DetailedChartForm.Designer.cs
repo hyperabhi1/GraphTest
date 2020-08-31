@@ -158,7 +158,9 @@
             this.MaximumSize = new System.Drawing.Size(1386, 740);
             this.MinimumSize = new System.Drawing.Size(1364, 726);
             this.Name = "DetailedChartForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetailedChartForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DetailedChartForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

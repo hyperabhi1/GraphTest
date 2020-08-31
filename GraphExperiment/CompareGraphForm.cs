@@ -22,7 +22,7 @@ namespace GraphExperiment
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            Program.Dashboard.RefreshChart(_selectedUsers);
+            Program.Dashboard.RefreshChart(_selectedUsers,true);
             this.Close();
         }
 

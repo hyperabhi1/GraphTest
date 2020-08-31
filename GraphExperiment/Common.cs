@@ -24,7 +24,7 @@ namespace GraphExperiment
                     Distance = dailyStatus.Distance,
                     Duration = dailyStatus.Duration,
                     Calories = dailyStatus.Calories,
-                    Bmi = ((dailyStatus.Height) / (dailyStatus.Weight * dailyStatus.Weight)),
+                    Bmi = ((dailyStatus.Weight) / (dailyStatus.Height * dailyStatus.Height)),
                     Effort = (dailyStatus.Distance / dailyStatus.Duration)
                 };
                 userStatsCollection.Add(userStats);
@@ -45,7 +45,7 @@ namespace GraphExperiment
                 var distance = dailyStatus.Distance;
                 var duration = dailyStatus.Duration;
                 var calories = dailyStatus.Calories;
-                var bmi = ((dailyStatus.Height) / (dailyStatus.Weight * dailyStatus.Weight));
+                var bmi = ((dailyStatus.Weight) / (dailyStatus.Height * dailyStatus.Height));
                 var effort = (dailyStatus.Distance / dailyStatus.Duration);
                 durationCollection.Add(new KeyValuePair<DateTime, double>(time, duration));
                 distanceCollection.Add(new KeyValuePair<DateTime, double>(time, distance));
@@ -82,7 +82,8 @@ namespace GraphExperiment
             {
                 Title = fullName,
                 PointGeometrySize = 5,
-                Values = chartValues
+                Values = chartValues,
+                ScalesYAt = 0
             };
         }
         public static SeriesCollection GetSeriesCollection()

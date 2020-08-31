@@ -50,6 +50,7 @@ namespace GraphExperiment
             UserProfileData.Get().Select(x => x.UserId).ToList().ForEach(x => dt.Columns.Add(x));
             userProfilesDataGridView.DataSource = dt;
             userProfilesDataGridView.Refresh();
+            SelectedUsers = UserProfileData.Get().Select(x => x.UserId).ToList();
             HideDailyStatusControls();
             dailyStatusUpdateButton.Text = HiWannaUpdateTodayStatus;
             RefreshChart();
@@ -114,7 +115,7 @@ namespace GraphExperiment
             UnHideDailyStatusControls();
             dailyStatusUpdateButton.Visible = false;
             detailGraphButton.Visible = false;
-            cululativeDetailGraphButton.Visible = false;
+            cumulativeDetailGraphButton.Visible = false;
             compareGraphButton.Visible = false;
         }
         private void HideDailyStatusControls()
@@ -185,14 +186,23 @@ namespace GraphExperiment
             HideDailyStatusControls();
             dailyStatusUpdateButton.Visible = true;
             detailGraphButton.Visible = true;
-            cululativeDetailGraphButton.Visible = true;
+            cumulativeDetailGraphButton.Visible = true;
             compareGraphButton.Visible = true;
         }
 
-        public void RefreshChart(List<string> userIds = null)
+        public void RefreshChart(List<string> userIds = null, bool isMoreThanOneUser = false)
         {
-            SelectedUsers = userIds;
-            var userMappingCollection = UserMappingData.Get(userIds);
+            if (isMoreThanOneUser && userIds != null && userIds.Count > 1)
+            {
+                SelectedUsers = userIds;
+            }
+            else if(isMoreThanOneUser)
+            {
+                SelectedUsers = UserProfileData.Get().Select(x => x.UserId).ToList();
+                MessageBox.Show("Please select more than 1 user", "Information", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            var userMappingCollection = UserMappingData.Get(SelectedUsers);
             if (userMappingCollection.Any())
             {
                 var dayConfig = Mappers.Xy<DateModel>()
@@ -224,6 +234,8 @@ namespace GraphExperiment
                 {
                     weightCartesianChart.Series.Clear();
                     weightCartesianChart.Series = seriesCollection;
+                    weightCartesianChart.Zoom = ZoomingOptions.Xy;
+                    weightCartesianChart.AxisY.Add( new LiveCharts.Wpf.Axis { MinValue = 0 });
                     weightCartesianChart.AxisX.Clear();
                     weightCartesianChart.AxisX.Add(new LiveCharts.Wpf.Axis
                     {
@@ -260,7 +272,7 @@ namespace GraphExperiment
                     buttonDelete.Visible = true;
                     dailyStatusUpdateButton.Visible = true;
                     detailGraphButton.Visible = true;
-                    cululativeDetailGraphButton.Visible = true;
+                    cumulativeDetailGraphButton.Visible = true;
                     compareGraphButton.Visible = true;
                     dailyStatusUpdateButton.Text = HiWannaUpdateTodayStatus.Replace("_", userId);
                     SelectedUserId = userId;
@@ -279,7 +291,7 @@ namespace GraphExperiment
                     buttonDelete.Visible = false;
                     dailyStatusUpdateButton.Visible = false;
                     detailGraphButton.Visible = false;
-                    cululativeDetailGraphButton.Visible = false;
+                    cumulativeDetailGraphButton.Visible = false;
                     compareGraphButton.Visible = false;
                     SelectedUserId = String.Empty;
                     dailyStatusUpdateButton.Text = "";
@@ -308,7 +320,7 @@ namespace GraphExperiment
             }
         }
 
-        private void cululativeDetailGraphButton_Click(object sender, EventArgs e)
+        private void cumulativeDetailGraphButton_Click(object sender, EventArgs e)
         {
             DetailedChartForm detailedChart = new DetailedChartForm(SelectedUsers);
             detailedChart.Show();

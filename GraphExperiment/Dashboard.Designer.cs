@@ -53,7 +53,7 @@
             this.weightCartesianChart = new LiveCharts.WinForms.CartesianChart();
             this.detailGraphButton = new System.Windows.Forms.Button();
             this.weightlbl = new System.Windows.Forms.Label();
-            this.cululativeDetailGraphButton = new System.Windows.Forms.Button();
+            this.cumulativeDetailGraphButton = new System.Windows.Forms.Button();
             this.compareGraphButton = new System.Windows.Forms.Button();
             this.databasePictureBox = new System.Windows.Forms.PictureBox();
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
@@ -73,7 +73,7 @@
             this.buttonAddUser.Location = new System.Drawing.Point(9, 671);
             this.buttonAddUser.Name = "buttonAddUser";
             this.buttonAddUser.Size = new System.Drawing.Size(95, 25);
-            this.buttonAddUser.TabIndex = 1;
+            this.buttonAddUser.TabIndex = 0;
             this.buttonAddUser.Text = "Add User";
             this.buttonAddUser.UseVisualStyleBackColor = true;
             this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
@@ -410,17 +410,17 @@
             this.weightlbl.Text = "Weight Graph";
             this.weightlbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cululativeDetailGraphButton
+            // cumulativeDetailGraphButton
             // 
-            this.cululativeDetailGraphButton.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
-            this.cululativeDetailGraphButton.Location = new System.Drawing.Point(1126, 671);
-            this.cululativeDetailGraphButton.Name = "cululativeDetailGraphButton";
-            this.cululativeDetailGraphButton.Size = new System.Drawing.Size(229, 25);
-            this.cululativeDetailGraphButton.TabIndex = 36;
-            this.cululativeDetailGraphButton.Text = "Cululative Detail Graph";
-            this.cululativeDetailGraphButton.UseVisualStyleBackColor = true;
-            this.cululativeDetailGraphButton.Visible = false;
-            this.cululativeDetailGraphButton.Click += new System.EventHandler(this.cululativeDetailGraphButton_Click);
+            this.cumulativeDetailGraphButton.Font = new System.Drawing.Font("Consolas", 10.25F, System.Drawing.FontStyle.Bold);
+            this.cumulativeDetailGraphButton.Location = new System.Drawing.Point(1126, 671);
+            this.cumulativeDetailGraphButton.Name = "cumulativeDetailGraphButton";
+            this.cumulativeDetailGraphButton.Size = new System.Drawing.Size(229, 25);
+            this.cumulativeDetailGraphButton.TabIndex = 36;
+            this.cumulativeDetailGraphButton.Text = "Cumulative Detail Graph";
+            this.cumulativeDetailGraphButton.UseVisualStyleBackColor = true;
+            this.cumulativeDetailGraphButton.Visible = false;
+            this.cumulativeDetailGraphButton.Click += new System.EventHandler(this.cumulativeDetailGraphButton_Click);
             // 
             // compareGraphButton
             // 
@@ -465,7 +465,7 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1362, 701);
             this.Controls.Add(this.compareGraphButton);
-            this.Controls.Add(this.cululativeDetailGraphButton);
+            this.Controls.Add(this.cumulativeDetailGraphButton);
             this.Controls.Add(this.weightlbl);
             this.Controls.Add(this.detailGraphButton);
             this.Controls.Add(this.weightCartesianChart);
@@ -535,7 +535,7 @@
         private LiveCharts.WinForms.CartesianChart weightCartesianChart;
         private System.Windows.Forms.Button detailGraphButton;
         private System.Windows.Forms.Label weightlbl;
-        private System.Windows.Forms.Button cululativeDetailGraphButton;
+        private System.Windows.Forms.Button cumulativeDetailGraphButton;
         private System.Windows.Forms.Button compareGraphButton;
     }
 }
