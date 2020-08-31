@@ -266,7 +266,7 @@ namespace GraphExperiment
 
                     distanceNumericUpDown.Value = 1;
                     durationNumericUpDown.Value = 1;
-                    caloriesNumericUpDown.Value = 0;
+                    caloriesNumericUpDown.Value = 1;
                 }
                 else
                 {
@@ -279,11 +279,11 @@ namespace GraphExperiment
                     dailyStatusUpdateButton.Text = "";
 
 
-                    heightNumericUpDown.Value = 0;
+                    heightNumericUpDown.Value = (decimal)0.01;
                     weightNumericUpDown.Value = 1;
                     distanceNumericUpDown.Value = 1;
                     durationNumericUpDown.Value = 1;
-                    caloriesNumericUpDown.Value = 0;
+                    caloriesNumericUpDown.Value = 1;
                 }
                 HideDailyStatusControls();
             }

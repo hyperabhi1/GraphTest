@@ -180,9 +180,19 @@
             0,
             0,
             0});
+            this.heightNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.heightNumericUpDown.Name = "heightNumericUpDown";
             this.heightNumericUpDown.Size = new System.Drawing.Size(121, 27);
             this.heightNumericUpDown.TabIndex = 10;
+            this.heightNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             // 
             // weightNumericUpDown
             // 
@@ -199,9 +209,19 @@
             0,
             0,
             0});
+            this.weightNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.weightNumericUpDown.Name = "weightNumericUpDown";
             this.weightNumericUpDown.Size = new System.Drawing.Size(121, 27);
             this.weightNumericUpDown.TabIndex = 12;
+            this.weightNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // genderComboBox
             // 
